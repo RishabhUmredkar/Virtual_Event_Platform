@@ -82,7 +82,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="bankModalLabel">Add Bank Account</h5>
+					<h5 class="modal-title" id="bankModalLabel">Update User Details..</h5>
 					<button type="button" class="close-model-btn" data-bs-dismiss="modal" aria-label="Close"><i class="uil uil-multiply"></i></button>
 				</div>
 				<div class="modal-body">
@@ -90,43 +90,26 @@
 						<div class="row">
 							<div class="col-lg-6 col-md-12">
 								<div class="form-group mt-4">
-									<label class="form-label">Account Name*</label>
+									<label class="form-label">First Name*</label>
 									<input class="form-control h_40" type="text" placeholder="" value="">																								
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-12">
 								<div class="form-group mt-4">
-									<label class="form-label">Account Number*</label>
+									<label class="form-label">Last Name*</label>
 									<input class="form-control h_40" type="text" placeholder="" value="">																								
 								</div>
 							</div>
-							<div class="col-lg-6 col-md-12">
+							
+							<div class="col-lg-12 col-md-12">
 								<div class="form-group mt-4">
-									<label class="form-label">Bank Name*</label>
-									<input class="form-control h_40" type="text" placeholder="" value="">																								
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-12">
-								<div class="form-group mt-4">
-									<label class="form-label">BSB code*</label>
-									<input class="form-control h_40" type="text" placeholder="XXY-ZZZ" value="">																								
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-12">
-								<div class="form-group mt-4">
-									<label class="form-label">SWIFT/BIC code*</label>
-									<input class="form-control h_40" type="text" placeholder="" value="">																								
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-12">
-								<div class="form-group mt-4">
-									<label class="form-label">ABA Routing*</label>
+									<label class="form-label">Email Id*</label>
 									<input class="form-control h_40" type="text" placeholder="" value="">																								
 								</div>
 							</div>
 							<div class="col-lg-12 col-md-12">
 								<div class="form-group mt-4">
-									<label class="form-label">International Bank Account Number*</label>
+									<label class="form-label">Password*</label>
 									<input class="form-control h_40" type="text" placeholder="" value="">																								
 								</div>
 							</div>
@@ -135,7 +118,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="co-main-btn min-width btn-hover h_40" data-bs-target="#aboutModal" data-bs-toggle="modal" data-bs-dismiss="modal">Cancel</button>
-					<button type="button" class="main-btn min-width btn-hover h_40">Save</button>
+					<button type="button" class="main-btn min-width btn-hover h_40">Update</button>
 				</div>
 			</div>
 		</div>
@@ -416,12 +399,10 @@
 						        <i class="fa-solid fa-trash-can fa-1x"></i>
 						    </a>
 						    <span> &nbsp; &nbsp;&nbsp; &nbsp;</span>
-						    <a href="editmedicineserv?id=<%= e.getId() %>" class="btn btn-sm btn-warning">
+						    <a href="editmedicineserv?id=<%= e.getId() %>" class="btn btn-sm btn-warning"  data-bs-toggle="modal" data-bs-target="#bankModal">
 						        <i class="fa-solid fa-pen fa-1x"></i>
 						    </a>
-						    <div class="rs ms-auto mt_r4">
-										<button class="main-btn btn-hover h_40 w-100" data-bs-toggle="modal" data-bs-target="#bankModal">Add Bank Account</button>
-									</div>
+						  
 						</td>
 							
 										                </tr>
