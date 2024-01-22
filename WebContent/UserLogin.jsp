@@ -21,21 +21,34 @@
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        RegisterUser user = new RegisterUser(email, password);
-        System.out.println("user data: " + user);
-
-        boolean isValidUser = new UserDao().checkUser(user);
-
-        if (isValidUser) {
-            // Set the email cookie
-            Cookie c = new Cookie("email", email);
-            response.addCookie(c);
+        
+        
+        // Check for admin login
+        if ("admin@gmail.com".equals(email) && "admin".equals(password)) {
+        	  Cookie c = new Cookie("email", email);
+              response.addCookie(c);
+              
+              // Redirect to the explore_events.jsp page
+              response.sendRedirect("create.jsp");
             
-            // Redirect to the explore_events.jsp page
-            response.sendRedirect("explore_events.jsp");
         } else {
-            System.out.println("Wrong Email and Password!");
-            response.sendRedirect("sign_in.jsp");
+            // Regular user login check
+            RegisterUser user = new RegisterUser(email, password);
+            System.out.println("user data: " + user);
+
+            boolean isValidUser = new UserDao().checkUser(user);
+
+            if (isValidUser) {
+                // Set the email cookie
+                Cookie c = new Cookie("email", email);
+                response.addCookie(c);
+                
+                // Redirect to the explore_events.jsp page
+                response.sendRedirect("explore_events.jsp");
+            } else {
+                System.out.println("Wrong Email and Password!");
+                response.sendRedirect("sign_in.jsp");
+            }
         }
     %>
 </c:if>

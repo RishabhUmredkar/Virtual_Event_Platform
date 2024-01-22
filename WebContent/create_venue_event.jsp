@@ -54,8 +54,8 @@
 							<img src="images/logo-icon.svg" alt="">
 						</div>
 						<div class="main-logo" id="logo">
-							<img src="images/logo.svg" alt="">
-							<img class="logo-inverse" src="images/dark-logo.svg" alt="">
+							<img src="images/RishabhLight Final.png" alt="">
+										<img class="logo-inverse" src="images/RishabhDark Final.png" alt="">
 						</div>
 					</a>
 					<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -233,6 +233,7 @@
 				</div>
 			</div>
 		</div>
+		<form action="create.jsp">
 		<div class="event-dt-block p-80">
 			<div class="container">
 				<div class="row justify-content-center">
@@ -264,7 +265,7 @@
 										</a>
 									</li>
 								</ul>
-								<div class="step-content">
+<div class="step-content">
 									<div class="step-tab-panel step-tab-info active" id="tab_step1"> 
 										<div class="tab-from-content">
 											<div class="main-card">
@@ -1033,10 +1034,12 @@
 										</div>
 									</div>														   
 								</div>
+							
+								
 								<div class="step-footer step-tab-pager mt-4">
 									<button data-direction="prev" class="btn btn-default btn-hover steps_btn">Previous</button>
 									<button data-direction="next" class="btn btn-default btn-hover steps_btn">Next</button>
-									<button data-direction="finish" class="btn btn-default btn-hover steps_btn">Create</button>
+								    <button type="submit" data-direction="finish" class="btn btn-default btn-hover steps_btn">Create</button>
 								</div>
 							</div>
 						</div> 
@@ -1045,6 +1048,7 @@
 				</div>
 			</div>
 		</div>
+		</form>
 	</div>
 	<!-- Body End-->
 	<!-- Footer Start-->
@@ -1133,10 +1137,7 @@
 	<script src="js/i18n/datepicker.en.js"></script>
 	<script>
 		$('#add-event-tab').steps({
-		  onFinish: function () {
-			alert('Wizard Completed');
-		  }
-		});		
+				});		
 	</script>
 	<script>
 		ClassicEditor

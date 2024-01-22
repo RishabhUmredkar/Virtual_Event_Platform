@@ -59,7 +59,7 @@ System.out.println(c);
 								<a href="index.jsp">
 									<div class="sign-logo" id="logo">
 										<img src="images/RishabhLight Final.png" alt="">
-							<img class="logo-inverse" src="images/RishabhDark Final.png" alt="">
+										<img class="logo-inverse" src="images/RishabhDark Final.png" alt="">
 									</div>
 								</a>
 								<div class="app-top-right-link">

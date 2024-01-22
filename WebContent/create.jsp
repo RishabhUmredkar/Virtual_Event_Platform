@@ -51,8 +51,8 @@
 							<img src="images/logo-icon.svg" alt="">
 						</div>
 						<div class="main-logo" id="logo">
-							<img src="images/logo.svg" alt="">
-							<img class="logo-inverse" src="images/dark-logo.svg" alt="">
+							<img src="images/RishabhLight Final.png" alt="">
+										<img class="logo-inverse" src="images/RishabhDark Final.png" alt="">
 						</div>
 					</a>
 					<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
