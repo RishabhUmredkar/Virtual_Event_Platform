@@ -29,18 +29,19 @@ UserDao ud = new UserDao();
 
 
 		ud.delete(id);
-		
+
+        response.sendRedirect("my_organisation_dashboard_my_user.jsp");
 
 %>
 Delete User
 
-			
-			<jsp:forward page="my_organisation_dashboard_my_user.jsp">
+			<%-- 
+			<jsp:forward page=>
 			<jsp:param value="<%=email%>" name="email"/>
 			<jsp:param value="<%=pass%>" name="pass"/>
 			</jsp:forward>	
 				
-		
+		 --%>
 
 
 
