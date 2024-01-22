@@ -39,8 +39,6 @@
 		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">		
 
-<c:if test="${not empty cookie.email.value}">
-    <!-- Your HTML and JavaScript code after successful signup -->
     <!-- Header Start -->
     <header class="header">
         <!-- Your header content -->
@@ -222,7 +220,7 @@
 	</header>
 	<!-- Header End-->
 	   <!-- Rest of your HTML content -->
-</c:if>  
+ 
 	<!-- Body Start-->
 	<div class="wrapper">
 		<div class="hero-banner">

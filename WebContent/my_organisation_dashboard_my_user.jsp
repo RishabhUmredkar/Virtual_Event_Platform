@@ -42,6 +42,18 @@
     function refreshPage() {
         window.location.href = "my_organisation_dashboard_my_user.jsp";
     }
+    function handleEditButtonClick(id, firstName, lastName, email, password) {
+        // Update modal form elements with user data
+        document.getElementById('userIdInput').value = id;
+        document.getElementById('firstNameInput').value = firstName;
+        document.getElementById('lastNameInput').value = lastName;
+        document.getElementById('emailInput').value = email;
+        document.getElementById('passwordInput').value = password;
+
+        // Open the modal
+        var bankModal = new bootstrap.Modal(document.getElementById('bankModal'));
+        bankModal.show();
+    }
 </script>
 </head><body class="d-flex flex-column h-100">
 <c:if test="${not empty cookie.email.value}">
@@ -329,7 +341,9 @@
 							                    <i class="uil uil-search"></i>
 							                </div>
 							                <button onclick="searchByEmail()" class="btn btn-primary ms-2" style="background-color: #48a31d; color: #000;">Search</button>
-							                <button onclick="refreshPage()" class="btn btn-secondary ms-2">Refresh</button>
+							                	<div class="rs ms-auto mt-4 mt_r4">
+													<a href="#"  onclick="refreshPage()" class="pe-4 w-100 ps-4 text-center co-main-btn h_40 d-inline-block"><i class="fa-solid fa-arrow-rotate-right me-4"></i>Refresh</a>
+												</div>
 							            </div>
 							        </div>
 							    </div>
