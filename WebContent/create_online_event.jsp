@@ -35,6 +35,7 @@
 		<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">		
 		<link href="vendor/ckeditor5/sample/css/sample.css" rel="stylesheet">
 		
+	<c:if test="${not empty cookie.email.value}">
 	
 
 
@@ -1233,5 +1234,11 @@
 			console.error( err.stack );
 		} );
 	</script>
+
+</c:if>
+	
+<c:if test="${empty cookie.email.value}">
+    <c:redirect url="sign_up.jsp" />
+</c:if>
 
 </body></html>

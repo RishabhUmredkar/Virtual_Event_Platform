@@ -33,6 +33,7 @@
 		<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">		
 		
 	
+<c:if test="${not empty cookie.email.value}">
 
 
 	<!-- Header Start-->
@@ -345,5 +346,11 @@
 	<script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>	
 	<script src="js/custom.js"></script>
 	<script src="js/night-mode.js"></script>
+
+</c:if>
+	
+<c:if test="${empty cookie.email.value}">
+    <c:redirect url="sign_up.jsp" />
+</c:if>
 
 </body></html>

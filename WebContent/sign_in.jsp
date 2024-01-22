@@ -69,7 +69,7 @@ System.out.println(c);
 						</div>
 						<div class="col-xl-5 col-lg-6 col-md-7">
 							<div class="registration">
-								<form action = "loginUser.jsp">
+								<form action = "UserLogin.jsp">
 									<h2 class="registration-title">Sign in to Barren</h2>
 									<div class="form-group mt-5">
 										<label class="form-label">Your Email*</label>
