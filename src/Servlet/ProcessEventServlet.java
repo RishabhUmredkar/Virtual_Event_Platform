@@ -79,25 +79,25 @@ public class ProcessEventServlet extends HttpServlet {
             try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Virtual_Event_platform",
                     "root", "abc123")) {
 
-                String query = "INSERT INTO Venue_Event_ticket (event_name, event_category, event_date, event_time, event_duration, event_image, event_description, event_venue, event_address1, event_address2, event_country, event_state, event_city, event_pin_code, event_price, event_total_tickets) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                String query = "INSERT INTO Venue_Event_ticket (event_name, event_category, event_duration, event_image, event_description, event_venue, event_address1, event_address2, event_country, event_state, event_city, event_pin_code, event_price, event_total_tickets) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
                 try (PreparedStatement stmt = connection.prepareStatement(query)) {
                     stmt.setString(1, eventName);
                     stmt.setString(2, selectedCategories);
-                    stmt.setDate(3, Date.valueOf(eventDate));
-                    stmt.setTime(4, Time.valueOf(selectedTime + ":00")); // Assuming time is in HH:mm format
-                    stmt.setInt(5, Integer.parseInt(eventDuration));
-                    stmt.setString(6, imageFileName);
-                    stmt.setString(7, eventDescription);
-                    stmt.setString(8, eventVenue);
-                    stmt.setString(9, eventAddress1);
-                    stmt.setString(10, eventAddress2);
-                    stmt.setString(11, eventCountry);
-                    stmt.setString(12, eventState);
-                    stmt.setString(13, eventCity);
-                    stmt.setInt(14, Integer.parseInt(eventPinCode));
-                    stmt.setInt(15, Integer.parseInt(eventPrice));
-                    stmt.setInt(16, Integer.parseInt(eventTotalTickets));
+/*                    stmt.setDate(3, Date.valueOf(eventDate));
+                    stmt.setTime(3, Time.valueOf(selectedTime + ":00")); // Assuming time is in HH:mm format
+*/                    stmt.setInt(3, Integer.parseInt(eventDuration));
+                    stmt.setString(4, imageFileName);
+                    stmt.setString(5, eventDescription);
+                    stmt.setString(6, eventVenue);
+                    stmt.setString(7, eventAddress1);
+                    stmt.setString(8, eventAddress2);
+                    stmt.setString(9, eventCountry);
+                    stmt.setString(10, eventState);
+                    stmt.setString(11, eventCity);
+                    stmt.setInt(12, Integer.parseInt(eventPinCode));
+                    stmt.setInt(13, Integer.parseInt(eventPrice));
+                    stmt.setInt(14, Integer.parseInt(eventTotalTickets));
 
                     int row = stmt.executeUpdate(); // it returns no of rows affected.
 
