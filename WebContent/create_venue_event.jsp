@@ -209,7 +209,7 @@
 	</header>
 	<!-- Header End-->
 	<!-- Body Start-->
-	<form id="eventForm" action="process.jsp" method="post">
+	<form id="eventForm" action="ProcessEventServlet" method="post" enctype="multipart/form-data">
 	
 	<div class="wrapper">
 		<div class="breadcrumb-block">

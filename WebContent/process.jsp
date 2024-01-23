@@ -32,6 +32,7 @@
         String eventPinCode = request.getParameter("event_pin_code");
         String eventPrice = request.getParameter("event_price");
         String eventTotalTickets = request.getParameter("event_total_tickets");
+        String event_image = request.getParameter("event_image");
     %>
 
     <h2>Event Name: <%= eventName %></h2>
@@ -48,6 +49,7 @@
     <h2>Event Pin Code: <%= eventPinCode %></h2>
     <h2>Event Price: <%= eventPrice %></h2>
     <h2>Total Tickets: <%= eventTotalTickets %></h2>
+    <h2>Total event_image: <%= event_image %></h2>
     
     
     
