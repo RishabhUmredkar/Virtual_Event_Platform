@@ -280,27 +280,27 @@
 																<p class="mt-2 d-block fs-14 mb-3">Choosing relevant categories helps to improve the discoverability of your event. <a href="#" class="a-link">Learn more</a></p>
 															  <!-- Add other checkboxes for each category as needed -->
 																
-																<select class="selectpicker" multiple="" data-size="5" title="Select category" data-live-search="true">
-																	<option value="01">Arts</option>
-																	<option value="02">Business</option>
-																	<option value="03">Coaching and Consulting</option>
-																	<option value="04">Community and Culture</option>
-																	<option value="05">Entrepreneurship</option>
-																	<option value="06">Education and Training</option>
-																	<option value="07">Family and Friends</option>
-																	<option value="08">Fashion and Beauty</option>
-																	<option value="09">Film and Entertainment</option>
-																	<option value="10">Food and Drink</option>
-																	<option value="11">Government and Politics</option>
-																	<option value="12">Health and Wellbeing</option>
-																	<option value="13">Hobbies and Interest</option>
-																	<option value="14">Music and Theater</option>
-																	<option value="15">Religion and Spirituality</option>
-																	<option value="16">Science and Technology</option>
-																	<option value="17">Sports and Fitness</option>
-																	<option value="18">Travel and Outdoor</option>
-																	<option value="19">Visual Arts</option>
-																	<option value="20">Others</option>
+ 																	<select class="selectpicker" multiple="" data-size="5" title="Select categories" data-live-search="true" name="event_category">																	
+ 																	<option value="Arts">Arts</option>
+																	<option value="Business">Business</option>
+																	<option value="Coaching and Consulting">Coaching and Consulting</option>
+																	<option value="Community and Culture">Community and Culture</option>
+																	<option value="Entrepreneurship">Entrepreneurship</option>
+																	<option value="Education and Training">Education and Training</option>
+																	<option value="Family and Friends">Family and Friends</option>
+																	<option value="Fashion and Beauty">Fashion and Beauty</option>
+																	<option value="Film and Entertainment">Film and Entertainment</option>
+																	<option value="Food and Drink">Food and Drink</option>
+																	<option value="Government and Politics">Government and Politics</option>
+																	<option value="Health and Wellbeing">Health and Wellbeing</option>
+																	<option value="Hobbies and Interest">Hobbies and Interest</option>
+																	<option value="Music and Theater">Music and Theater</option>
+																	<option value="Religion and Spirituality">Religion and Spirituality</option>
+																	<option value="Science and Technology">Science and Technology</option>
+																	<option value="Sports and Fitness">Sports and Fitness</option>
+																	<option value="Travel and Outdoor">Travel and Outdoor</option>
+																	<option value="Visual Arts">Visual Arts</option>
+																	<option value="Others">Others</option>
 																</select> 
 															</div>
 															<div class="form-group border_bottom pt_30 pb_30">
@@ -308,18 +308,19 @@
 																<p class="mt-2 fs-14 d-block mb-3">Tell your attendees when your event starts so they can get ready to attend.</p>
 																<div class="row g-2">
 																	<div class="col-md-6">
-																		<label class="form-label mt-3 fs-6">Event Date.*</label>																
-																		<div class="loc-group position-relative">
-																			<input class="form-control h_50 datepicker-here" data-language="en" type="text" placeholder="MM/DD/YYYY" value="">
-																			<span class="absolute-icon"><i class="fa-solid fa-calendar-days"></i></span>
-																		</div>
-																	</div>
+														            <label class="form-label mt-3 fs-6">Event Date.*</label>
+														            <div class="loc-group position-relative">
+														                <input class="form-control h_50 datepicker-here" data-language="en" type="text" name="event_date" placeholder="MM/DD/YYYY" value="">
+														                <span class="absolute-icon"><i class="fa-solid fa-calendar-days"></i></span>
+														            </div>
+														        	</div>
+														        	
 																	<div class="col-md-6">																		
 																		<div class="row g-2">
 																			<div class="col-md-6">
 																				<div class="clock-icon">
 																					<label class="form-label mt-3 fs-6">Time</label>	
-																					<select class="selectpicker" data-size="5" data-live-search="true">
+																					<select class="selectpicker" data-size="5" data-live-search="true" name="event_time">
 																						<option value="00:00">12:00 AM</option>
 																						<option value="00:15">12:15 AM</option>
 																						<option value="00:30">12:30 AM</option>
@@ -421,7 +422,7 @@
 																			</div>
 																			<div class="col-md-6">
 																				<label class="form-label mt-3 fs-6">Duration</label>	
-																				<select class="selectpicker" data-size="5" data-live-search="true">
+																				<select class="selectpicker" data-size="5" data-live-search="true" name="event_duration">
 																					<option value="15">15m</option>
 																					<option value="30">30m</option>
 																					<option value="45">45m</option>
@@ -450,7 +451,7 @@
 																	<div class="default-event-thumb">   
 																		<div class="default-event-thumb-btn">
 																			<div class="thumb-change-btn">
-																				<input type="file"  id="thumb-img">
+																				<input type="file" name = "event_image"  id="thumb-img">
 																				<label for="thumb-img">Change Image</label>
 																			</div>
 																		</div>
@@ -459,12 +460,14 @@
 																</div>
 															</div>
 															<div class="form-group border_bottom pb_30">
-																<label class="form-label fs-16">Please describe your event.</label>
-																<p class="mt-2 fs-14 d-block mb-3">Write a few words below to describe your event and provide any extra information such as schedules, itinerary or any special instructions required to attend your event.</p>
-																<div class="text-editor mt-4">
-																	<div id="pd_editor"></div>
-																</div>
+															    <label class="form-label fs-16">Please describe your event.</label>
+															    <p class="mt-2 fs-14 d-block mb-3">Write a few words below to describe your event and provide any extra information such as schedules, itinerary, or any special instructions required to attend your event.</p>
+															    <div class="text-editor mt-4">
+															        <!-- Use textarea for event description -->
+															        <textarea class="form-control" rows="5" name="event_description"></textarea>
+															    </div>
 															</div>
+
 															<div class="form-group pt_30 pb-2">
 																<label class="form-label fs-16">Where is your event taking place? *</label>
 																<p class="mt-2 fs-14 d-block mb-3">Add a venue to your event to tell your attendees where to join the event.</p>
@@ -481,25 +484,25 @@
 																			<div class="col-md-12">
 																				<div class="form-group mt-1">
 																					<label class="form-label fs-6">Venue*</label>
-																					<input class="form-control h_50" type="text" placeholder="" value="">
+																					<input class="form-control h_50" name = "event_venue" type="text" placeholder="" value="">
 																				</div>
 																			</div>
 																			<div class="col-md-6">
 																				<div class="form-group mt-1">
 																					<label class="form-label fs-6">Address line 1*</label>
-																					<input class="form-control h_50" type="text" placeholder="" value="">
+																					<input class="form-control h_50"  name = "event_address1" type="text" placeholder="" value="">
 																				</div>
 																			</div>
 																			<div class="col-md-6">
 																				<div class="form-group mt-1">
 																					<label class="form-label fs-6">Address line 2*</label>
-																					<input class="form-control h_50" type="text" placeholder="" value="">
+																					<input class="form-control h_50"   name = "event_address2" type="text" placeholder="" value="">
 																				</div>
 																			</div>
 																			<div class="col-md-6">
 																				<div class="form-group main-form mt-1">
 																					<label class="form-label">Country*</label>
-																					<select class="selectpicker" data-size="5" title="Nothing selected" data-live-search="true">
+																					<select class="selectpicker" data-size="5" title="Nothing selected" data-live-search="true" name = "event_country">
 																						<option value="Algeria">Algeria</option>
 																						<option value="Argentina">Argentina</option>
 																						<option value="Australia" selected="">Australia</option>
@@ -562,19 +565,19 @@
 																			<div class="col-md-6">
 																				<div class="form-group mt-1">
 																					<label class="form-label">State*</label>
-																					<input class="form-control h_50" type="text" placeholder="" value="Victoria">																								
+																					<input class="form-control h_50" name = "event_state" type="text" placeholder="" value="Victoria">																								
 																				</div>
 																			</div>
 																			<div class="col-lg-6 col-md-12">
 																				<div class="form-group mt-1">
 																					<label class="form-label">City/Suburb*</label>
-																					<input class="form-control h_50" type="text" placeholder="" value="Melbourne">																								
+																					<input class="form-control h_50" name = "event_city" type="text" placeholder="" value="Melbourne">																								
 																				</div>
 																			</div>
 																			<div class="col-lg-6 col-md-12">
 																				<div class="form-group mt-1">
 																					<label class="form-label">Zip/Post Code*</label>
-																					<input class="form-control h_50" type="text" placeholder="" value="3000">																								
+																					<input class="form-control h_50" name = "event_pin_code" type="text" placeholder="" value="3000">																								
 																				</div>
 																			</div>
 																		</div>
@@ -604,7 +607,7 @@
 																	<div class="col-md-6 disabled-action">
 																		<label class="form-label mt-3 fs-6">Price*</label>
 																		<div class="loc-group position-relative input-group">
-																			<input class="form-control h_50" type="text" placeholder="" value="10.00">
+																			<input class="form-control h_50"  name = "event_price" type="text" placeholder="" value="10.00">
 																			<div class="pp-select">
 																				<select class="selectpicker dropdown-no-bg">
 																					<option value="AUD" selected="selected">AUD</option>
@@ -615,7 +618,7 @@
 																	<div class="col-md-6">
 																		<label class="form-label mt-3 fs-6">Total number of tickets available*</label>
 																		<div class="input-number">
-																			<input class="form-control h_50" type="number" placeholder="" value="5">
+																			<input class="form-control h_50"  name = "event_total_tickets" type="number" placeholder="" value="5">
 																		</div>
 																	</div>
 																</div>
