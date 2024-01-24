@@ -303,14 +303,14 @@
 																	<option value="Others">Others</option>
 																</select> 
 															</div>
-															<div class="form-group border_bottom pt_30 pb_30">
+															 <div class="form-group border_bottom pt_30 pb_30">
 																<label class="form-label fs-16">When is your event?*</label>
 																<p class="mt-2 fs-14 d-block mb-3">Tell your attendees when your event starts so they can get ready to attend.</p>
 																<div class="row g-2">
 																	<div class="col-md-6">
 														            <label class="form-label mt-3 fs-6">Event Date.*</label>
 														            <div class="loc-group position-relative">
-														                <input class="form-control h_50 datepicker-here" data-language="en" type="text" name="event_date" placeholder="MM/DD/YYYY" value="">
+														                <input class="form-control h_50 datepicker-here" data-language="en" type="text" name="event_date" placeholder="MM/DD/YYYY" >
 														                <span class="absolute-icon"><i class="fa-solid fa-calendar-days"></i></span>
 														            </div>
 														        	</div>
@@ -419,7 +419,7 @@
 																						<option value="23:45">11:45 PM</option>
 																					</select>
 																				</div>
-																			</div>
+																			</div> 
 																			<div class="col-md-6">
 																				<label class="form-label mt-3 fs-6">Duration</label>	
 																				<select class="selectpicker" data-size="5" data-live-search="true" name="event_duration">
@@ -443,7 +443,7 @@
 																		</div>
 																	</div>
 																</div>
-															</div>
+															</div> 
 															<div class="form-group pt_30 pb_30">
 																<label class="form-label fs-16">Add a few images to your event banner.</label>
 																<p class="mt-2 fs-14 d-block mb-3 pe_right">Upload colorful and vibrant images as the banner for your event! See how beautiful images help your event details page. <a href="#" class="a-link">Learn more</a></p>
@@ -577,7 +577,7 @@
 																			<div class="col-lg-6 col-md-12">
 																				<div class="form-group mt-1">
 																					<label class="form-label">Zip/Post Code*</label>
-																					<input class="form-control h_50" name = "event_pin_code" type="text" placeholder="" value="3000">																								
+																					<input class="form-control h_50" name = "event_pin_code" type="number" placeholder="" value="3000">																								
 																				</div>
 																			</div>
 																		</div>
@@ -607,7 +607,7 @@
 																	<div class="col-md-6 disabled-action">
 																		<label class="form-label mt-3 fs-6">Price*</label>
 																		<div class="loc-group position-relative input-group">
-																			<input class="form-control h_50"  name = "event_price" type="text" placeholder="" value="10.00">
+																			<input class="form-control h_50"  name = "event_price" type="number" placeholder="" >
 																			<div class="pp-select">
 																				<select class="selectpicker dropdown-no-bg">
 																					<option value="AUD" selected="selected">AUD</option>
@@ -618,7 +618,7 @@
 																	<div class="col-md-6">
 																		<label class="form-label mt-3 fs-6">Total number of tickets available*</label>
 																		<div class="input-number">
-																			<input class="form-control h_50"  name = "event_total_tickets" type="number" placeholder="" value="5">
+																			<input class="form-control h_50"  name = "event_total_tickets" type="number" placeholder="" >
 																		</div>
 																	</div>
 																</div>

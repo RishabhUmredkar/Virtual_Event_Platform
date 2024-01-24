@@ -3,12 +3,14 @@ package Servlet;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+
 @WebServlet("/ProcessEventServlet")
 @MultipartConfig
 public class ProcessEventServlet extends HttpServlet {
@@ -24,70 +27,85 @@ public class ProcessEventServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("rishabh");
-
         // Retrieve form data
         String eventName = request.getParameter("event_name");
         String selectedCategories = request.getParameter("event_category");
-        String eventDate = request.getParameter("event_date");
-        String selectedTime = request.getParameter("event_time");
-        String eventDuration = request.getParameter("event_duration");
-        String eventDescription = request.getParameter("event_description");
+      /*  Date eventDate = Date.valueOf(request.getParameter("event_date")); // Assuming the date is in "yyyy-MM-dd" format
+        Time eventTime = Time.valueOf(request.getParameter("event_time")); // Assuming the time is in "HH:mm:ss" format
+
+       */ String eventDescription = request.getParameter("event_description");
         String eventVenue = request.getParameter("event_venue");
         String eventAddress1 = request.getParameter("event_address1");
         String eventAddress2 = request.getParameter("event_address2");
         String eventCountry = request.getParameter("event_country");
         String eventState = request.getParameter("event_state");
         String eventCity = request.getParameter("event_city");
-        String eventPinCode = request.getParameter("event_pin_code");
-        String eventPrice = request.getParameter("event_price");
-        String eventTotalTickets = request.getParameter("event_total_tickets");
+        int event_duration = Integer.parseInt(request.getParameter("event_duration"));
+        int event_pin_code = Integer.parseInt(request.getParameter("event_pin_code"));
+        int event_price = Integer.parseInt(request.getParameter("event_price"));
+        int event_total_tickets = Integer.parseInt(request.getParameter("event_total_tickets"));
 
         // Retrieve image file
-        Part file = request.getPart("event_image");
+        Part filePart = request.getPart("event_image");
+        String originalFileName = getFileName(filePart);
+        String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
+        String fileName = eventName + "_" + UUID.randomUUID().toString() + fileExtension;
+        String uploadPath = "E:/Coding/new java demo/Virtual_Event_Platform/WebContent/images/" + fileName;
 
-        String imageFileName = null;
-        String contentDisposition = file.getHeader("content-disposition");
-        if (contentDisposition != null) {
-            String[] elements = contentDisposition.split(";");
-            for (String element : elements) {
-                if (element.trim().startsWith("filename")) {
-                    imageFileName = element.substring(element.indexOf("=") + 1).trim().replace("\"", "");
-                    break;
-                }
-            }
-        }
-
-        String uploadPath = "E:/Coding/new java demo/Virtual_Event_Platform/WebContent/images" + imageFileName;
-
-        try {
-            FileOutputStream fos = new FileOutputStream(uploadPath);
-            InputStream is = file.getInputStream();
+        try (FileOutputStream fos = new FileOutputStream(uploadPath);
+             InputStream is = filePart.getInputStream()) {
 
             byte[] data = new byte[is.available()];
             is.read(data);
             fos.write(data);
-            fos.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        // Set response content type
+        response.setContentType("text/html");
+
+        // Get PrintWriter
+        PrintWriter out = response.getWriter();
+
+        // Display the retrieved data directly in the servlet
+        out.println("<!DOCTYPE html>");
+        out.println("<html lang=\"en\">");
+        out.println("<head>");
+        out.println("<meta charset=\"UTF-8\">");
+        out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+        out.println("<title>Event Data</title>");
+        out.println("</head>");
+        out.println("<body>");
+
+        // Display the retrieved data
+        out.println("<h1>Event Data</h1>");
+        out.println("<p><strong>Event Name:</strong> " + eventName + "</p>");
+        out.println("<p><strong>Selected Categories:</strong> " + selectedCategories + "</p>");
+        out.println("<p><strong>Event Description:</strong> " + eventDescription + "</p>");
+        out.println("<p><strong>Event Venue:</strong> " + eventVenue + "</p>");
+        out.println("<p><strong>Event Duration:</strong> " + event_duration + "</p>");
+        out.println("<p><strong>Event Pin Code:</strong> " + event_pin_code + "</p>");
+        out.println("<p><strong>Event Address:</strong> " + eventAddress1 + ", " + eventAddress2 + ", " + eventCity + ", " + eventState + ", " + eventCountry + "</p>");
+
+        // Continue with the rest of your HTML content
+
         // Store data in the database
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            
+
             try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Virtual_Event_platform",
                     "root", "abc123")) {
 
-                String query = "INSERT INTO Venue_Event_ticket (event_name, event_category, event_duration, event_image, event_description, event_venue, event_address1, event_address2, event_country, event_state, event_city, event_pin_code, event_price, event_total_tickets) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                String query = "INSERT INTO Venue_Event_ticket (event_name, event_category, event_duration, event_image, event_description, event_venue, event_address1, event_address2, event_country, event_state, event_city, event_pin_code, event_price, event_total_tickets) VALUES (?, ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
                 try (PreparedStatement stmt = connection.prepareStatement(query)) {
                     stmt.setString(1, eventName);
                     stmt.setString(2, selectedCategories);
-/*                    stmt.setDate(3, Date.valueOf(eventDate));
-                    stmt.setTime(3, Time.valueOf(selectedTime + ":00")); // Assuming time is in HH:mm format
-*/                    stmt.setInt(3, Integer.parseInt(eventDuration));
-                    stmt.setString(4, imageFileName);
+                    /*stmt.setDate(3, eventDate);
+                    stmt.setTime(4, eventTime);
+                    */stmt.setInt(3, event_duration);
+                    stmt.setString(4, fileName);
                     stmt.setString(5, eventDescription);
                     stmt.setString(6, eventVenue);
                     stmt.setString(7, eventAddress1);
@@ -95,35 +113,39 @@ public class ProcessEventServlet extends HttpServlet {
                     stmt.setString(9, eventCountry);
                     stmt.setString(10, eventState);
                     stmt.setString(11, eventCity);
-                    stmt.setInt(12, Integer.parseInt(eventPinCode));
-                    stmt.setInt(13, Integer.parseInt(eventPrice));
-                    stmt.setInt(14, Integer.parseInt(eventTotalTickets));
+                    stmt.setInt(12, event_pin_code);
+                    stmt.setInt(13, event_price);
+                    stmt.setInt(14, event_total_tickets);
 
-                    int row = stmt.executeUpdate(); // it returns no of rows affected.
+                    int row = stmt.executeUpdate();
 
                     if (row > 0) {
                         System.out.println("Data added into the database successfully.");
                         response.sendRedirect("success.jsp");
                     } else {
                         System.out.println("Failed to add data into the database.");
+                        // Provide feedback to the user about database insertion failure
+                        out.println("<p style=\"color: red;\">Failed to add data into the database.</p>");
                     }
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
+            // Handle database-related exceptions, e.g., provide feedback to the user
+            response.sendRedirect("error.jsp");
         }
+
+        out.println("</body>");
+        out.println("</html>");
     }
 
-    private String extractFileName(Part file) {
-        String contentDisposition = file.getHeader("content-disposition");
-        if (contentDisposition != null) {
-            String[] elements = contentDisposition.split(";");
-            for (String element : elements) {
-                if (element.trim().startsWith("filename")) {
-                    return element.substring(element.indexOf("=") + 1).trim().replace("\"", "");
-                }
+    private String getFileName(final Part part) {
+        final String partHeader = part.getHeader("content-disposition");
+        for (String content : partHeader.split(";")) {
+            if (content.trim().startsWith("filename")) {
+                return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
             }
         }
-        return "";
+        return null;
     }
 }
