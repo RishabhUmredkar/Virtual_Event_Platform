@@ -50,8 +50,7 @@ public class ProcessEventServlet extends HttpServlet {
         String originalFileName = getFileName(filePart);
         String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
         String fileName = eventName + "_" + UUID.randomUUID().toString() + fileExtension;
-        String uploadPath = "E:/Coding/new java demo/Virtual_Event_Platform/WebContent/images/" + fileName;
-
+        String uploadPath = "E:/Coding/new java demo/Virtual_Event_Platform/WebContent/Venue_Event_Image/" + fileName;
         try (FileOutputStream fos = new FileOutputStream(uploadPath);
              InputStream is = filePart.getInputStream()) {
 
