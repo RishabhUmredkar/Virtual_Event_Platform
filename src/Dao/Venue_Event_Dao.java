@@ -33,7 +33,7 @@ public class Venue_Event_Dao {
 	}
 	
 
-public List<VenueEvent> getAllUserData() throws ClassNotFoundException, SQLException {
+public List<VenueEvent> getAllEventData() throws ClassNotFoundException, SQLException {
 
 	String sql="SELECT * FROM Venue_Event_ticket";
 	con = getconnect();

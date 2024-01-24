@@ -9,7 +9,35 @@
 
 <html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">
 
-	
+	<style type="text/css">
+     /* Add or update these styles in your CSS file or inline styles */
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination .page-link {
+    color: #fff; /* Text color */
+    background-color: #000 !important; /* Button background color */
+    border: 1px solid #000; /* Border color */
+    padding: 0.375rem 0.75rem; /* Adjust padding as needed */
+    margin-right: 5px; /* Adjust margin as needed */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.pagination .page-link:hover {
+    background-color: #333 !important; /* Hover background color */
+    border: 1px solid #333; /* Hover border color */
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #333 !important; /* Active page background color */
+    border: 1px solid #333; /* Active page border color */
+}
+
+    </style>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, shrink-to-fit=9">
@@ -232,6 +260,9 @@
 							<h3><i class="fa-solid fa-calendar-days me-3"></i>Events</h3>
 						</div>
 					</div>
+					
+					
+					
 					<div class="col-md-12">
 						<div class="main-card mt-5">
 							<div class="dashboard-wrap-content p-4">
@@ -245,6 +276,10 @@
 											</div>
 										</div>
 									</div>
+									
+									
+									
+									
 									<div class="rs ms-auto mt_r4">
 										<div class="nav custom2-tabs btn-group" role="tablist">
 											<button class="tab-link active" data-bs-toggle="tab" data-bs-target="#all-tab" type="button" role="tab" aria-controls="all-tab" aria-selected="true">All Event (<span class="total_event_counter">1</span>)</button>
@@ -255,19 +290,37 @@
 								</div>
 							</div>
 						</div>
+						
+						
+						
 						<div class="event-list">
 							<div class="tab-content">
+							<%
+						    int currentPageVE = 1;
+						    int recordsPerPageVE = 5;
+						    if (request.getParameter("pageVE") != null) {
+						        currentPageVE = Integer.parseInt(request.getParameter("pageVE"));
+						    }
+						    List<VenueEvent> allEventDataVE = new Venue_Event_Dao().getAllEventData();
+						    int totalRecordsVE = allEventDataVE.size();
+						    int totalPagesVE = (int) Math.ceil((double) totalRecordsVE / recordsPerPageVE);
+						    int startVE = (currentPageVE - 1) * recordsPerPageVE;
+						    int endVE = Math.min(startVE + recordsPerPageVE, totalRecordsVE);
+						    List<VenueEvent> currentPageDataVE = allEventDataVE.subList(startVE, endVE);
+							%>
 								<div class="tab-pane fade show active" id="all-tab" role="tabpanel">
+								
+								 <% for (VenueEvent e : currentPageDataVE) { %>	
 									<div class="main-card mt-4">
 										<div class="contact-list">
 											<div class="card-top event-top p-4 align-items-center top d-md-flex flex-wrap justify-content-between">
 												<div class="d-md-flex align-items-center event-top-info">
 													<div class="card-event-img">
-														<img src="images/event-imgs/img-7.jpg" alt="">
+														<img src="Venue_Event_Image/<%=e.getEvent_image() %>" alt="fdgdf">
 													</div>
 													<div class="card-event-dt">
-														<h5>Tutorial on Canvas Painting for Beginners</h5>
-													</div>
+														<h5><%=e.getEvent_name() %> || <%=e.getEvent_category() %></h5>
+														<p><%=e.getEvent_description() %> </p>													</div>
 												</div>
 												<div class="dropdown">
 													<button class="option-btn" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></button>
@@ -284,34 +337,63 @@
 													<span class="icon">
 														<i class="fa-solid fa-location-dot"></i>
 													</span>
-													<p>Status</p>
-													<h6 class="coupon-status">Publish</h6>
+													<p>Location</p>
+													<h6 class="coupon-status"><%=e.getEvent_venue() %> <%=" , "+e.getEvent_address1() %><%=" , "+e.getEvent_city() %><%= " , "+ e.getEvent_state() %> <%=" , "+e.getEvent_country() %> <%= " , "+ e.getEvent_pin_code() %></h6>
 												</div>
 												<div class="icon-box">
 													<span class="icon">
 														<i class="fa-solid fa-calendar-days"></i>
 													</span>
 													<p>Starts on</p>
-													<h6 class="coupon-status">30 Jun, 2022 10:00 AM</h6>
+													<h6 class="coupon-status"><%= e.getEvent_date() %> <%=e.getEvent_time() %></h6>
 												</div>
 												<div class="icon-box">
 													<span class="icon">
 														<i class="fa-solid fa-ticket"></i>
 													</span>
-													<p>Ticket</p>
-													<h6 class="coupon-status">250</h6>
+													<p>Ticket Price</p>
+													<h6 class="coupon-status"><%=e.getEvent_price() %></h6>
 												</div>
 												<div class="icon-box">
 													<span class="icon">
 														<i class="fa-solid fa-tag"></i>
 													</span>
-													<p>Tickets sold</p>
-													<h6 class="coupon-status">20</h6>
+													<p>Total Tickets </p>
+													<h6 class="coupon-status"><%=e.getEvent_total_tickets() %></h6>
 												</div>
 											</div>
 										</div>
 									</div>
+									<%} %>
+																	
+<!-- Pagination for VenueEvent -->
+<div class="pagination">
+    <ul class="pagination justify-content-center">
+        <% if (currentPageVE > 1) { %>
+            <li class="page-item">
+                <a class="page-link" href="?pageVE=<%= currentPageVE - 1 %>" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        <% } %>
+
+        <% for (int i = 1; i <= totalPagesVE; i++) { %>
+            <li class="page-item <%= (i == currentPageVE) ? "active" : "" %>">
+                <a class="page-link" href="?pageVE=<%= i %>"><%= i %></a>
+            </li>
+        <% } %>
+
+        <% if (currentPageVE < totalPagesVE) { %>
+            <li class="page-item">
+                <a class="page-link" href="?pageVE=<%= currentPageVE + 1 %>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        <% } %>
+    </ul>
+</div>
 								</div>
+
 								<div class="tab-pane fade" id="online-tab" role="tabpanel">
 									<div class="main-card d-none mt-4">
 										<div class="d-flex align-items-center justify-content-center flex-column min-height-430">
@@ -388,20 +470,20 @@
 						
 						
 								<div class="tab-pane fade" id="venue-tab" role="tabpanel">
-							<%	 List<VenueEvent> le=null;
-				
+									<%List<VenueEvent> le=null;
+									le=new Venue_Event_Dao().getAllEventData();%>
+									 <% for(VenueEvent e:le){%>
 			
-				
-				le=new Venue_Event_Dao().getAllData();%>
 									<div class="main-card mt-4">
 										<div class="contact-list">
 											<div class="card-top event-top p-4 align-items-center top d-md-flex flex-wrap justify-content-between">
 												<div class="d-md-flex align-items-center event-top-info">
 													<div class="card-event-img">
-														<img src="images/event-imgs/img-7.jpg" alt="">
+														<img src="Venue_Event_Image/<%=e.getEvent_image() %>" alt="fdgdf">
 													</div>
 													<div class="card-event-dt">
-														<h5>Tutorial on Canvas Painting for Beginners</h5>
+														<h5><%=e.getEvent_name() %> || <%=e.getEvent_category() %></h5>
+														<p><%=e.getEvent_description() %> </p>
 													</div>
 												</div>
 												<div class="dropdown">
@@ -419,33 +501,34 @@
 													<span class="icon">
 														<i class="fa-solid fa-location-dot"></i>
 													</span>
-													<p>Status</p>
-													<h6 class="coupon-status">Publish</h6>
+													<p>Location</p>
+													<h6 class="coupon-status"><%=e.getEvent_venue() %> <%=" , "+e.getEvent_address1() %><%=" , "+e.getEvent_city() %><%= " , "+ e.getEvent_state() %> <%=" , "+e.getEvent_country() %> <%= " , "+ e.getEvent_pin_code() %></h6>
 												</div>
 												<div class="icon-box">
 													<span class="icon">
 														<i class="fa-solid fa-calendar-days"></i>
 													</span>
 													<p>Starts on</p>
-													<h6 class="coupon-status">30 Jun, 2022 10:00 AM</h6>
+													<h6 class="coupon-status"><%= e.getEvent_date() %> <%=e.getEvent_time() %></h6>
 												</div>
 												<div class="icon-box">
 													<span class="icon">
 														<i class="fa-solid fa-ticket"></i>
 													</span>
-													<p>Ticket</p>
-													<h6 class="coupon-status">250</h6>
+													<p>Ticket Price</p>
+													<h6 class="coupon-status"><%=e.getEvent_price() %></h6>
 												</div>
 												<div class="icon-box">
 													<span class="icon">
 														<i class="fa-solid fa-tag"></i>
 													</span>
-													<p>Tickets sold</p>
-													<h6 class="coupon-status">20</h6>
+													<p>Total Tickets </p>
+													<h6 class="coupon-status"><%=e.getEvent_total_tickets() %></h6>
 												</div>
 											</div>
 										</div>
 									</div>
+									<%} %>
 								</div>
 								
 								
