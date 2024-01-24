@@ -30,10 +30,13 @@ public class ProcessEventServlet extends HttpServlet {
         // Retrieve form data
         String eventName = request.getParameter("event_name");
         String selectedCategories = request.getParameter("event_category");
-      /*  Date eventDate = Date.valueOf(request.getParameter("event_date")); // Assuming the date is in "yyyy-MM-dd" format
+      
+        
+        /*  Date eventDate = Date.valueOf(request.getParameter("event_date")); // Assuming the date is in "yyyy-MM-dd" format
         Time eventTime = Time.valueOf(request.getParameter("event_time")); // Assuming the time is in "HH:mm:ss" format
-
-       */ String eventDescription = request.getParameter("event_description");
+       */ 
+        
+        String eventDescription = request.getParameter("event_description");
         String eventVenue = request.getParameter("event_venue");
         String eventAddress1 = request.getParameter("event_address1");
         String eventAddress2 = request.getParameter("event_address2");
@@ -63,32 +66,10 @@ public class ProcessEventServlet extends HttpServlet {
 
         // Set response content type
         response.setContentType("text/html");
-
         // Get PrintWriter
         PrintWriter out = response.getWriter();
 
-        // Display the retrieved data directly in the servlet
-        out.println("<!DOCTYPE html>");
-        out.println("<html lang=\"en\">");
-        out.println("<head>");
-        out.println("<meta charset=\"UTF-8\">");
-        out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-        out.println("<title>Event Data</title>");
-        out.println("</head>");
-        out.println("<body>");
-
-        // Display the retrieved data
-        out.println("<h1>Event Data</h1>");
-        out.println("<p><strong>Event Name:</strong> " + eventName + "</p>");
-        out.println("<p><strong>Selected Categories:</strong> " + selectedCategories + "</p>");
-        out.println("<p><strong>Event Description:</strong> " + eventDescription + "</p>");
-        out.println("<p><strong>Event Venue:</strong> " + eventVenue + "</p>");
-        out.println("<p><strong>Event Duration:</strong> " + event_duration + "</p>");
-        out.println("<p><strong>Event Pin Code:</strong> " + event_pin_code + "</p>");
-        out.println("<p><strong>Event Address:</strong> " + eventAddress1 + ", " + eventAddress2 + ", " + eventCity + ", " + eventState + ", " + eventCountry + "</p>");
-
-        // Continue with the rest of your HTML content
-
+       
         // Store data in the database
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -134,8 +115,7 @@ public class ProcessEventServlet extends HttpServlet {
             response.sendRedirect("error.jsp");
         }
 
-        out.println("</body>");
-        out.println("</html>");
+       
     }
 
     private String getFileName(final Part part) {

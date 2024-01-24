@@ -1,3 +1,12 @@
+<%@ page import="java.util.List" %>
+
+    <%@page import="Model.RegisterUser"%>
+<%@page import="Model.VenueEvent"%>
+<%@page import="Dao.UserDao"%>
+<%@page import="Dao.Venue_Event_Dao"%>
+<%@page import="Servlet.ProcessEventServlet"%>
+
+
 <html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">
 
 	
@@ -366,7 +375,24 @@
 										</div>
 									</div>
 								</div>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 								<div class="tab-pane fade" id="venue-tab" role="tabpanel">
+							<%	 List<VenueEvent> le=null;
+				
+			
+				
+				le=new Venue_Event_Dao().getAllData();%>
 									<div class="main-card mt-4">
 										<div class="contact-list">
 											<div class="card-top event-top p-4 align-items-center top d-md-flex flex-wrap justify-content-between">
@@ -421,6 +447,14 @@
 										</div>
 									</div>
 								</div>
+								
+								
+								
+								
+								
+								
+								
+								
 							</div>
 						</div>
 					</div>
