@@ -35,8 +35,7 @@
 .pagination .page-item.active .page-link {
     background-color: #333 !important; /* Active page background color */
     border: 1px solid #333; /* Active page border color */
-}
-
+} 
     </style>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,7 +65,12 @@
 		<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">	
 		
 	
-
+<script>
+    function searchByEvent() {
+        var searchEvent = document.getElementById("searchEvent").value;
+        window.location.href = "my_organisation_dashboard_events.jsp?event=" + searchEvent;
+    }
+    </script>
 
 	<!-- Header Start-->
 	<header class="header">
@@ -270,10 +274,14 @@
 								<div class="d-md-flex flex-wrap align-items-center">
 									<div class="dashboard-date-wrap">
 										<div class="form-group">
-											<div class="relative-input position-relative">
-												<input class="form-control h_40" type="text" placeholder="Search by event name, status" value="">
-												<i class="uil uil-search"></i>
-											</div>
+											  <div class="d-flex align-items-center">
+							                <div class="relative-input position-relative">
+							                    <input id="searchEvent" class="form-control h_40" type="text" placeholder="Search by event name" value="">
+							                    <i class="uil uil-search"></i>
+							                </div>
+							                <button onclick="searchByEvent()" class="btn btn-primary ms-2" style="background-color: #48a31d; color: #000;">Search</button>
+							                	
+							            </div>
 										</div>
 									</div>
 									
@@ -295,22 +303,41 @@
 						
 						<div class="event-list">
 							<div class="tab-content">
-							<%
-						    int currentPageVE = 1;
-						    int recordsPerPageVE = 5;
-						    if (request.getParameter("pageVE") != null) {
-						        currentPageVE = Integer.parseInt(request.getParameter("pageVE"));
-						    }
-						    List<VenueEvent> allEventDataVE = new Venue_Event_Dao().getAllEventData();
-						    int totalRecordsVE = allEventDataVE.size();
-						    int totalPagesVE = (int) Math.ceil((double) totalRecordsVE / recordsPerPageVE);
-						    int startVE = (currentPageVE - 1) * recordsPerPageVE;
-						    int endVE = Math.min(startVE + recordsPerPageVE, totalRecordsVE);
-						    List<VenueEvent> currentPageDataVE = allEventDataVE.subList(startVE, endVE);
-							%>
+							<% 
+														 String searchEvent = request.getParameter("event");
+													    List<VenueEvent> le = null;
+
+													    if (searchEvent != null && !searchEvent.isEmpty()) {
+													        // If email is provided, get data for that email
+													        le = new Venue_Event_Dao().searchUserByEvent(searchEvent);
+													    } else {
+													        // If no email is provided, get all user data
+													        le = new Venue_Event_Dao().getAllEventData();
+													    }
+						
+						   
+							
+							
+							
+							
+							
+							
+							
+							     int currentPage = 1;
+													      int recordsPerPage = 10;
+													      if (request.getParameter("page") != null) {
+													        currentPage = Integer.parseInt(request.getParameter("page"));
+													      }
+													      int totalRecords = le.size();
+													      int totalPages = (int) Math.ceil((double) totalRecords / recordsPerPage);
+													      int start = (currentPage - 1) * recordsPerPage;
+													      int end = Math.min(start + recordsPerPage, totalRecords);
+													      List<VenueEvent> currentPageData = le.subList(start, end);
+
+														 %>
 								<div class="tab-pane fade show active" id="all-tab" role="tabpanel">
 								
-								 <% for (VenueEvent e : currentPageDataVE) { %>	
+								 <% for (VenueEvent e : currentPageData) { %>	
 									<div class="main-card mt-4">
 										<div class="contact-list">
 											<div class="card-top event-top p-4 align-items-center top d-md-flex flex-wrap justify-content-between">
@@ -366,35 +393,34 @@
 									</div>
 									<%} %>
 																	
-<!-- Pagination for VenueEvent -->
+<<!-- Pagination -->
 <div class="pagination">
     <ul class="pagination justify-content-center">
-        <% if (currentPageVE > 1) { %>
+        <% if (currentPage > 1) { %>
             <li class="page-item">
-                <a class="page-link" href="?pageVE=<%= currentPageVE - 1 %>" aria-label="Previous">
+                <a class="page-link" href="?page=<%= currentPage - 1 %>" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
         <% } %>
 
-        <% for (int i = 1; i <= totalPagesVE; i++) { %>
-            <li class="page-item <%= (i == currentPageVE) ? "active" : "" %>">
-                <a class="page-link" href="?pageVE=<%= i %>"><%= i %></a>
+        <% for (int i = 1; i <= totalPages; i++) { %>
+            <li class="page-item <%= (i == currentPage) ? "active" : "" %>">
+                <a class="page-link" href="?page=<%= i %>"><%= i %></a>
             </li>
         <% } %>
 
-        <% if (currentPageVE < totalPagesVE) { %>
+        <% if (currentPage < totalPages) { %>
             <li class="page-item">
-                <a class="page-link" href="?pageVE=<%= currentPageVE + 1 %>" aria-label="Next">
+                <a class="page-link" href="?page=<%= currentPage + 1 %>" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>
         <% } %>
     </ul>
 </div>
-								</div>
-
-								<div class="tab-pane fade" id="online-tab" role="tabpanel">
+</div>
+<!-- End Pagination -->			<div class="tab-pane fade" id="online-tab" role="tabpanel">
 									<div class="main-card d-none mt-4">
 										<div class="d-flex align-items-center justify-content-center flex-column min-height-430">
 											<div class="event-list-icon">
@@ -470,9 +496,9 @@
 						
 						
 								<div class="tab-pane fade" id="venue-tab" role="tabpanel">
-									<%List<VenueEvent> le=null;
-									le=new Venue_Event_Dao().getAllEventData();%>
-									 <% for(VenueEvent e:le){%>
+									<%List<VenueEvent> le1=null;
+									le1=new Venue_Event_Dao().getAllEventData();%>
+									 <% for(VenueEvent e:le1){%>
 			
 									<div class="main-card mt-4">
 										<div class="contact-list">
