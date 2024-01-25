@@ -273,7 +273,7 @@
 															<div class="form-group border_bottom pb_30">
 																<label class="form-label fs-16">Give your event a name.*</label>
 																<p class="mt-2 d-block fs-14 mb-3">See how your name appears on the event page and a list of all places where your event name will be used. <a href="#" class="a-link">Learn more</a></p>
-																<input class="form-control h_50" name = "event_name" type="text" placeholder="Enter event name here" value="">
+																<input class="form-control h_50" name = "event_name" type="text"va placeholder="Enter event name here" required="required">
 															</div>
 															<div class="form-group border_bottom pt_30 pb_30">
 																<label class="form-label fs-16">Choose a category for your event.*</label>
@@ -618,7 +618,7 @@
 																	<div class="col-md-6">
 																		<label class="form-label mt-3 fs-6">Total number of tickets available*</label>
 																		<div class="input-number">
-																			<input class="form-control h_50"  name = "event_total_tickets" type="number" placeholder="" >
+																			<input class="form-control h_50"  name = "event_total_tickets" type="number" placeholder="" required="required" >
 																		</div>
 																	</div>
 																</div>
