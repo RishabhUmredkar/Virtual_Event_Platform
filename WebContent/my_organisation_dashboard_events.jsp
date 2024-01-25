@@ -70,6 +70,9 @@
         var searchEvent = document.getElementById("searchEvent").value;
         window.location.href = "my_organisation_dashboard_events.jsp?event=" + searchEvent;
     }
+    function refreshPage() {
+        window.location.href = "my_organisation_dashboard_my_user.jsp";
+    }
     </script>
 
 	<!-- Header Start-->
@@ -292,7 +295,7 @@
 										<div class="nav custom2-tabs btn-group" role="tablist">
 											<button class="tab-link active" data-bs-toggle="tab" data-bs-target="#all-tab" type="button" role="tab" aria-controls="all-tab" aria-selected="true">All Event (<span class="total_event_counter">1</span>)</button>
 											<button class="tab-link" data-bs-toggle="tab" data-bs-target="#online-tab" type="button" role="tab" aria-controls="online-tab" aria-selected="false">Online Event (<span class="total_event_counter">0</span>)</button>
-											<button class="tab-link" data-bs-toggle="tab" data-bs-target="#venue-tab" type="button" role="tab" aria-controls="venue-tab" aria-selected="false">Venue Event (<span class="total_event_counter">1</span>)</button>
+											<button a href="#"  onclick="refreshPage()" class="tab-link" data-bs-toggle="tab" data-bs-target="#venue-tab" type="button" role="tab" aria-controls="venue-tab" aria-selected="false">Venue Event (<span class="total_event_counter">1</span>)</button>
 										</div>
 									</div>
 								</div>
