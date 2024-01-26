@@ -404,7 +404,7 @@
 						</a>
 					</li>
 					<li class="menu--item">
-						<a href="my_organisation_dashboard_my_user.jsp" class="menu--link" title="My Team" data-bs-toggle="tooltip" data-bs-placement="right"> 
+						<a href="my_organisation_dashboard_my_user.jsp" class="menu--link" title="My User" data-bs-toggle="tooltip" data-bs-placement="right"> 
 							<i class="fa-solid fa-user-group menu--icon"></i>
 							<span class="menu--label">My User</span>
 						</a>

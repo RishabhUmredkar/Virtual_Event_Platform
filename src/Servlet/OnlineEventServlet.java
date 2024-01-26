@@ -55,10 +55,6 @@ public class OnlineEventServlet extends HttpServlet {
         System.out.println("Event Duration: " + event_duration);
         System.out.println("Event Description: " + eventDescription);
         System.out.println("Selected Event Type: " + selectedEventType);
-        System.out.println("Standard Webinar: " + standard_webinar);
-        System.out.println("Training Workshop: " + traning_workshop);
-        System.out.println("Online Classes: " + online_classes);
-        System.out.println("Talk Show: " + talk_show);
         System.out.println("Event Price: " + event_price);
         System.out.println("Event Total Tickets: " + event_total_tickets);
 
@@ -124,7 +120,7 @@ public class OnlineEventServlet extends HttpServlet {
                     int rowsAffected = stmt.executeUpdate();
                     if (rowsAffected > 0) {
                         System.out.println("Event data inserted successfully!");
-                        response.sendRedirect("success.jsp");
+                        response.sendRedirect("my_organisation_dashboard_events.jsp");
                     } else {
                         System.out.println("Failed to insert event data.");
                         // Provide feedback to the user about database insertion failure

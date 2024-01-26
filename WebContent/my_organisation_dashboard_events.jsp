@@ -2,8 +2,10 @@
 
     <%@page import="Model.RegisterUser"%>
 <%@page import="Model.VenueEvent"%>
+<%@page import="Model.OnlineEvent"%>
 <%@page import="Dao.UserDao"%>
 <%@page import="Dao.Venue_Event_Dao"%>
+<%@page import="Dao.Online_Event_Dao"%>
 <%@page import="Servlet.ProcessEventServlet"%>
 
 
@@ -247,7 +249,7 @@
 						</a>
 					</li>
 					<li class="menu--item">
-						<a href="my_organisation_dashboard_my_user.jsp" class="menu--link " title="My Team" data-bs-toggle="tooltip" data-bs-placement="right"> 
+						<a href="my_organisation_dashboard_my_user.jsp" class="menu--link " title="My User" data-bs-toggle="tooltip" data-bs-placement="right"> 
 							<i class="fa-solid fa-user-group menu--icon"></i>
 							<span class="menu--label">My User</span>
 						</a>
@@ -295,7 +297,7 @@
 										<div class="nav custom2-tabs btn-group" role="tablist">
 											<button class="tab-link active" data-bs-toggle="tab" data-bs-target="#all-tab" type="button" role="tab" aria-controls="all-tab" aria-selected="true">All Event (<span class="total_event_counter">1</span>)</button>
 											<button class="tab-link" data-bs-toggle="tab" data-bs-target="#online-tab" type="button" role="tab" aria-controls="online-tab" aria-selected="false">Online Event (<span class="total_event_counter">0</span>)</button>
-											<button a href="#"  onclick="refreshPage()" class="tab-link" data-bs-toggle="tab" data-bs-target="#venue-tab" type="button" role="tab" aria-controls="venue-tab" aria-selected="false">Venue Event (<span class="total_event_counter">1</span>)</button>
+											<button a href="#"  class="tab-link" data-bs-toggle="tab" data-bs-target="#venue-tab" type="button" role="tab" aria-controls="venue-tab" aria-selected="false">Venue Event (<span class="total_event_counter">1</span>)</button>
 										</div>
 									</div>
 								</div>
@@ -396,7 +398,7 @@
 									</div>
 									<%} %>
 																	
-<<!-- Pagination -->
+<!-- Pagination -->
 <div class="pagination">
     <ul class="pagination justify-content-center">
         <% if (currentPage > 1) { %>
@@ -423,68 +425,65 @@
     </ul>
 </div>
 </div>
-<!-- End Pagination -->			<div class="tab-pane fade" id="online-tab" role="tabpanel">
-									<div class="main-card d-none mt-4">
-										<div class="d-flex align-items-center justify-content-center flex-column min-height-430">
-											<div class="event-list-icon">
-												<img src="images/calendar.png" alt="">
-											</div>
-											<p class="font-16 mt-4 text-light3">No Event found</p>
-										</div>
-									</div>
-									<div class="main-card mt-4">
-										<div class="contact-list">
-											<div class="card-top event-top p-4 align-items-center top d-md-flex flex-wrap justify-content-between">
-												<div class="d-md-flex align-items-center event-top-info">
-													<div class="card-event-img">
-														<img src="images/event-imgs/img-2.jpg" alt="">
-													</div>
-													<div class="card-event-dt">
-														<h5>Earrings Workshop with Bronwyn David</h5>
-													</div>
-												</div>
-												<div class="dropdown">
-													<button class="option-btn" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-													<div class="dropdown-menu dropdown-menu-right">
-														<a href="#" class="dropdown-item"><i class="fa-solid fa-gear me-3"></i>Manage</a>
-														<a href="#" class="dropdown-item"><i class="fa-solid fa-eye me-3"></i>Preview Event</a>
-														<a href="#" class="dropdown-item"><i class="fa-solid fa-clone me-3"></i>Duplicate</a>
-														<a href="#" class="dropdown-item delete-event"><i class="fa-solid fa-trash-can me-3"></i>Delete</a>
-													</div>
-												</div>
-											</div>
-											<div class="bottom d-flex flex-wrap justify-content-between align-items-center p-4">
-												<div class="icon-box ">
-													<span class="icon">
-														<i class="fa-solid fa-location-dot"></i>
-													</span>
-													<p>Status</p>
-													<h6 class="coupon-status">Publish</h6>
-												</div>
-												<div class="icon-box">
-													<span class="icon">
-														<i class="fa-solid fa-calendar-days"></i>
-													</span>
-													<p>Starts on</p>
-													<h6 class="coupon-status">30 Jun, 2022 10:00 AM</h6>
-												</div>
-												<div class="icon-box">
-													<span class="icon">
-														<i class="fa-solid fa-ticket"></i>
-													</span>
-													<p>Ticket</p>
-													<h6 class="coupon-status">250</h6>
-												</div>
-												<div class="icon-box">
-													<span class="icon">
-														<i class="fa-solid fa-tag"></i>
-													</span>
-													<p>Tickets sold</p>
-													<h6 class="coupon-status">20</h6>
-												</div>
-											</div>
-										</div>
-									</div>
+<!-- End Pagination -->		
+					
+								<div class="tab-pane fade" id="online-tab" role="tabpanel">
+									 <%   List<OnlineEvent> todayEvents = new Online_Event_Dao().getAllEventData();
+									    int count = 0; %>
+    <% for (OnlineEvent e : le1) { %>
+        <div class="main-card mt-4">
+            <div class="contact-list">
+                <div class="card-top event-top p-4 align-items-center top d-md-flex flex-wrap justify-content-between">
+                    <div class="d-md-flex align-items-center event-top-info">
+                        <div class="card-event-img">
+                            <img src="Online_Event_Image/<%= e.getEvent_image() %>" alt="fdgdf">
+                        </div>
+                        <div class="card-event-dt">
+                            <h5><%= e.getEvent_name() %> || <%= e.getEvent_category() %></h5>
+                            <p><%= e.getEvent_description() %> || <%= e.getEvent_hosting() %> </p>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="option-btn" type="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="#" class="dropdown-item delete-event"><i class="fa-solid fa-trash-can me-3"></i>Delete</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom d-flex flex-wrap justify-content-between align-items-center p-4">
+                    <div class="icon-box ">
+                        <span class="icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </span>
+                        <p>Hosting</p>
+                       			<h6 class="coupon-status"><%=e.getEvent_hosting()%> </h6>
+                    </div>
+                    <div class="icon-box">
+                        <span class="icon">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </span>
+                        <p>Starts on</p>
+                        <h6 class="coupon-status"><%= e.getEvent_date() %> <%= e.getEvent_time() %></h6>
+                    </div>
+                    <div class="icon-box">
+                        <span class="icon">
+                            <i class="fa-solid fa-ticket"></i>
+                        </span>
+                        <p>Ticket Price</p>
+                        <h6 class="coupon-status"><%= e.getEvent_price() %></h6>
+                    </div>
+                    <div class="icon-box">
+                        <span class="icon">
+                            <i class="fa-solid fa-tag"></i>
+                        </span>
+                        <p>Total Tickets </p>
+                        <h6 class="coupon-status"><%= e.getEvent_total_tickets() %></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
 								</div>
 						
 						
@@ -499,9 +498,9 @@
 						
 						
 								<div class="tab-pane fade" id="venue-tab" role="tabpanel">
-									<%List<VenueEvent> le1=null;
-									le1=new Venue_Event_Dao().getAllEventData();%>
-									 <% for(VenueEvent e:le1){%>
+									<%List<VenueEvent> le2=null;
+									le2=new Venue_Event_Dao().getAllEventData();%>
+									 <% for(VenueEvent e:le2){%>
 			
 									<div class="main-card mt-4">
 										<div class="contact-list">
