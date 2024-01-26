@@ -34,32 +34,36 @@ public class Online_Event_Dao {
 		return con;
 		
 	}
-	
+
+
 	public List<OnlineEvent> getAllEventData() throws ClassNotFoundException, SQLException {
-	    String sql = "SELECT * FROM Online_Event ORDER BY event_date ASC"; // Added ORDER BY clause
+	    String sql = "SELECT * FROM Online_Event ORDER BY event_date ASC";
 	    con = getconnect();
 	    Statement st = con.createStatement();
 	    ResultSet rs = st.executeQuery(sql);
 
-	    List<OnlineEvent> le = new ArrayList<OnlineEvent>();
+	    List<OnlineEvent> le = new ArrayList<>();
 
 	    while (rs.next()) {
-	        OnlineEvent e = new OnlineEvent(
-	                rs.getInt(1),        // id
-	                rs.getString(2),     // event_name
-	                rs.getString(3),     // event_category
-	                rs.getDate(4),       // event_date (assuming it's stored as a Date)
-	                rs.getTime(5),       // event_time (assuming it's stored as a Time)
-	                rs.getInt(6),        // event_duration
-	                rs.getString(7),     // event_image
-	                rs.getString(8),     // event_description
-	                rs.getString(9),     // event_hosting (you may need to adjust this depending on your data source)
-	                rs.getInt(10),       // event_price
-	                rs.getInt(11)        // event_total_tickets
-	        );
+	        OnlineEvent e = new OnlineEvent();
+	        e.setId(rs.getInt("id"));
+	        e.setEvent_name(rs.getString("event_name"));
+	        e.setEvent_category(rs.getString("event_category"));
+	        e.setEvent_date(rs.getDate("event_date"));
+	        e.setEvent_time(rs.getTime("event_time"));
+	        e.setEvent_duration(rs.getInt("event_duration"));
+	        e.setEvent_image(rs.getString("event_image"));
+	        e.setEvent_description(rs.getString("event_description"));
+	        e.setEvent_hosting(rs.getString("event_hosting"));
+	        e.setEvent_price(rs.getInt("event_price"));
+	        e.setEvent_total_tickets(rs.getInt("event_total_tickets"));
 
 	        le.add(e);
 	    }
+
+	    rs.close();
+	    st.close();
+	    con.close();
 
 	    return le;
 	}

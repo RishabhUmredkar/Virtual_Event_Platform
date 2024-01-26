@@ -1314,3 +1314,76 @@
             </select>
         </div>
 														
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%@ page import="java.util.List" %>
+<%@ page import="Model.OnlineEvent" %>
+<%@ page import="Dao.Online_Event_Dao" %>
+
+<%
+    List<OnlineEvent> todayEvents = new Online_Event_Dao().getTodayEventData();
+    int count = 0;
+%>
+
+<!-- Display only the first four events -->
+<% for (OnlineEvent event : todayEvents) { %>
+    <% if (count < 4) { %>
+        <!-- Your HTML or display logic for each event -->
+        <div>
+            <p>Event Name: <%= event.getEvent_name() %></p>
+            <p>Event Date: <%= event.getEvent_date() %></p>
+            <!-- Add more details as needed -->
+        </div>
+        <% count++; %>
+    <% } else {
+           // Break the loop after displaying four events
+           break;
+    } %>
+<% } %>

@@ -9,112 +9,98 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import Model.RegisterUser;
 import Model.VenueEvent;
 
 public class Venue_Event_Dao {
 
-	
-	String url = "jdbc:mysql://localhost:3306/Virtual_Event_platform";
-	String uname = "root";
-	String upass = "abc123";
-	String driver = "com.mysql.cj.jdbc.Driver";
-	
-	Connection con;
-	
+    String url = "jdbc:mysql://localhost:3306/Virtual_Event_platform";
+    String uname = "root";
+    String upass = "abc123";
+    String driver = "com.mysql.cj.jdbc.Driver";
 
-
-	private Connection getconnect() throws ClassNotFoundException, SQLException
-	{
-		Class.forName(driver);
-		Connection con = DriverManager.getConnection(url,uname,upass);
-		return con;
-		
-	}
-	
-
-public List<VenueEvent> getAllEventData() throws ClassNotFoundException, SQLException {
-
-	String sql="SELECT * FROM Venue_Event_ticket";
-	con = getconnect();
-	Statement st=con.createStatement();
-	ResultSet rs=st.executeQuery(sql);
-	
-	List<VenueEvent> le=new ArrayList<VenueEvent>();
-	
-	
-	while(rs.next())
-	{
-		VenueEvent e = new VenueEvent(
-			    rs.getInt(1),        // id
-			    rs.getString(2),     // event_name
-			    rs.getString(3),     // event_category
-			    rs.getDate(4),       // event_date (assuming it's stored as a Date)
-			    rs.getTime(5),       // event_time (assuming it's stored as a Time)
-			    rs.getInt(6),        // event_duration
-			    rs.getString(7),     // event_image
-			    rs.getString(8),     // event_description
-			    rs.getString(9),     // event_venue
-			    rs.getString(10),    // event_address1
-			    rs.getString(11),    // event_address2
-			    rs.getString(12),    // event_country
-			    rs.getString(13),    // event_state
-			    rs.getString(14),    // event_city
-			    rs.getInt(15),       // event_pin_code
-			    rs.getInt(16),       // event_price
-			    rs.getInt(17)        // event_total_tickets
-			);
-
-		
-		
-		le.add(e);
-	}
-	
-	
-	return le;
-}
-
-
-
-public List<VenueEvent> searchUserByEvent(String searchEvent) throws ClassNotFoundException, SQLException {
-    String sql = "SELECT * FROM Venue_Event_ticket WHERE event_name LIKE ?";
-    con = getconnect();
-    PreparedStatement ps = con.prepareStatement(sql);
-    ps.setString(1, "%" + searchEvent + "%");
-    ResultSet rs = ps.executeQuery();
-
-    List<VenueEvent> searchResults = new ArrayList<>();
-    while (rs.next()) {
-    	VenueEvent event = new VenueEvent(
-			    rs.getInt(1),        // id
-			    rs.getString(2),     // event_name
-			    rs.getString(3),     // event_category
-			    rs.getDate(4),       // event_date (assuming it's stored as a Date)
-			    rs.getTime(5),       // event_time (assuming it's stored as a Time)
-			    rs.getInt(6),        // event_duration
-			    rs.getString(7),     // event_image
-			    rs.getString(8),     // event_description
-			    rs.getString(9),     // event_venue
-			    rs.getString(10),    // event_address1
-			    rs.getString(11),    // event_address2
-			    rs.getString(12),    // event_country
-			    rs.getString(13),    // event_state
-			    rs.getString(14),    // event_city
-			    rs.getInt(15),       // event_pin_code
-			    rs.getInt(16),       // event_price
-			    rs.getInt(17)        // event_total_tickets
-			);
-
-		
-        searchResults.add(event);
+    public Connection getConnect() throws ClassNotFoundException, SQLException {
+        Class.forName(driver);
+        return DriverManager.getConnection(url, uname, upass);
     }
 
-    rs.close();
-    ps.close();
-    con.close();
+    public List<VenueEvent> getAllEventData() {
+        String sql = "SELECT * FROM Venue_Event_ticket ORDER BY event_date ASC";
+        List<VenueEvent> eventList = new ArrayList<>();
 
-    return searchResults;
-}
+        try (Connection connection = getConnect();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
 
-	
+            while (resultSet.next()) {
+                VenueEvent event = new VenueEvent(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getDate(4),
+                        resultSet.getTime(5),
+                        resultSet.getInt(6),
+                        resultSet.getString(7),
+                        resultSet.getString(8),
+                        resultSet.getString(9),
+                        resultSet.getString(10),
+                        resultSet.getString(11),
+                        resultSet.getString(12),
+                        resultSet.getString(13),
+                        resultSet.getString(14),
+                        resultSet.getInt(15),
+                        resultSet.getInt(16),
+                        resultSet.getInt(17)
+                );
+
+                eventList.add(event);
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+
+        return eventList;
+    }
+
+    public List<VenueEvent> searchEventByName(String searchEvent) {
+        String sql = "SELECT * FROM Venue_Event_ticket WHERE event_name LIKE ?";
+        List<VenueEvent> searchResults = new ArrayList<>();
+
+        try (Connection connection = getConnect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setString(1, "%" + searchEvent + "%");
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    VenueEvent event = new VenueEvent(
+                            resultSet.getInt(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getDate(4),
+                            resultSet.getTime(5),
+                            resultSet.getInt(6),
+                            resultSet.getString(7),
+                            resultSet.getString(8),
+                            resultSet.getString(9),
+                            resultSet.getString(10),
+                            resultSet.getString(11),
+                            resultSet.getString(12),
+                            resultSet.getString(13),
+                            resultSet.getString(14),
+                            resultSet.getInt(15),
+                            resultSet.getInt(16),
+                            resultSet.getInt(17)
+                    );
+
+                    searchResults.add(event);
+                }
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+
+        return searchResults;
+    }
 }

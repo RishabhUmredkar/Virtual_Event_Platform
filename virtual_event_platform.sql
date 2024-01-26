@@ -65,4 +65,15 @@ CREATE TABLE Virtual_Event_platform.Online_Event (
     event_total_tickets INT
 );
 
+UPDATE Virtual_Event_platform.Online_Event
+SET event_date = STR_TO_DATE(event_date, '%m/%d/%Y');
+
+
+
+
+UPDATE Virtual_Event_platform.Online_Event
+SET event_date = STR_TO_DATE(event_date, '%m/%d/%Y')
+WHERE id > 5;  -- Adjust the condition based on your data
+
+
 select * from Virtual_Event_platform.Online_Event;

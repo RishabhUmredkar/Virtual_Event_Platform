@@ -428,8 +428,7 @@
 <!-- End Pagination -->		
 					
 								<div class="tab-pane fade" id="online-tab" role="tabpanel">
-									 <%   List<OnlineEvent> todayEvents = new Online_Event_Dao().getAllEventData();
-									    int count = 0; %>
+									 <% List<OnlineEvent> le1 = new Online_Event_Dao().getAllEventData(); %>
     <% for (OnlineEvent e : le1) { %>
         <div class="main-card mt-4">
             <div class="contact-list">
