@@ -1,3 +1,7 @@
+<%@ page import="javax.servlet.http.Cookie" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+
 <html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">﻿
 
 	
@@ -6,7 +10,7 @@
 		<meta name="viewport" content="width=device-width, shrink-to-fit=9">
 		<meta name="description" content="Gambolthemes">
 		<meta name="author" content="Gambolthemes">		
-		<title>Barren - Simple Online Event Ticketing System</title>
+		<title>Rishabh - Simple Online Event Ticketing System</title>
 		
 		<!-- Favicon Icon -->
 		<link rel="icon" type="image/png" href="images/fav.png">
@@ -31,7 +35,7 @@
 		<link href="vendor/ckeditor5/sample/css/sample.css" rel="stylesheet">		
 		
 	
-
+<c:if test="${not empty cookie.email.value}">
 
 	<!-- Header Start-->
 	<header class="header">
@@ -810,7 +814,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="footer-copyright-text">
-							<p class="mb-0">© 2022, <strong>Barren</strong>. All rights reserved. Powered by Gambolthemes</p>
+							<p class="mb-0">© 2022, <strong>Rishabh</strong>. All rights reserved. Powered by Gambolthemes</p>
 						</div>
 					</div>
 				</div>
@@ -850,5 +854,9 @@
 			console.error( err.stack );
 		} );
 	</script>
-
+</c:if>
+	
+<c:if test="${empty cookie.email.value}">
+    <c:redirect url="sign_up.jsp" />
+</c:if>
 </body></html>

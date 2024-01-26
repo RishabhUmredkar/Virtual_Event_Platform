@@ -11,7 +11,7 @@
 		<meta name="viewport" content="width=device-width, shrink-to-fit=9">
 		<meta name="description" content="Gambolthemes">
 		<meta name="author" content="Gambolthemes">		
-		<title>Barren - Simple Online Event Ticketing System</title>
+		<title>Rishabh - Simple Online Event Ticketing System</title>
 		
 		<!-- Favicon Icon -->
 		<link rel="icon" type="image/png" href="images/fav.png">
@@ -749,7 +749,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="footer-copyright-text">
-							<p class="mb-0">© 2022, <strong>Barren</strong>. All rights reserved. Powered by Gambolthemes</p>
+							<p class="mb-0">© 2022, <strong>Rishabh</strong>. All rights reserved. Powered by Gambolthemes</p>
 						</div>
 					</div>
 				</div>

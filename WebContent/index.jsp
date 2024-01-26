@@ -92,15 +92,12 @@
 										<li><a class="dropdown-item" href="online_event_detail_view.jsp">Online Event Detail View</a></li>
 									</ul>
 								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="pricing.jsp">Pricing</a>
-								</li>
+								
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 										Blog
 									</a>
 									<ul class="dropdown-menu dropdown-submenu">
-										<li><a class="dropdown-item" href="our_blog.jsp">Our Blog</a></li>
 										<li><a class="dropdown-item" href="blog_detail_view.jsp">Blog Detail View</a></li>
 									</ul>
 								</li>
@@ -109,8 +106,6 @@
 										Help
 									</a>
 									<ul class="dropdown-menu dropdown-submenu">
-										<li><a class="dropdown-item" href="faq.jsp">FAQ</a></li>
-										<li><a class="dropdown-item" href="help_center.jsp">Help Center</a></li>
 										<li><a class="dropdown-item" href="contact_us.jsp">Contact Us</a></li>
 									</ul>
 								</li>
@@ -175,12 +170,7 @@
 					</div>
 					<div class="right-header order-2">
 						<ul class="align-self-stretch">
-							<li>
-								<a href="create.jsp" class="create-btn btn-hover">
-									<i class="fa-solid fa-calendar-days"></i>
-									<span>Create Event</span>
-								</a>
-							</li>
+							
 							<li class="dropdown account-dropdown">
 								<a href="#" class="account-link" role="button" id="accountClick" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
 									<img src="images/profile-imgs/img-13.jpg" alt="">
@@ -197,9 +187,8 @@
 										</div>
 									</li>
 									<li class="profile-link">
-										<a href="my_organisation_dashboard.jsp" class="link-item">My Organisation</a>
 										<a href="organiser_profile_view.jsp" class="link-item">My Profile</a>									
-										<a href="sign_in.jsp" class="link-item">Sign Out</a>									
+										<a href="sign_in.jsp" class="link-item">Sign in / Sign Out</a>									
 									</li>
 								</ul>
 							</li>
@@ -225,12 +214,13 @@
 						<div class="hero-banner-content">
 							<h2>The Easiest and Most Powerful Online Event Booking and Ticketing System</h2>
 							<p>Barren is an all-in-one event ticketing platform for event organisers, promoters, and managers. Easily create, promote and manage your events of any type and size.</p>
-							<a href="create.jsp" class="main-btn btn-hover">Create Event <i class="fa-solid fa-arrow-right ms-3"></i></a>
+							<a href="explore_events.jsp" class="main-btn btn-hover">Explore Event <i class="fa-solid fa-arrow-right ms-3"></i></a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		
 		<div class="explore-events p-80">
 			<div class="container">
 				<div class="row">
@@ -242,51 +232,29 @@
 					<div class="col-xl-12 col-lg-12 col-md-12">
 						<div class="event-filter-items">
 							<div class="featured-controls">
-								<div class="filter-tag">
-									<a href="explore_events_by_date.jsp" class="active">All</a>
-									<a href="explore_events_by_date.jsp">Today</a>
-									<a href="explore_events_by_date.jsp">Tomorrow</a>
-									<a href="explore_events_by_date.jsp">This Week</a>
-									<a href="explore_events_by_date.jsp">This Weekend</a>
-									<a href="explore_events_by_date.jsp">Next Week</a>
-									<a href="explore_events_by_date.jsp">Next Weekend</a>
-									<a href="explore_events_by_date.jsp">This Month</a>
-									<a href="explore_events_by_date.jsp">Next Month</a>
-									<a href="explore_events_by_date.jsp">This Year</a>
-									<a href="explore_events_by_date.jsp">Next Year</a>
-								</div>
+								
 								<div class="controls">
-									<button type="button" class="control" data-filter="all">All</button>
-									<button type="button" class="control" data-filter=".arts">Arts</button>
-									<button type="button" class="control" data-filter=".business">Business</button>
-									<button type="button" class="control" data-filter=".concert">Concert</button>
-									<button type="button" class="control" data-filter=".workshops">Workshops</button>
-									<button type="button" class="control" data-filter=".coaching_consulting">Coaching and Consulting</button>
-									<button type="button" class="control" data-filter=".health_Wellness">Health and Wellbeing</button>									
-									<button type="button" class="control" data-filter=".volunteer">Volunteer</button>
-									<button type="button" class="control" data-filter=".sports">Sports</button>
-									<button type="button" class="control" data-filter=".free">Free</button>	
+									<button type="button" class="control" data-filter="all">Online Event</button>
+									
 								</div>
 								
 								<div class="row" data-ref="event-filter-content">
-									
-										
-										<%
-    List<OnlineEvent> todayEvents = new Online_Event_Dao().getAllEventData();
-    int count = 0;
-%>
-<% for (OnlineEvent event : todayEvents) { %>
-    <% if (count < 4) { %>
-									<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix arts concert workshops volunteer sports health_Wellness" data-ref="mixitup-target">
-									
-										<div class="main-card mt-4">
+									<%
+									    List<OnlineEvent> todayEvents = new Online_Event_Dao().getAllEventData();
+									    int count = 0;
+									%>
+									<% for (OnlineEvent event : todayEvents) { %>
+									    <% if (count < 4) { %>
+											<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix arts concert workshops volunteer sports health_Wellness" data-ref="mixitup-target">
+												<div class="main-card mt-4">
 										
 											<div class="event-thumbnail">
-												<a href="venue_event_detail_view.jsp" class="thumbnail-img">
+												<a href="online_event_detail_view.jsp" class="thumbnail-img">
                             				<img src="Online_Event_Image/<%= event.getEvent_image() %>" alt="fdgdf">
 												</a>
-												<span class="bookmark-icon" title="Bookmark"></span>
+												<span class="" title="Bookmark"></span>
 											</div>
+											
 											<div class="event-content">
 												<a href="venue_event_detail_view.jsp" class="event-title"><%= event.getEvent_name() %></a>
 												<div class="duration-price-remaining">
@@ -305,40 +273,43 @@
 												</div>
 											</div>
 										</div>
-							</div>
-																		<% count++; %>
-    <% } else {
-           // Break the loop after displaying four events
-           break;
-    } %>
-<% } %>
+										</div>
+									<% count++; %>
+								    <% } else {
+								           // Break the loop after displaying four events
+								           break;
+								    } %>
+								<% } %>
 								
 								</div>
 								
 								
-								
-								
+									<br>
+								<div class="controls">
+									<button type="button" class="control" data-filter="all">Venue Event</button>
+								</div>
 								
 								
 								<div class="row" data-ref="event-filter-content">
 									
 										
 										<%
-    List<VenueEvent> todayEvents1 = new Venue_Event_Dao().getAllEventData();
-    int count1 = 0;
-%>
-<% for (VenueEvent event : todayEvents1) { %>
-    <% if (count < 8) { %>
-									<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix arts concert workshops volunteer sports health_Wellness" data-ref="mixitup-target">
+										    List<VenueEvent> todayEvents1 = new Venue_Event_Dao().getAllEventData();
+										    int count1 = 0;
+										%>
+										<% for (VenueEvent event : todayEvents1) { %>
+										    <% if (count < 8) { %>
+										<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix arts concert workshops volunteer sports health_Wellness" data-ref="mixitup-target">
 									
-										<div class="main-card mt-4">
+											<div class="main-card mt-4">
 										
 											<div class="event-thumbnail">
 												<a href="venue_event_detail_view.jsp" class="thumbnail-img">
 													<img src="Venue_Event_Image/<%= event.getEvent_image() %>" alt="fdgdf">
 												</a>
-												<span class="bookmark-icon" title="Bookmark"></span>
+												<span class="" title="Bookmark"></span>
 											</div>
+											
 											<div class="event-content">
 												<a href="venue_event_detail_view.jsp" class="event-title"><%= event.getEvent_name() %></a>online<Br>
 												<%= event.getEvent_description()%>
@@ -358,18 +329,14 @@
 												</div>
 											</div>
 										</div>
-							</div>				<% count++; %>
-    <% } else {
-           // Break the loop after displaying four events
-           break;
-    } %>
-<% } %>
+									</div>			
+								<% count++; %>
+								    <% } else {
+								           // Break the loop after displaying four events
+								           break;
+								    } %>
+								<% } %>
 			
-									
-									
-									
-									
-								
 								</div>
 								<div class="browse-btn">
 									<a href="explore_events.jsp" class="main-btn btn-hover ">Browse All</a>
@@ -380,6 +347,8 @@
 				</div>
 			</div>
 		</div>
+		
+		
 		<div class="host-engaging-event-block p-80">
 			<div class="container">
 				<div class="row">
@@ -1001,7 +970,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="footer-copyright-text">
-							<p class="mb-0">© 2022, <strong>Barren</strong>. All rights reserved. Powered by Gambolthemes</p>
+							<p class="mb-0">© 2022, <strong>Rishabh</strong>. All rights reserved. Powered by Gambolthemes</p>
 						</div>
 					</div>
 				</div>

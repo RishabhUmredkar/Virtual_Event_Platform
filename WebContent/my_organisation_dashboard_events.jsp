@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
-
+<%@ page import="javax.servlet.http.Cookie" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@page import="Model.RegisterUser"%>
 <%@page import="Model.VenueEvent"%>
 <%@page import="Model.OnlineEvent"%>
@@ -44,7 +45,7 @@
 		<meta name="viewport" content="width=device-width, shrink-to-fit=9">
 		<meta name="description" content="Gambolthemes">
 		<meta name="author" content="Gambolthemes">		
-		<title>Barren - Simple Online Event Ticketing System</title>
+		<title>Rishabh - Simple Online Event Ticketing System</title>
 		
 		<!-- Favicon Icon -->
 		<link rel="icon" type="image/png" href="images/fav.png">
@@ -76,6 +77,8 @@
         window.location.href = "my_organisation_dashboard_my_user.jsp";
     }
     </script>
+    <c:if test="${not empty cookie.email.value}">
+    
 
 	<!-- Header Start-->
 	<header class="header">
@@ -314,7 +317,7 @@
 
 													    if (searchEvent != null && !searchEvent.isEmpty()) {
 													        // If email is provided, get data for that email
-													        le = new Venue_Event_Dao().searchUserByEvent(searchEvent);
+													        le = new Venue_Event_Dao().searchEventByName(searchEvent);
 													    } else {
 													        // If no email is provided, get all user data
 													        le = new Venue_Event_Dao().getAllEventData();
@@ -582,6 +585,10 @@
 	<script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>	
 	<script src="js/custom.js"></script>
 	<script src="js/night-mode.js"></script>
-
+</c:if>
+	
+<c:if test="${empty cookie.email.value}">
+    <c:redirect url="sign_up.jsp" />
+</c:if>
 
 </body></html>

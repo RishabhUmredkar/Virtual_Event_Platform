@@ -15,13 +15,15 @@
 <body>
 
 <c:if test="${not empty param.email and not empty param.password}">
+
     <%
         System.out.println("hello login");
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        
+    	session.setAttribute("email", email);
+
         
         // Check for admin login
         if ("admin@gmail.com".equals(email) && "admin".equals(password)) {

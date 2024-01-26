@@ -8,7 +8,7 @@
 		<meta name="viewport" content="width=device-width, shrink-to-fit=9">
 		<meta name="description" content="Gambolthemes">
 		<meta name="author" content="Gambolthemes">		
-		<title>Barren - Simple Online Event Ticketing System</title>
+		<title>Rishabh - Simple Online Event Ticketing System</title>
 		
 		<!-- Favicon Icon -->
 		<link rel="icon" type="image/png" href="images/fav.png">
@@ -70,7 +70,7 @@ System.out.println(c);
 						<div class="col-xl-5 col-lg-6 col-md-7">
 							<div class="registration">
 								<form action ="UserRegister.jsp">
-									<h2 class="registration-title">Sign up to Barren</h2>
+									<h2 class="registration-title">Sign up to Rishabh</h2>
 									<div class="row mt-3">
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group mt-4">
@@ -107,7 +107,7 @@ System.out.println(c);
 									</div>
 								</form>
 								<div class="agree-text">
-									By clicking "Sign up", you agree to Barren <a href="#">Terms &amp; Conditions</a> and have read the <a href="#">Privacy Policy</a>.
+									By clicking "Sign up", you agree to Rishabh <a href="#">Terms &amp; Conditions</a> and have read the <a href="#">Privacy Policy</a>.
 								</div>								
 								
 								<div class="new-sign-link">
@@ -118,7 +118,7 @@ System.out.println(c);
 					</div>
 				</div>
 				<div class="copyright-footer">
-					© 2022, Barren. All rights reserved. Powered by Gambolthemes
+					© 2022, Rishabh. All rights reserved. Powered by Gambolthemes
 				</div>
 			</div>			
 		</div>

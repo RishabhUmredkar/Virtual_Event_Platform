@@ -1,25 +1,7 @@
 <%@ page import="javax.servlet.http.Cookie" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="Dao.Venue_Event_Dao"%>
-<%@page import="Model.VenueEvent"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
-<%@ page import="java.util.List" %>
-<%@ page import="Model.OnlineEvent" %>
-<%@ page import="Dao.Online_Event_Dao" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Events</title>
-</head>
-<body>
 
-<c:if test="${not empty cookie.email.value}">
-
-	
+<!DOCTYPE html><html lang="en" class="h-100"><head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, shrink-to-fit=9">
@@ -34,23 +16,21 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
-		<link href="vendor/unicons-2.0.1/css/unicons.css" rel="stylesheet">
+		<link href="css/unicons.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
 		<link href="css/responsive.css" rel="stylesheet">
 		<link href="css/night-mode.css" rel="stylesheet">
 		
 		<!-- Vendor Stylesheets -->
-		<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-		<link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
-		<link href="vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
-		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">		
+		<link href="css/all.min.css" rel="stylesheet">
+		<link href="css/owl.carousel.css" rel="stylesheet">
+		<link href="css/owl.theme.default.min.css" rel="stylesheet">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-select.min.css" rel="stylesheet">		
+		
+	</head>
 
-    <!-- Header Start -->
-    <header class="header">
-        <!-- Your header content -->
-    </header>
-
+<body class="d-flex flex-column h-100">
 	<!-- Header Start-->
 		<header class="header">
 		<div class="header-inner">
@@ -215,142 +195,150 @@
 		</div>
 	</header>
 	<!-- Header End-->
-	   <!-- Rest of your HTML content -->
- 
 	<!-- Body Start-->
 	<div class="wrapper">
-		<div class="hero-banner">
+		<div class="breadcrumb-block">
 			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-xl-8 col-lg-8 col-md-10">
-						<div class="hero-banner-content">
-							<h2>Discover Events For All The Things You Love</h2>
-							<div class="search-form main-form">
-								
-							</div>
+				<div class="row">
+					<div class="col-lg-12 col-md-10">
+						<div class="barren-breadcrumb">
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+								</ol>
+							</nav>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="explore-events p-80">
+		<div class="event-dt-block p-80">
 			<div class="container">
-				<div class="row">
-					<div class="col-xl-12 col-lg-12 col-md-12">
-						<div class="event-filter-items">
-							<div class="featured-controls">
-								
-								<div class="featured-controls">
-								
-								<div class="controls">
-									<button type="button" class="control" data-filter="all">Online Event</button>
-									
-								</div>
-								
-								<div class="row" data-ref="event-filter-content">
-									<%
-									    List<OnlineEvent> todayEvents = new Online_Event_Dao().getAllEventData();
-									    int count = 0;
-										String email=(String)session.getAttribute("email");
-										System.out.print(email);
-									%>
-									<% for (OnlineEvent event : todayEvents) { %>
-									    <% if (count < 4) { %>
-											<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix arts concert workshops volunteer sports health_Wellness" data-ref="mixitup-target">
-												<div class="main-card mt-4">
-										
-											<div class="event-thumbnail">
-												<a href="online_event_detail_view.jsp" class="thumbnail-img">
-                            				<img src="Online_Event_Image/<%= event.getEvent_image() %>" alt="fdgdf">
-												</a>
-												<span class="" title="Bookmark"></span>
-											</div>
-											
-											<div class="event-content">
-												<a href="venue_event_detail_view.jsp" class="event-title"><%= event.getEvent_name() %></a>
-												<div class="duration-price-remaining">
-													<span class="duration-price">Rs. <%= event.getEvent_price() %></span>
-													<span class="remaining"></span>
+				<div class="row justify-content-center">
+					<div class="col-lg-12 col-md-12">
+						<div class="main-title checkout-title text-center">
+							<h3>Contact Us</h3>
+							<p class="mb-0">Have any questions? We'd love to hear from you.</p>
+						</div>
+					</div>
+					<div class="col-lg-10">
+						<div class="main-card mt-5">
+							<div class="row">
+								<div class="col-xl-7 col-lg-12 col-md-12 order-lg-2">
+									<div class="contact-form bp-form p-lg-5 ps-lg-4 pt-lg-4 pb-5 p-4">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group mt-4">
+													<label class="form-label">First Name*</label>
+													<input class="form-control h_50" type="text" placeholder="" value="">																								
 												</div>
 											</div>
-											<div class="event-footer">
-												<div class="event-timing">
-													<div class="publish-date">
-														<span><i class="fa-solid fa-calendar-day me-2"></i><%= event.getEvent_date() %></span>
-														<span class="dot"><i class="fa-solid fa-circle"></i></span>
-														<span><%= event.getEvent_time()%></span>
+											<div class="col-md-6">
+												<div class="form-group mt-4">
+													<label class="form-label">Last Name*</label>
+													<input class="form-control h_50" type="text" placeholder="" value="">																								
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group mt-4">
+													<label class="form-label">Email*</label>
+													<input class="form-control h_50" type="Email" placeholder="" value="">																								
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group mt-4">
+													<label class="form-label">Phone*</label>
+													<input class="form-control h_50" type="text" placeholder="" value="">																								
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group mt-4">
+													<label class="form-label">Message*</label>
+													<textarea class="form-textarea" placeholder="About"></textarea>																								
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="text-center mt-4">
+													<button class="main-btn btn-hover h_50 w-100" type="submit">Submit</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-xl-5 col-lg-12 col-md-12 order-lg-1 d-none d-xl-block">
+									<div class="contact-banner-block">
+										<div class="contact-hero-banner">
+											<div class="contact-hero-banner-info">
+												<h3>Contact information</h3>
+												<p>Fill out the form and our team will get back to you soon.</p>
+												<ul>
+													<li>
+														<div class="contact-info d-flex align-items-center">
+															<div class="contact-icon">
+																<i class="fa-solid fa-square-phone fa-beat-fade" style="--fa-beat-fade-opacity: 0.67; --fa-beat-fade-scale: 1.075;"></i>
+															</div>
+															<a href="#">+1(000)00-00000</a>
+														</div>
+													</li>
+													<li>
+														<div class="contact-info d-flex align-items-center">
+															<div class="contact-icon">
+																<i class="fa-solid fa-envelope fa-beat-fade" style="--fa-beat-fade-opacity: 0.67; --fa-beat-fade-scale: 1.075;"></i>
+															</div>
+															<a href="#">contact@Rishabh.com</a>
+														</div>
+													</li>
+													<li>
+														<div class="contact-info d-flex align-items-center">
+															<div class="contact-icon">
+																<i class="fa-solid fa-life-ring fa-beat-fade" style="--fa-beat-fade-opacity: 0.67; --fa-beat-fade-scale: 1.075;"></i>
+															</div>
+															<a href="#">Help Center</a>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-10 col-md-12 d-block d-xl-none">
+						<div class="main-card mt-4">
+							<div class="contact-banner-block">
+								<div class="contact-hero-banner p_30 min-h-auto">
+									<div class="contact-hero-banner-info">
+										<h3>Contact information</h3>
+										<p>Fill out the form and our team will get back to you soon.</p>
+										<ul>
+											<li>
+												<div class="contact-info d-flex align-items-center">
+													<div class="contact-icon">
+														<i class="fa-solid fa-square-phone fa-beat-fade" style="--fa-beat-fade-opacity: 0.67; --fa-beat-fade-scale: 1.075;"></i>
 													</div>
-													<span class="publish-time"><i class="fa-solid fa-clock me-2"></i><%= event.getEvent_duration()%> min.</span>
+													<a href="#">+1(000)00-00000</a>
 												</div>
-											</div>
-										</div>
-										</div>
-									<% count++; %>
-								    <% } else {
-								           // Break the loop after displaying four events
-								           break;
-								    } %>
-								<% } %>
-								
-								</div>
-								
-								
-									<br>
-								<div class="controls">
-									<button type="button" class="control" data-filter="all">Venue Event</button>
-								</div>
-								
-								
-								<div class="row" data-ref="event-filter-content">
-									
-										
-										<%
-										    List<VenueEvent> todayEvents1 = new Venue_Event_Dao().getAllEventData();
-										    int count1 = 0;
-										%>
-										<% for (VenueEvent event : todayEvents1) { %>
-										    <% if (count < 8) { %>
-										<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix arts concert workshops volunteer sports health_Wellness" data-ref="mixitup-target">
-									
-											<div class="main-card mt-4">
-										
-											<div class="event-thumbnail">
-												<a href="venue_event_detail_view.jsp" class="thumbnail-img">
-													<img src="Venue_Event_Image/<%= event.getEvent_image() %>" alt="fdgdf">
-												</a>
-												<span class="" title="Bookmark"></span>
-											</div>
-											
-											<div class="event-content">
-												<a href="venue_event_detail_view.jsp" class="event-title"><%= event.getEvent_name() %></a>online<Br>
-												<%= event.getEvent_description()%>
-												<div class="duration-price-remaining">
-													<span class="duration-price">Rs. <%= event.getEvent_price() %></span>
-													<span class="remaining"></span>
-												</div>
-											</div>
-											<div class="event-footer">
-												<div class="event-timing">
-													<div class="publish-date">
-														<span><i class="fa-solid fa-calendar-day me-2"></i><%= event.getEvent_date() %></span>
-														<span class="dot"><i class="fa-solid fa-circle"></i></span>
-														<span><%= event.getEvent_time()%></span>
+											</li>
+											<li>
+												<div class="contact-info d-flex align-items-center">
+													<div class="contact-icon">
+														<i class="fa-solid fa-envelope fa-beat-fade" style="--fa-beat-fade-opacity: 0.67; --fa-beat-fade-scale: 1.075;"></i>
 													</div>
-													<span class="publish-time"><i class="fa-solid fa-clock me-2"></i><%= event.getEvent_duration()%> min.</span>
+													<a href="#">contact@Rishabh.com</a>
 												</div>
-											</div>
-										</div>
-									</div>			
-								<% count++; %>
-								    <% } else {
-								           // Break the loop after displaying four events
-								           break;
-								    } %>
-								<% } %>
-			
-								</div>
-								<div class="browse-btn">
-									<a href="explore_events.jsp" class="main-btn btn-hover ">Browse All</a>
+											</li>
+											<li>
+												<div class="contact-info d-flex align-items-center">
+													<div class="contact-icon">
+														<i class="fa-solid fa-life-ring fa-beat-fade" style="--fa-beat-fade-opacity: 0.67; --fa-beat-fade-scale: 1.075;"></i>
+													</div>
+													<a href="#">Help Center</a>
+												</div>
+											</li>
+										</ul>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -435,25 +423,10 @@
 	
 	
 	<script src="js/jquery-3.6.0.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="vendor/OwlCarousel/owl.carousel.js"></script>
-	<script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>	
-	<script src="vendor/mixitup/dist/mixitup.min.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/owl.carousel.js"></script>
+	<script src="js/bootstrap-select.min.js"></script>	
 	<script src="js/custom.js"></script>
 	<script src="js/night-mode.js"></script>
-	<script>	
-		var containerEl = document.querySelector('[data-ref~="event-filter-content"]');
 
-		var mixer = mixitup(containerEl, {
-			selectors: {
-				target: '[data-ref~="mixitup-target"]'
-			}
-		});
-	</script>
-	 		</c:if>
-	
-<c:if test="${empty cookie.email.value}">
-    <c:redirect url="sign_up.jsp" />
-</c:if>
- 
 </body></html>
