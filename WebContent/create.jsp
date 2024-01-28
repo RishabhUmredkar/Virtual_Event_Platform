@@ -337,6 +337,8 @@
 			</div>
 		</div>
 	</footer>
+	<%   String email1 = (String) session.getAttribute("email");
+	System.out.println("User login ho gya1  "+email1); %>
 	<!-- Footer End-->
 	
 	

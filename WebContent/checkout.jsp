@@ -1,6 +1,15 @@
 <%@ page import="javax.servlet.http.Cookie" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ page import="Dao.Venue_Event_Dao" %>
+<%@ page import="Model.VenueEvent" %>
+<%@ page import="Model.OnlineEvent" %>
+<%@ page import="Model.RegisterUser" %>
+<%@ page import="Model.Online_Event_Ticket" %>
+<%@ page import="Dao.Online_Event_Dao" %>
+<%@ page import="Dao.UserDao" %>
+<%@ page import="java.sql.Date" %>
+<%@ page import="java.sql.Time" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">
 
 	
@@ -209,6 +218,41 @@
 	</header>
 	<!-- Header End-->
 	<!-- Body Start-->
+	
+<%
+    // Retrieve the quantity parameter from the request
+    String quantity = request.getParameter("quantity");
+
+    // Display the quantity
+    out.println("Quantity: " + quantity);
+
+    // Assuming session is of type HttpSession
+    HttpSession session1 = request.getSession();
+
+    // Retrieve the attribute "id" from the session
+    Integer id = (Integer) session1.getAttribute("id");
+    String email = (String) session.getAttribute("email");
+  	System.out.println("User login ho gya1 Last......final...."+email);   
+  	    System.out.println("Quantity: " + quantity);
+
+  	
+  	
+  	out.print(email);
+
+    // Check if the attribute is present before using it
+    if (id != null) {
+        // Use the id variable
+        out.println("User ID: " + id);
+        
+        // Retrieve event details based on the user's ID
+        Online_Event_Dao OD = new Online_Event_Dao();
+        OnlineEvent event = OD.getOneEvent(id);
+        System.out.println(event);
+    } else {
+        // Handle the case when the attribute is not present
+        out.println("User ID not found in the session");
+    }
+%>
 	<div class="wrapper">
 		<div class="breadcrumb-block">
 			<div class="container">
@@ -236,42 +280,52 @@
 							<h3>Order Confirmation</h3>
 						</div>
 					</div>
+					
+					
+					
+					
+					
 					<div class="col-xl-8 col-lg-12 col-md-12">
 						<div class="checkout-block">
 							<div class="main-card">
 								<div class="bp-title">
 									<h4>Billing information</h4>
 								</div>
+									
+					<%
+    RegisterUser user = new UserDao().getOneUserByEmail(email);
+    if (user != null) {
+%>
 								<div class="bp-content bp-form">
 									<div class="row">
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">First Name*</label>
-												<input class="form-control h_50" type="text" placeholder="" value="John">																								
+                            <input class="form-control h_50" type="text" placeholder="" value="<%= user.getFirst_name() %>" disabled>
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">Last Name*</label>
-												<input class="form-control h_50" type="text" placeholder="" value="Doe">																								
+                            <input class="form-control h_50" type="text" placeholder="" value="<%= user.getLast_name() %>" disabled>
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">Email*</label>
-												<input class="form-control h_50" type="text" placeholder="" value="johndoe@example.com" disabled="">																								
+                            <input class="form-control h_50" type="text" placeholder="" value="<%= user.getEmail() %>" disabled>
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">Address*</label>
-												<input class="form-control h_50" type="text" placeholder="" value="">																								
+												<input class="form-control h_50" type="text" placeholder="" name = "address" value="">																								
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group main-form mt-4">
-												<label class="form-label">Country*</label>
-												<select class="selectpicker" data-size="5" title="Nothing selected" data-live-search="true">
+												<label class="form-label">Country*</label>																	
+													<select class="selectpicker" data-size="5" title="Nothing selected" data-live-search="true" name="country">
 													<option value="Algeria">Algeria</option>
 													<option value="Argentina">Argentina</option>
 													<option value="Australia">Australia</option>
@@ -334,23 +388,28 @@
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">State*</label>
-												<input class="form-control h_50" type="text" placeholder="" value="">																								
+												<input class="form-control h_50" type="text" name = "state" placeholder="" value="">																								
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">City/Suburb*</label>
-												<input class="form-control h_50" type="text" placeholder="" value="">																								
+												<input class="form-control h_50" type="text" name = "name"placeholder="" value="">																								
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">Zip/Post Code*</label>
-												<input class="form-control h_50" type="text" placeholder="" value="">																								
+												<input class="form-control h_50" type="text" name = "pin code" placeholder="" value="">																								
 											</div>
 										</div>
 									</div>
 								</div>
+									<%
+    } else {
+System.out.println(user);    }
+%>
+								
 							</div>
 							<div class="main-card mt-5">
 								<div class="bp-title">
@@ -384,8 +443,21 @@
 							</div>
 						</div>
 					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
 					<div class="col-xl-4 col-lg-12 col-md-12">
 						<div class="main-card order-summary">
+   <%
+    Online_Event_Dao OD = new Online_Event_Dao();
+    OnlineEvent event2 = OD.getOneEvent(id);
+%>
 							<div class="bp-title">
 								<h4>Billing information</h4>
 							</div>
@@ -403,7 +475,7 @@
 								<div class="order-total-block">
 									<div class="order-total-dt">
 										<div class="order-text">Total Ticket</div>
-										<div class="order-number">1</div>
+										<div class="order-number"> <%=event2.getEvent_date() %></div>
 									</div>
 									<div class="order-total-dt">
 										<div class="order-text">Sub Total</div>

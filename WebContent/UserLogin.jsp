@@ -24,7 +24,7 @@
 
     	session.setAttribute("email", email);
 
-        
+     
         // Check for admin login
         if ("admin@gmail.com".equals(email) && "admin".equals(password)) {
         	  Cookie c = new Cookie("email", email);

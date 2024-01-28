@@ -219,8 +219,10 @@
     OnlineEvent event = OD.getOneEvent(id);
     System.out.println(event);
 
-    String email = (String) session.getAttribute("email");
-    out.print(email);
+     String email = (String) session.getAttribute("email");
+	System.out.println("User login ho gya112121fds  "+email); 
+	session.setAttribute("id", id);
+
 
     String eventName = event.getEvent_name();
     String category = event.getEvent_category();
@@ -273,7 +275,7 @@
 			</div>
 		</div>
 		<div class="event-dt-block p-80">
-		<form action="destination_page.jsp" method="post">
+		<form action="checkout.jsp" method="post">
 		
 				
 			<div class="container">
@@ -384,11 +386,10 @@
 								
 							
 						<!-- Add a form around your content -->
-<form action="destination_page.jsp" method="post">
     <div class="select-tickets-block">
         <h6>Select Tickets</h6>
         <div class="select-ticket-action">
-            <div class="ticket-price">AUD $75.00</div>
+            <div class="ticket-price">Rs.<%=event.getEvent_price() %></div>
             <div class="quantity">
                 <div class="counter">
                     <span class="down" onclick="decreaseCount(event, this)">-</span>
@@ -403,7 +404,7 @@
 
     <!-- Add a submit button to submit the form -->
 <div class="booking-btn">
-								<a href="checkout.jsp"  type="submit" class="main-btn btn-hover w-100">Book Now</a>
+								<button type="submit" class="main-btn btn-hover w-100">Book Now</a>
 							</div>
 
 <!-- JavaScript to update the hidden input field -->

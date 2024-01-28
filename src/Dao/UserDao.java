@@ -134,4 +134,22 @@ public RegisterUser getOneUser(int id) throws ClassNotFoundException, SQLExcepti
 }
 
 
+public RegisterUser getOneUserByEmail(String email) throws ClassNotFoundException, SQLException {
+    String sql = "select * from RegisterUser where email=?";
+    con = getconnect();
+    PreparedStatement ps = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+    ps.setString(1, email);
+
+    ResultSet rs = ps.executeQuery();
+
+    if (rs.next()) {
+        RegisterUser user = new RegisterUser(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+        return user;
+    } else {
+        // No user found with the given email
+        return null;
+    }
+}
+
+
 }

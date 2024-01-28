@@ -249,6 +249,8 @@
 								
 								<div class="row" data-ref="event-filter-content">
 									<%
+									  String email1 = (String) session.getAttribute("email");
+									System.out.println("User login ho gya12  "+email1); 
 									    List<OnlineEvent> todayEvents = new Online_Event_Dao().getAllEventData();
 									    int count = 0;
 										String email=(String)session.getAttribute("email");
