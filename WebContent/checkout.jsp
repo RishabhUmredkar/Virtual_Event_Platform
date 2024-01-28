@@ -294,24 +294,18 @@
 									<h4>Billing information</h4>
 								</div>
 									
-					 <%
- // Assuming session is of type HttpSession
-    HttpSession session1 = request.getSession();
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-
-    // Retrieve the attribute "id" from the session
-    Integer id = (Integer) session1.getAttribute("id");
-    String email = (String) session.getAttribute("email");
-  	System.out.println("User login ho gya1 Last......final...."+email);   
-  	    System.out.println("Quantity: hehehe" + quantity);
-
-        // Retrieve user and event details
-        RegisterUser user = new UserDao().getOneUserByEmail(email);
-        OnlineEvent event = new Online_Event_Dao().getOneEvent(id);
-
-        // Calculate total
-        int total = quantity * event.getEvent_price();
-    %>
+					<%-- Java code to retrieve user and event details --%>
+                                <%
+                                    HttpSession session1 = request.getSession();
+                                    int quantity = Integer.parseInt(request.getParameter("quantity"));
+                                    Integer id = (Integer) session1.getAttribute("id");
+                                    String email = (String) session.getAttribute("email");
+                                    RegisterUser user = new UserDao().getOneUserByEmail(email);
+                                    OnlineEvent event = new Online_Event_Dao().getOneEvent(id);
+                                    int total = quantity * event.getEvent_price();
+                                    System.out.println("ye hai id"+id);
+                                    System.out.println("ye hai mail id"+email);
+                                %>
 								<div class="bp-content bp-form">
 									<div class="row">
 										<div class="col-lg-6 col-md-12">
@@ -437,7 +431,7 @@
 								</div>
 								<div class="order-total-block">
 									<div class="order-total-dt">
-										<div class="order-text">Total Ticket</div>
+										<div class="order-text">quantity</div>
 										<div class="order-number"> <%=quantity %></div>
 									</div>
 									<div class="order-total-dt">
@@ -537,6 +531,47 @@
 			</div>
 		</div>
 	</footer>
+	<%
+	request.setAttribute("firstName", user.getFirst_name());
+	request.setAttribute("lastName", user.getLast_name());
+	request.setAttribute("email", user.getEmail());
+	
+	
+	request.setAttribute("eventimage", event.getEvent_image());
+	request.setAttribute("eventName", event.getEvent_name());
+	request.setAttribute("eventCategory", event.getEvent_category());
+	request.setAttribute("eventDate", event.getEvent_date());
+	request.setAttribute("eventTime", event.getEvent_time());
+	request.setAttribute("eventDuration", event.getEvent_duration());
+	request.setAttribute("eventDescription", event.getEvent_description());
+	request.setAttribute("eventHost", event.getEvent_hosting());
+	request.setAttribute("quantity", quantity);
+	request.setAttribute("total", total);%>
+	
+	
+	 <h3>User Details:</h3>
+    <p>First Name: <%= request.getAttribute("firstName") %></p>
+    <p>Last Name: <%= request.getAttribute("lastName") %></p>
+    <p>eamil Name: <%= request.getAttribute("email") %></p>
+    <!-- ... Other user details ... -->
+
+    <h3>Event Details:</h3>
+    <p>Event Name: <%= request.getAttribute("eventName") %></p>
+    <p>Event eventimage: Rs.<%= request.getAttribute("eventimage") %></p>
+    <p>Event eventCategory: Rs.<%= request.getAttribute("eventCategory") %></p>
+    <p>Event eventdate: Rs.<%= request.getAttribute("eventDate") %></p>
+    <p>Event eventTime: Rs.<%= request.getAttribute("eventTime") %></p>
+    <p>Event eventDuration: Rs.<%= request.getAttribute("eventDuration") %></p>
+    <p>Event eventHost: Rs.<%= request.getAttribute("eventHost") %></p>
+
+    <!-- ... Other event details ... -->
+
+    <h3>Order Summary:</h3>
+    <p>Total Ticket: <%= request.getAttribute("quantity") %></p>
+    <p>Sub Total: Rs.<%= request.getAttribute("total") %></p>
+    <p>Total: Rs.<%= request.getAttribute("total") %></p>
+<!-- 		user(First Name,Last Name,Email,Address,Country,State,City,pin code,image,event name,event price, date, time,duration description, event hosting , price, total ticket)
+ -->	
 	<!-- Footer End-->
 	
 	<script src="js/jquery-3.6.0.min.js"></script>
