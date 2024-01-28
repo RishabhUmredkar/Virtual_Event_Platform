@@ -4,6 +4,7 @@
 <%@ page import="Model.VenueEvent" %>
 <%@ page import="Model.OnlineEvent" %>
 <%@ page import="Model.RegisterUser" %>
+<%@ page import="Model.OnlineOrderDetails" %>
 <%@ page import="Model.Online_Event_Ticket" %>
 <%@ page import="Dao.Online_Event_Dao" %>
 <%@ page import="Dao.UserDao" %>
@@ -572,6 +573,14 @@
     <p>Total: Rs.<%= request.getAttribute("total") %></p>
 <!-- 		user(First Name,Last Name,Email,Address,Country,State,City,pin code,image,event name,event price, date, time,duration description, event hosting , price, total ticket)
  -->	
+ <%
+ OnlineOrderDetails orderDetails = new OnlineOrderDetails(user.getFirst_name(), user.getLast_name(), user.getEmail(),
+     event.getEvent_image(), event.getEvent_name(),
+        event.getEvent_category(), event.getEvent_date(), event.getEvent_time(), event.getEvent_duration(),
+        event.getEvent_description(), event.getEvent_hosting(), quantity, total);
+System.out.print(orderDetails);
+request.setAttribute("orderDetails", orderDetails);
+ %>
 	<!-- Footer End-->
 	
 	<script src="js/jquery-3.6.0.min.js"></script>
