@@ -72,7 +72,7 @@
 							</div>							
 							<ul class="navbar-nav justify-content-end flex-grow-1 pe_5">
 								<li class="nav-item">
-									<a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
+									<a class="nav-link " aria-current="page" href="index.jsp">Home</a>
 								</li>
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -86,7 +86,7 @@
 								</li>
 								
 								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 										Blog
 									</a>
 									<ul class="dropdown-menu dropdown-submenu">

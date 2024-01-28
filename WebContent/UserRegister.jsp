@@ -29,6 +29,11 @@
         String last_name = request.getParameter("last_name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+      
+        System.out.println("hello login");
+
+
+    	session.setAttribute("email", email);
 
         RegisterUser user = new RegisterUser(first_name, last_name, email, password);
         UserDao ud = new UserDao();

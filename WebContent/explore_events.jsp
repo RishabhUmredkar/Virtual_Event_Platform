@@ -90,13 +90,13 @@
 							</div>							
 							<ul class="navbar-nav justify-content-end flex-grow-1 pe_5">
 								<li class="nav-item">
-									<a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
+									<a class="nav-link " aria-current="page" href="index.jsp">Home</a>
 								</li>
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<li class="nav-item dropdown ">
+									<a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 										Explore Events
 									</a>
-									<ul class="dropdown-menu dropdown-submenu">
+									<ul class="dropdown-menu dropdown-submenu ">
 										<li><a class="dropdown-item" href="explore_events.jsp">Explore Events</a></li>
 										<li><a class="dropdown-item" href="venue_event_detail_view.jsp">Venue Event Detail View</a></li>
 										<li><a class="dropdown-item" href="online_event_detail_view.jsp">Online Event Detail View</a></li>
@@ -255,19 +255,18 @@
 										System.out.print(email);
 									%>
 									<% for (OnlineEvent event : todayEvents) { %>
-									    <% if (count < 4) { %>
 											<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix arts concert workshops volunteer sports health_Wellness" data-ref="mixitup-target">
 												<div class="main-card mt-4">
 										
 											<div class="event-thumbnail">
-												<a href="online_event_detail_view.jsp" class="thumbnail-img">
+												<a href="online_event_detail_view.jsp?id=<%=event.getId() %>" class="thumbnail-img">
                             				<img src="Online_Event_Image/<%= event.getEvent_image() %>" alt="fdgdf">
 												</a>
 												<span class="" title="Bookmark"></span>
 											</div>
 											
 											<div class="event-content">
-												<a href="venue_event_detail_view.jsp" class="event-title"><%= event.getEvent_name() %></a>
+												<a href="online_event_detail_view.jsp?id=<%=event.getId() %>" class="event-title"><%= event.getEvent_name() %></a>
 												<div class="duration-price-remaining">
 													<span class="duration-price">Rs. <%= event.getEvent_price() %></span>
 													<span class="remaining"></span>
@@ -285,11 +284,7 @@
 											</div>
 										</div>
 										</div>
-									<% count++; %>
-								    <% } else {
-								           // Break the loop after displaying four events
-								           break;
-								    } %>
+								
 								<% } %>
 								
 								</div>
@@ -309,7 +304,6 @@
 										    int count1 = 0;
 										%>
 										<% for (VenueEvent event : todayEvents1) { %>
-										    <% if (count < 8) { %>
 										<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix arts concert workshops volunteer sports health_Wellness" data-ref="mixitup-target">
 									
 											<div class="main-card mt-4">
@@ -341,11 +335,7 @@
 											</div>
 										</div>
 									</div>			
-								<% count++; %>
-								    <% } else {
-								           // Break the loop after displaying four events
-								           break;
-								    } %>
+								
 								<% } %>
 			
 								</div>

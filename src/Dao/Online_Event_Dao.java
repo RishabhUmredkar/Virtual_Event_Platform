@@ -180,5 +180,40 @@ public List<OnlineEvent> getAllEventDataByDate(Date filterDate) throws ClassNotF
 
     return le;
 }
+
+
+
+    // ... (existing code)
+
+    public OnlineEvent getOneEvent(int id) throws ClassNotFoundException, SQLException {
+        String sql = "SELECT * FROM Online_Event WHERE id=?";
+        con = getconnect();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+
+        OnlineEvent event = null;
+        if (rs.next()) {
+            event = new OnlineEvent(
+                    rs.getInt(1),        // id
+                    rs.getString(2),     // event_name
+                    rs.getString(3),     // event_category
+                    rs.getDate(4),       // event_date (assuming it's stored as a Date)
+                    rs.getTime(5),       // event_time (assuming it's stored as a Time)
+                    rs.getInt(6),        // event_duration
+                    rs.getString(7),     // event_image
+                    rs.getString(8),     // event_description
+                    rs.getString(9),     // event_hosting (you may need to adjust this depending on your data source)
+                    rs.getInt(10),       // event_price
+                    rs.getInt(11)        // event_total_tickets
+            );
+        }
+
+        rs.close();
+        ps.close();
+        con.close();
+
+        return event;
+    }
 	
 }
