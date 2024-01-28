@@ -218,10 +218,12 @@
 	</header>
 	<!-- Header End-->
 	<!-- Body Start-->
+    <form action="hello" method="post">
 	
-<%
+	
+<%-- 
     // Retrieve the quantity parameter from the request
-    String quantity = request.getParameter("quantity");
+ int quantity = Integer.parseInt(request.getParameter("quantity"));
 
     // Display the quantity
     out.println("Quantity: " + quantity);
@@ -252,7 +254,7 @@
         // Handle the case when the attribute is not present
         out.println("User ID not found in the session");
     }
-%>
+%> --%>
 	<div class="wrapper">
 		<div class="breadcrumb-block">
 			<div class="container">
@@ -292,10 +294,24 @@
 									<h4>Billing information</h4>
 								</div>
 									
-					<%
-    RegisterUser user = new UserDao().getOneUserByEmail(email);
-    if (user != null) {
-%>
+					 <%
+ // Assuming session is of type HttpSession
+    HttpSession session1 = request.getSession();
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+
+    // Retrieve the attribute "id" from the session
+    Integer id = (Integer) session1.getAttribute("id");
+    String email = (String) session.getAttribute("email");
+  	System.out.println("User login ho gya1 Last......final...."+email);   
+  	    System.out.println("Quantity: hehehe" + quantity);
+
+        // Retrieve user and event details
+        RegisterUser user = new UserDao().getOneUserByEmail(email);
+        OnlineEvent event = new Online_Event_Dao().getOneEvent(id);
+
+        // Calculate total
+        int total = quantity * event.getEvent_price();
+    %>
 								<div class="bp-content bp-form">
 									<div class="row">
 										<div class="col-lg-6 col-md-12">
@@ -327,55 +343,9 @@
 												<label class="form-label">Country*</label>																	
 													<select class="selectpicker" data-size="5" title="Nothing selected" data-live-search="true" name="country">
 													<option value="Algeria">Algeria</option>
-													<option value="Argentina">Argentina</option>
-													<option value="Australia">Australia</option>
-													<option value="Austria">Austria (Österreich)</option>
-													<option value="Belgium">Belgium (België)</option>
-													<option value="Bolivia">Bolivia</option>
-													<option value="Brazil">Brazil</option>
-													<option value="Canada">Canada</option>
-													<option value="Chile">Chile</option>
-													<option value="Colombia">Colombia</option>
-													<option value="Costa Rica">Costa Rica</option>
-													<option value="Cyprus">Cyprus</option>
-													<option value="Czech Republic">Czech Republic</option>
-													<option value="Denmark">Denmark</option>
-													<option value="Dominican Republic">Dominican Republic</option>
-													<option value="Estonia">Estonia</option>
-													<option value="Finland">Finland</option>
-													<option value="France">France</option>
-													<option value="Germany">Germany</option>
-													<option value="Greece">Greece</option>
-													<option value="Hong Kong">Hong Kong</option>
-													<option value="Iceland">Iceland</option>
-													<option value="India">India</option>
-													<option value="Indonesia">Indonesia</option>
-													<option value="Ireland">Ireland</option>
-													<option value="Israel">Israel</option>
-													<option value="Italy">Italy</option>
-													<option value="Japan">Japan</option>
-													<option value="Latvia">Latvia</option>
-													<option value="Lithuania">Lithuania</option>
-													<option value="Luxembourg">Luxembourg</option>
-													<option value="Malaysia">Malaysia</option>
-													<option value="Mexico">Mexico</option>
-													<option value="Nepal">Nepal</option>
-													<option value="Netherlands">Netherlands</option>
+												
 													<option value="New Zealand">New Zealand</option>
 													<option value="Norway">Norway</option>
-													<option value="Paraguay">Paraguay</option>
-													<option value="Peru">Peru</option>
-													<option value="Philippines">Philippines</option>
-													<option value="Poland">Poland</option>
-													<option value="Portugal">Portugal</option>
-													<option value="Singapore">Singapore</option>
-													<option value="Slovakia">Slovakia</option>
-													<option value="Slovenia">Slovenia</option>
-													<option value="South Africa">South Africa</option>
-													<option value="South Korea">South Korea</option>
-													<option value="Spain">Spain</option>
-													<option value="Sweden">Sweden</option>
-													<option value="Switzerland">Switzerland</option>
 													<option value="Tanzania">Tanzania</option>
 													<option value="Thailand">Thailand</option>
 													<option value="Turkey">Turkey</option>
@@ -394,7 +364,7 @@
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">City/Suburb*</label>
-												<input class="form-control h_50" type="text" name = "name"placeholder="" value="">																								
+												<input class="form-control h_50" type="text" name = "name" placeholder="" value="">																								
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-12">
@@ -405,38 +375,35 @@
 										</div>
 									</div>
 								</div>
-									<%
-    } else {
-System.out.println(user);    }
-%>
+							
 								
 							</div>
 							<div class="main-card mt-5">
 								<div class="bp-title">
-									<h4>Total Payable Amount : AUD $50.00</h4>
+									<h4>Total Payable Amount Rs.<%=total%></h4>
 								</div>
 								<div class="bp-content bp-form">
 									<div class="row">
 										<div class="col-lg-12 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">Card number*</label>
-												<input class="form-control h_50" type="text" placeholder="" value="">																								
+												<input class="form-control h_50" type="text" name ="card_number" placeholder="" value="">																								
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">Expiry date*</label>
-												<input class="form-control h_50" type="text" placeholder="MM/YY" value="">																								
+												<input class="form-control h_50" type="text" name = "Expiry_date"placeholder="MM/YY" value="">																								
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">CVV*</label>
-												<input class="form-control h_50" type="text" placeholder="" value="">																								
+												<input class="form-control h_50" type="text" name = "Cvv" placeholder="" value="">																								
 											</div>
 										</div>
 										<div class="col-lg-12 col-md-12">
-											<button class="main-btn btn-hover h_50 w-100 mt-5" type="button" onclick="window.location.href='booking_confirmed.jsp'">Confirm &amp; Pay</button>
+											<button class="main-btn btn-hover h_50 w-100 mt-5" type="submit" >Confirm &amp; Pay</button>
 										</div>
 									</div>
 								</div>
@@ -454,50 +421,38 @@ System.out.println(user);    }
 					
 					<div class="col-xl-4 col-lg-12 col-md-12">
 						<div class="main-card order-summary">
-   <%
-    Online_Event_Dao OD = new Online_Event_Dao();
-    OnlineEvent event2 = OD.getOneEvent(id);
-%>
-							<div class="bp-title">
+  					<div class="bp-title">
 								<h4>Billing information</h4>
 							</div>
 							<div class="order-summary-content p_30">
 								<div class="event-order-dt">
 									<div class="event-thumbnail-img">
-										<img src="images/event-imgs/img-7.jpg" alt="">
+										<img src="Online_Event_Image/<%= event.getEvent_image() %>" alt="">
 									</div>
 									<div class="event-order-dt-content">
-										<h5>Tutorial on Canvas Painting for Beginners</h5>
-										<span>Wed, Jun 01, 2022 5:30 AM</span>
+										<h5><%= event.getEvent_name() %></h5>
+										<span> <%=event.getEvent_date() %>  ,<%=event.getEvent_time()%> || <%= event.getEvent_duration()%> min.</span>
 										<div class="category-type">Online Event</div>
 									</div>
 								</div>
 								<div class="order-total-block">
 									<div class="order-total-dt">
 										<div class="order-text">Total Ticket</div>
-										<div class="order-number"> <%=event2.getEvent_date() %></div>
+										<div class="order-number"> <%=quantity %></div>
 									</div>
 									<div class="order-total-dt">
 										<div class="order-text">Sub Total</div>
-										<div class="order-number">$50.00</div>
+										<div class="order-number">Rs.<%=total%></div>
 									</div>
 									<div class="divider-line"></div>
 									<div class="order-total-dt">
 										<div class="order-text">Total</div>
-										<div class="order-number ttl-clr">AUD $50.00</div>
+										<div class="order-number ttl-clr">Rs.<%=total%></div>
 									</div>
 								</div>
-								<div class="coupon-code-block">
-									<div class="form-group mt-4">
-										<label class="form-label">Coupon Code*</label>
-										<div class="position-relative">
-											<input class="form-control h_50" type="text" placeholder="Code" value="">
-											<button class="apply-btn btn-hover" type="button">Apply</button>
-										</div>
-									</div>
-								</div>
+								
 								<div class="confirmation-btn">
-									<button class="main-btn btn-hover h_50 w-100 mt-5" type="button" onclick="window.location.href='booking_confirmed.jsp'">Confirm &amp; Pay</button>
+									<button class="main-btn btn-hover h_50 w-100 mt-5" type="submit">Confirm &amp; Pay</button>
 									<span>Price is inclusive of all applicable GST</span>
 								</div>
 							</div>
@@ -507,6 +462,9 @@ System.out.println(user);    }
 			</div>
 		</div>
 	</div>
+	
+	</form>
+	user(First Name,Last Name,Email,Address,Country,State,City,pin code,image,event name,event price, date, time,duration description, event hosting , price, total ticket)
 	<!-- Body End-->
 	<!-- Footer Start-->
 	<footer class="footer mt-auto">
