@@ -219,7 +219,7 @@
 	</header>
 	<!-- Header End-->
 	<!-- Body Start-->
-    <form action="hello" method="post">
+    <form action="hello.jsp" method="post">
 	
 	
 <%-- 
@@ -382,7 +382,7 @@
 										<div class="col-lg-12 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">Card number*</label>
-												<input class="form-control h_50" type="text" name ="card_number" placeholder="" value="">																								
+												<input class="form-control h_50" type="number" name ="card_number" placeholder="" value="">																								
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-12">
@@ -457,6 +457,55 @@
 			</div>
 		</div>
 	</div>
+	<%
+	request.setAttribute("firstName", user.getFirst_name());
+	request.setAttribute("lastName", user.getLast_name());
+	request.setAttribute("email", user.getEmail());
+	
+	
+	request.setAttribute("eventimage", event.getEvent_image());
+	request.setAttribute("eventName", event.getEvent_name());
+	request.setAttribute("eventCategory", event.getEvent_category());
+	request.setAttribute("eventDate", event.getEvent_date());
+	request.setAttribute("eventTime", event.getEvent_time());
+	request.setAttribute("eventDuration", event.getEvent_duration());
+	request.setAttribute("eventDescription", event.getEvent_description());
+	request.setAttribute("eventHost", event.getEvent_hosting());
+	request.setAttribute("quantity", quantity);
+	request.setAttribute("total", total);%>
+	
+	
+	 <h3>User Details:</h3>
+    <p>First Name: <%= request.getAttribute("firstName") %></p>
+    <p>Last Name: <%= request.getAttribute("lastName") %></p>
+    <p>eamil Name: <%= request.getAttribute("email") %></p>
+    <!-- ... Other user details ... -->
+
+    <h3>Event Details:</h3>
+    <p>Event Name: <%= request.getAttribute("eventName") %></p>
+    <p>Event eventimage: Rs.<%= request.getAttribute("eventimage") %></p>
+    <p>Event eventCategory: Rs.<%= request.getAttribute("eventCategory") %></p>
+    <p>Event eventdate: Rs.<%= request.getAttribute("eventDate") %></p>
+    <p>Event eventTime: Rs.<%= request.getAttribute("eventTime") %></p>
+    <p>Event eventDuration: Rs.<%= request.getAttribute("eventDuration") %></p>
+    <p>Event eventHost: Rs.<%= request.getAttribute("eventHost") %></p>
+
+    <!-- ... Other event details ... -->
+
+    <h3>Order Summary:</h3>
+    <p>Total Ticket: <%= request.getAttribute("quantity") %></p>
+    <p>Sub Total: Rs.<%= request.getAttribute("total") %></p>
+    <p>Total: Rs.<%= request.getAttribute("total") %></p>
+<!-- 		user(First Name,Last Name,Email,Address,Country,State,City,pin code,image,event name,event price, date, time,duration description, event hosting , price, total ticket)
+ -->	
+ <%
+ OnlineOrderDetails orderDetails = new OnlineOrderDetails(user.getFirst_name(), user.getLast_name(), user.getEmail(),
+     event.getEvent_image(), event.getEvent_name(),
+        event.getEvent_category(), event.getEvent_date(), event.getEvent_time(), event.getEvent_duration(),
+        event.getEvent_description(), event.getEvent_hosting(), quantity, total);
+System.out.print(orderDetails);
+request.setAttribute("orderDetails", orderDetails);
+ %>
 	
 	</form>
 	user(First Name,Last Name,Email,Address,Country,State,City,pin code,image,event name,event price, date, time,duration description, event hosting , price, total ticket)
@@ -532,55 +581,7 @@
 			</div>
 		</div>
 	</footer>
-	<%
-	request.setAttribute("firstName", user.getFirst_name());
-	request.setAttribute("lastName", user.getLast_name());
-	request.setAttribute("email", user.getEmail());
 	
-	
-	request.setAttribute("eventimage", event.getEvent_image());
-	request.setAttribute("eventName", event.getEvent_name());
-	request.setAttribute("eventCategory", event.getEvent_category());
-	request.setAttribute("eventDate", event.getEvent_date());
-	request.setAttribute("eventTime", event.getEvent_time());
-	request.setAttribute("eventDuration", event.getEvent_duration());
-	request.setAttribute("eventDescription", event.getEvent_description());
-	request.setAttribute("eventHost", event.getEvent_hosting());
-	request.setAttribute("quantity", quantity);
-	request.setAttribute("total", total);%>
-	
-	
-	 <h3>User Details:</h3>
-    <p>First Name: <%= request.getAttribute("firstName") %></p>
-    <p>Last Name: <%= request.getAttribute("lastName") %></p>
-    <p>eamil Name: <%= request.getAttribute("email") %></p>
-    <!-- ... Other user details ... -->
-
-    <h3>Event Details:</h3>
-    <p>Event Name: <%= request.getAttribute("eventName") %></p>
-    <p>Event eventimage: Rs.<%= request.getAttribute("eventimage") %></p>
-    <p>Event eventCategory: Rs.<%= request.getAttribute("eventCategory") %></p>
-    <p>Event eventdate: Rs.<%= request.getAttribute("eventDate") %></p>
-    <p>Event eventTime: Rs.<%= request.getAttribute("eventTime") %></p>
-    <p>Event eventDuration: Rs.<%= request.getAttribute("eventDuration") %></p>
-    <p>Event eventHost: Rs.<%= request.getAttribute("eventHost") %></p>
-
-    <!-- ... Other event details ... -->
-
-    <h3>Order Summary:</h3>
-    <p>Total Ticket: <%= request.getAttribute("quantity") %></p>
-    <p>Sub Total: Rs.<%= request.getAttribute("total") %></p>
-    <p>Total: Rs.<%= request.getAttribute("total") %></p>
-<!-- 		user(First Name,Last Name,Email,Address,Country,State,City,pin code,image,event name,event price, date, time,duration description, event hosting , price, total ticket)
- -->	
- <%
- OnlineOrderDetails orderDetails = new OnlineOrderDetails(user.getFirst_name(), user.getLast_name(), user.getEmail(),
-     event.getEvent_image(), event.getEvent_name(),
-        event.getEvent_category(), event.getEvent_date(), event.getEvent_time(), event.getEvent_duration(),
-        event.getEvent_description(), event.getEvent_hosting(), quantity, total);
-System.out.print(orderDetails);
-request.setAttribute("orderDetails", orderDetails);
- %>
 	<!-- Footer End-->
 	
 	<script src="js/jquery-3.6.0.min.js"></script>
