@@ -77,3 +77,56 @@ WHERE id > 5;  -- Adjust the condition based on your data
 
 
 select * from Virtual_Event_platform.Online_Event;
+
+
+
+
+CREATE TABLE Virtual_Event_platform.OnlineEventTicketBook (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(45),
+    last_name VARCHAR(45),
+    email VARCHAR(45),
+    address VARCHAR(255),
+    country VARCHAR(255),
+    state VARCHAR(255),
+    city VARCHAR(255),
+    pin_code INT,
+    image VARCHAR(255),
+    event_name VARCHAR(45),
+    event_price INT,
+    event_date DATE,
+    event_time TIME,
+    event_duration INT,
+    event_description VARCHAR(255),
+    event_hosting VARCHAR(255),
+    ticket_price INT,
+    total_tickets INT
+);
+
+select * from Virtual_Event_platform.OnlineEventTicketBook;
+DROP TABLE IF EXISTS Virtual_Event_platform.OnlineEventTicketBook;
+
+
+CREATE TABLE Virtual_Event_platform.OnlineEventTicketBook (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(45),
+    last_name VARCHAR(45),
+    email VARCHAR(45),
+    address VARCHAR(255),
+    country VARCHAR(255),
+    state VARCHAR(255),
+    city VARCHAR(255),
+    pin_code INT,
+    event_image VARCHAR(255),
+    event_name VARCHAR(45),
+    event_category VARCHAR(45),
+    event_date DATE,
+    event_time TIME,
+    event_duration INT,
+    event_description VARCHAR(255),
+    event_host VARCHAR(255),
+    quantity INT,
+    total INT
+);
+
+select * from Virtual_Event_platform.OnlineEventTicketBook;
