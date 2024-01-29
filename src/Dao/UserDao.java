@@ -43,9 +43,6 @@ public int insert(RegisterUser u) throws ClassNotFoundException, SQLException {
 		con.close();
 		return a;
 	}
-
-
-
 public boolean checkUser(RegisterUser u) throws SQLException, ClassNotFoundException {
     con = getconnect();
     PreparedStatement ps = con.prepareStatement("SELECT * FROM RegisterUser WHERE email=? and password=?");

@@ -12,70 +12,49 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Dao.Online_Event_Dao;
+import Dao.Online_Event_Ticket_Dao;
 import Dao.UserDao;
 import Model.OnlineEvent;
+import Model.OnlineOrderDetails;
 import Model.RegisterUser;
-
-/**
- * Servlet implementation class HelloServlet
- */
 @WebServlet("/hello")
 public class HelloServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Retrieve user and event details from the session
-        HttpSession session = request.getSession();
-        String email = (String) session.getAttribute("email");
-        Integer id = (Integer) session.getAttribute("id");
+        try {
+            // Retrieve user and event details from the session
+            HttpSession session = request.getSession();
+            String email = (String) session.getAttribute("email");
 
-        // Check if email and id are not null
-        if (email != null && id != null) {
-            RegisterUser user = null;
-            OnlineEvent event = null;
+            // Retrieve additional details from the request parameters
+            String address = request.getParameter("address");
+            String country = request.getParameter("country");
+            String state = request.getParameter("state");
+            String city = request.getParameter("city");
+            int pinCode = Integer.parseInt(request.getParameter("pinCode"));
 
-            
-                try {
-					user = new UserDao().getOneUserByEmail(email);
-				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-                try {
-					event = new Online_Event_Dao().getOneEvent(id);
-				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-         
+            // Assuming you have access to an instance of OnlineEventTicketBook
+            OnlineOrderDetails ticket = new OnlineOrderDetails();
+            ticket.setEmail(email);
+            ticket.setAddress(address);
+            ticket.setCountry(country);
+            ticket.setState(state);
+            ticket.setCity(city);
+            ticket.setPinCode(pinCode);
 
-            // Calculate total
-            String quantityParam = request.getParameter("quantity");
-            int quantity = 0; // Default value or handle it as needed
+            // Insert data into the database using your Online_Event_Ticket_Dao
+            Online_Event_Ticket_Dao dao = new Online_Event_Ticket_Dao();
+            int rowsAffected = dao.insert(ticket);
 
-            if (quantityParam != null && !quantityParam.isEmpty()) {
-                try {
-                    quantity = Integer.parseInt(quantityParam);
-                } catch (NumberFormatException e) {
-                    e.printStackTrace();
-                    // Handle the case when the quantity parameter is not a valid integer
-                }
+            if (rowsAffected > 0) {
+                System.out.println("Data inserted successfully.");
+                // Add any additional logic or response handling if needed
+            } else {
+                System.out.println("Failed to insert data.");
+                // Handle failure scenario if needed
             }
-
-            int total = quantity * event.getEvent_price();
-
-            // Set attributes in the request scope
-            request.setAttribute("firstName", user.getFirst_name());
-            request.setAttribute("lastName", user.getLast_name());
-            request.setAttribute("eventName", event.getEvent_name());
-            request.setAttribute("eventPrice", event.getEvent_price());
-            request.setAttribute("quantity", quantity);
-            request.setAttribute("total", total);
-
-            // Forward to the hello.jsp page
-            RequestDispatcher dispatcher = request.getRequestDispatcher("hello.jsp");
-            dispatcher.forward(request, response);
-        } else {
-            // Handle the case when email or id is null
-            response.sendRedirect("login.jsp"); // Redirect to login page or handle it as needed
+        } catch (ClassNotFoundException | SQLException | NumberFormatException e) {
+            e.printStackTrace();
+            // Handle exceptions appropriately
         }
     }
 }

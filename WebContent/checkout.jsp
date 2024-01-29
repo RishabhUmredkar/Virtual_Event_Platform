@@ -1,6 +1,7 @@
 <%@ page import="javax.servlet.http.Cookie" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="Dao.Venue_Event_Dao" %>
+<%@ page import="Dao.Online_Event_Ticket_Dao" %>
 <%@ page import="Model.VenueEvent" %>
 <%@ page import="Model.OnlineEvent" %>
 <%@ page import="Model.RegisterUser" %>
@@ -219,7 +220,7 @@
 	</header>
 	<!-- Header End-->
 	<!-- Body Start-->
-    <form action="hello.jsp" method="post">
+    <form action="hello" method="post">
 	
 	
 <%-- 
@@ -359,13 +360,13 @@
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">City/Suburb*</label>
-												<input class="form-control h_50" type="text" name = "name" placeholder="" value="">																								
+												<input class="form-control h_50" type="text" name = "city" placeholder="" value="">																								
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">Zip/Post Code*</label>
-												<input class="form-control h_50" type="text" name = "pin code" placeholder="" value="">																								
+												<input class="form-control h_50" type="text" name = "pinCode" placeholder="" value="">																								
 											</div>
 										</div>
 									</div>
@@ -505,8 +506,11 @@
         event.getEvent_description(), event.getEvent_hosting(), quantity, total);
 System.out.print(orderDetails);
 request.setAttribute("orderDetails", orderDetails);
- %>
-	
+
+	  Online_Event_Ticket_Dao ud = new Online_Event_Ticket_Dao(); 
+	  ud.insert(orderDetails);
+      
+	  %>
 	</form>
 	user(First Name,Last Name,Email,Address,Country,State,City,pin code,image,event name,event price, date, time,duration description, event hosting , price, total ticket)
 	<!-- Body End-->

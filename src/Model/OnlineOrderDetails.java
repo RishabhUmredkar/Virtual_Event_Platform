@@ -13,7 +13,7 @@ public class OnlineOrderDetails {
 	    private String country;
 	    private String state;
 	    private String city;
-	    private String pinCode;
+	    private int pinCode;
 	    private String eventImage;
 	    private String eventName;
 	    private String eventCategory;
@@ -72,7 +72,7 @@ public class OnlineOrderDetails {
 			
 		}
 		public OnlineOrderDetails(String firstName, String lastName, String email, String address, String country,
-				String state, String city, String pinCode, String eventImage, String eventName, String eventCategory,
+				String state, String city, int pinCode, String eventImage, String eventName, String eventCategory,
 				Date eventDate, Time eventTime, int eventDuration, String eventDescription, String eventHost,
 				int quantity, int total) {
 			super();
@@ -142,7 +142,7 @@ public class OnlineOrderDetails {
 			this.total = total;
 		}
 		public OnlineOrderDetails(int id, String firstName, String lastName, String email, String address,
-				String country, String state, String city, String pinCode, String eventImage, String eventName,
+				String country, String state, String city, int pinCode, String eventImage, String eventName,
 				String eventCategory, Date eventDate, Time eventTime, int eventDuration, String eventDescription,
 				String eventHost, int quantity, int total) {
 			super();
@@ -214,10 +214,10 @@ public class OnlineOrderDetails {
 		public void setCity(String city) {
 			this.city = city;
 		}
-		public String getPinCode() {
+		public int getPinCode() {
 			return pinCode;
 		}
-		public void setPinCode(String pinCode) {
+		public void setPinCode(int pinCode) {
 			this.pinCode = pinCode;
 		}
 		public String getEventImage() {
