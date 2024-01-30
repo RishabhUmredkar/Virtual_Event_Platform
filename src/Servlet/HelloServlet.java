@@ -30,7 +30,7 @@ public class HelloServlet extends HttpServlet {
             // Assuming you have access to an instance of OnlineOrderDetails
             OnlineOrderDetails ticket = new OnlineOrderDetails();
             ticket.setAddress(address);
-          
+            System.out.println(address);
             // Insert data into the database using your Online_Event_Ticket_Dao
             Online_Event_Ticket_Dao dao = new Online_Event_Ticket_Dao();
             int rowsAffected = dao.insertnew(ticket, email);

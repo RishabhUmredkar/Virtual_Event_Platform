@@ -366,7 +366,7 @@
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">Zip/Post Code*</label>
-												<input class="form-control h_50" type="text" name = "pinCode" placeholder="" value="">																								
+												<input class="form-control h_50" type="number" name = "pinCode" placeholder="" value="">																								
 											</div>
 										</div>
 									</div>
