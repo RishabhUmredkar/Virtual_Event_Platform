@@ -499,18 +499,23 @@
     <p>Total: Rs.<%= request.getAttribute("total") %></p>
 <!-- 		user(First Name,Last Name,Email,Address,Country,State,City,pin code,image,event name,event price, date, time,duration description, event hosting , price, total ticket)
  -->	
- <%
- OnlineOrderDetails orderDetails = new OnlineOrderDetails(user.getFirst_name(), user.getLast_name(), user.getEmail(),
-     event.getEvent_image(), event.getEvent_name(),
+ 
+<%
+OnlineOrderDetails orderDetails = new OnlineOrderDetails(user.getFirst_name(), user.getLast_name(), user.getEmail(),
+        event.getEvent_image(), event.getEvent_name(),
         event.getEvent_category(), event.getEvent_date(), event.getEvent_time(), event.getEvent_duration(),
         event.getEvent_description(), event.getEvent_hosting(), quantity, total);
 System.out.print(orderDetails);
 request.setAttribute("orderDetails", orderDetails);
 
-	  Online_Event_Ticket_Dao ud = new Online_Event_Ticket_Dao(); 
-	  ud.insert(orderDetails);
-      
-	  %>
+Online_Event_Ticket_Dao ud = new Online_Event_Ticket_Dao();
+int orderId = ud.insert(orderDetails);
+out.println("Order ID: " + orderDetails.getId());
+System.out.print(orderDetails.getId());
+
+session.setAttribute("orderId", orderDetails.getId());
+
+%>
 	</form>
 	user(First Name,Last Name,Email,Address,Country,State,City,pin code,image,event name,event price, date, time,duration description, event hosting , price, total ticket)
 	<!-- Body End-->

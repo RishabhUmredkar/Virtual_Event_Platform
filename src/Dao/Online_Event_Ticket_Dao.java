@@ -35,16 +35,18 @@ public class Online_Event_Ticket_Dao {
 		return con;
 		
 	}
+	
+	
 	public int insert(OnlineOrderDetails ticket) throws ClassNotFoundException, SQLException {
 	    String sql = "INSERT INTO Virtual_Event_platform.OnlineEventTicketBook (" +
-	                 "first_name, last_name, email, address, country, state, city, pin_code, " +
-	                 "event_image, event_name, event_category, event_date, event_time, event_duration, " +
-	                 "event_description, event_host, quantity, total) " +
-	                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	    
+	            "first_name, last_name, email, address, country, state, city, pin_code, " +
+	            "event_image, event_name, event_category, event_date, event_time, event_duration, " +
+	            "event_description, event_host, quantity, total) " +
+	            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
 	    con = getconnect();
-	    PreparedStatement ps = con.prepareStatement(sql);
-	    
+	    PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
 	    ps.setString(1, ticket.getFirstName());
 	    ps.setString(2, ticket.getLastName());
 	    ps.setString(3, ticket.getEmail());
@@ -65,29 +67,40 @@ public class Online_Event_Ticket_Dao {
 	    ps.setInt(18, ticket.getTotal());
 	    
 	    int result = ps.executeUpdate();
-	    
+
+	    ResultSet generatedKeys = ps.getGeneratedKeys();
+	    if (generatedKeys.next()) {
+	        int orderId = generatedKeys.getInt(1);
+	        ticket.setId(orderId);  // Set the generated ID in the OnlineOrderDetails object
+	    }
+
 	    con.close();
-	    
+
 	    return result;
 	}
 
+	public int insertnew(OnlineOrderDetails ticket, Integer id) throws ClassNotFoundException, SQLException {
+	    String sql = "INSERT INTO Virtual_Event_platform.OnlineEventTicketBook (" +
+	            "address, id, country, state, city, pin_code) " +
+	            "VALUES (?, ?, ?, ?, ?, ?) " +
+	            "ON DUPLICATE KEY UPDATE " +
+	            "address = VALUES(address), country = VALUES(country), state = VALUES(state), " +
+	            "city = VALUES(city), pin_code = VALUES(pin_code)";
 
-    public int insertnew(OnlineOrderDetails ticket, String userEmail) throws ClassNotFoundException, SQLException {
-        String sql = "INSERT INTO Virtual_Event_platform.OnlineEventTicketBook ( address) " +
-                     "SELECT ? FROM DUAL " +
-                     "WHERE NOT EXISTS (SELECT * FROM Virtual_Event_platform.OnlineEventTicketBook WHERE email = ?)";
+	    Connection con = getconnect();
+	    PreparedStatement ps = con.prepareStatement(sql);
 
-        Connection con = getconnect();
-        PreparedStatement ps = con.prepareStatement(sql);
+	    ps.setString(1, ticket.getAddress());
+	    ps.setInt(2, id);
+	    ps.setString(3, ticket.getCountry());
+	    ps.setString(4, ticket.getState());
+	    ps.setString(5, ticket.getCity());
+	    ps.setInt(6, ticket.getPinCode());
 
-        ps.setString(1, ticket.getAddress());
-       
-        ps.setString(2, userEmail);
+	    int result = ps.executeUpdate();
 
-        int result = ps.executeUpdate();
+	    con.close();
 
-        con.close();
-
-        return result;
-    }
+	    return result;
+	}
 }
