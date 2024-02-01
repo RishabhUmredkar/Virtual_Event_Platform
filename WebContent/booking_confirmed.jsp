@@ -289,7 +289,7 @@
 									<div class="booking-confirmed-bottom-bg p_30">
 										<div class="event-order-dt">
 											<div class="event-thumbnail-img">
-												<img src="Online_Event_Image/<%= event.getEvent_image() %>" alt="">
+												<img src="Online_Event_Image/<%= ticket.getEventImage() %>" alt="">
 											</div>
 											<div class="event-order-dt-content">
 												<h5><%=ticket.getEventHost() %> || <%=ticket.getEventCategory() %></h5>
