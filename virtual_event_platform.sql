@@ -128,5 +128,9 @@ CREATE TABLE Virtual_Event_platform.OnlineEventTicketBook (
     quantity INT,
     total INT
 );
+ALTER TABLE Virtual_Event_platform.OnlineEventTicketBook
+ADD COLUMN card_number VARCHAR(16) AFTER total,
+ADD COLUMN expiry_date DATE AFTER card_number,
+ADD COLUMN cvv INT AFTER expiry_date;
 
 select * from Virtual_Event_platform.OnlineEventTicketBook;

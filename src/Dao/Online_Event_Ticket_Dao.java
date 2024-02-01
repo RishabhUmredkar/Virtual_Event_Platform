@@ -108,4 +108,54 @@ public class Online_Event_Ticket_Dao {
 	            con.close();
 	        }
 	    }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 public OnlineOrderDetails getTicketById(int orderId) throws ClassNotFoundException, SQLException {
+		    String sql = "SELECT * FROM Virtual_Event_platform.OnlineEventTicketBook WHERE id = ?";
+		    
+		    try (Connection con = getconnect();
+		         PreparedStatement ps = con.prepareStatement(sql)) {
+
+		        ps.setInt(1, orderId);
+		        ResultSet rs = ps.executeQuery();
+
+		        if (rs.next()) {
+		            OnlineOrderDetails ticket = new OnlineOrderDetails();
+		            ticket.setId(rs.getInt("id"));
+		            ticket.setFirstName(rs.getString("first_name"));
+		            ticket.setLastName(rs.getString("last_name"));
+		            ticket.setEmail(rs.getString("email"));
+		            ticket.setAddress(rs.getString("address"));
+		            ticket.setCountry(rs.getString("country"));
+		            ticket.setState(rs.getString("state"));
+		            ticket.setCity(rs.getString("city"));
+		            ticket.setPinCode(rs.getInt("pin_code"));
+		            ticket.setEventImage(rs.getString("event_image"));
+		            ticket.setEventName(rs.getString("event_name"));
+		            ticket.setEventCategory(rs.getString("event_category"));
+		            ticket.setEventDate(rs.getDate("event_date"));
+		            ticket.setEventTime(rs.getTime("event_time"));
+		            ticket.setEventDuration(rs.getInt("event_duration"));
+		            ticket.setEventDescription(rs.getString("event_description"));
+		            ticket.setEventHost(rs.getString("event_host"));
+		            ticket.setQuantity(rs.getInt("quantity"));
+		            ticket.setTotal(rs.getInt("total"));
+
+		            ticket.setEventCardNumber(rs.getString("card_number"));
+		            ticket.setEventExpiryDate(rs.getDate("expiry_date"));
+		            ticket.setCvv(rs.getInt("cvv"));
+		            // Set other properties as needed
+
+
+		            return ticket;
+		        } else {
+		            return null;  // No record found for the given ID
+		        }
+		    }
+		}
 	}

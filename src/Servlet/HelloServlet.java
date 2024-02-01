@@ -72,6 +72,8 @@ public class HelloServlet extends HttpServlet {
 
             if (rowsAffected > 0) {
                 System.out.println("Data inserted successfully.");
+                response.sendRedirect("booking_confirmed.jsp");
+
                 // Add any additional logic or response handling if needed
             } else {
                 System.out.println("Failed to insert data. No rows affected.");

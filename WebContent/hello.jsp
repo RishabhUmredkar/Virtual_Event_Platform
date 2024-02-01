@@ -6,13 +6,7 @@
 <body>
 
 <%
-    Integer insertedId = (Integer) request.getAttribute("insertedId");
-
-    if (insertedId != null) {
-        out.print("Inserted ID: " + insertedId);
-    } else {
-        out.print("No ID available.");
-    }
+   
 %>
 
 </body>
