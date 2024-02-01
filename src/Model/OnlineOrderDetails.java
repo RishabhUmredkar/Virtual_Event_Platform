@@ -24,6 +24,10 @@ public class OnlineOrderDetails {
 	    private String eventHost;
 	    private int quantity;
 	    private int total;
+	    private String eventCardNumber;
+	    private java.sql.Date eventExpiryDate;
+	    private int cvv;
+
 		public OnlineOrderDetails() {
 			super();
 			// TODO Auto-generated constructor stub
@@ -166,6 +170,38 @@ public class OnlineOrderDetails {
 			this.quantity = quantity;
 			this.total = total;
 		}
+		
+		
+		
+		
+		public OnlineOrderDetails(int id, String firstName, String lastName, String email, String address,
+				String country, String state, String city, int pinCode, String eventImage, String eventName,
+				String eventCategory, Date eventDate, Time eventTime, int eventDuration, String eventDescription,
+				String eventHost, int quantity, int total, String eventCardNumber, Date eventExpiryDate, int cvv) {
+			super();
+			this.id = id;
+			this.firstName = firstName;
+			this.lastName = lastName;
+			this.email = email;
+			this.address = address;
+			this.country = country;
+			this.state = state;
+			this.city = city;
+			this.pinCode = pinCode;
+			this.eventImage = eventImage;
+			this.eventName = eventName;
+			this.eventCategory = eventCategory;
+			this.eventDate = eventDate;
+			this.eventTime = eventTime;
+			this.eventDuration = eventDuration;
+			this.eventDescription = eventDescription;
+			this.eventHost = eventHost;
+			this.quantity = quantity;
+			this.total = total;
+			this.eventCardNumber = eventCardNumber;
+			this.eventExpiryDate = eventExpiryDate;
+			this.cvv = cvv;
+		}
 		public int getId() {
 			return id;
 		}
@@ -280,6 +316,27 @@ public class OnlineOrderDetails {
 		public void setTotal(int total) {
 			this.total = total;
 		}
+		
+		
+		public String getEventCardNumber() {
+			return eventCardNumber;
+		}
+		public void setEventCardNumber(String eventCardNumber) {
+			this.eventCardNumber = eventCardNumber;
+		}
+		public java.sql.Date getEventExpiryDate() {
+			return eventExpiryDate;
+		}
+
+		public void setEventExpiryDate(java.sql.Date eventExpiryDate) {
+		    this.eventExpiryDate = eventExpiryDate;
+		}
+		public int getCvv() {
+			return cvv;
+		}
+		public void setCvv(int cvv) {
+			this.cvv = cvv;
+		}
 		@Override
 		public String toString() {
 			return "OnlineOrderDetails [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
@@ -287,7 +344,9 @@ public class OnlineOrderDetails {
 					+ ", pinCode=" + pinCode + ", eventImage=" + eventImage + ", eventName=" + eventName
 					+ ", eventCategory=" + eventCategory + ", eventDate=" + eventDate + ", eventTime=" + eventTime
 					+ ", eventDuration=" + eventDuration + ", eventDescription=" + eventDescription + ", eventHost="
-					+ eventHost + ", quantity=" + quantity + ", total=" + total + "]";
+					+ eventHost + ", quantity=" + quantity + ", total=" + total + ", eventCardNumber=" + eventCardNumber
+					+ ", eventExpiryDate=" + eventExpiryDate + ", cvv=" + cvv + "]";
 		}	   
+		
 		
 }
