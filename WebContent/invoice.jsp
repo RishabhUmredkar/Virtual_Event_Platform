@@ -179,7 +179,9 @@
 												<li>0000000001</li>
 											</ul>
 											<div class="QR-scanner">
-												<img src="images/qr.png" alt="QR-Ticket-Scanner">
+												<label for="text-input">Enter text:</label>
+												    <input type="text" id="text-input" value="<%=ticket.getSomeValueForQRCode()%>" oninput="generateQRCode()">
+												    <div id="qr-code"></div>					
 											</div>
 											<p>Powered by Barren</p>
 										</div>
@@ -204,6 +206,8 @@
 	<script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>	
 	<script src="js/custom.js"></script>
 	<script src="js/night-mode.js"></script>
+	<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+	
 <%
 
   } else {
