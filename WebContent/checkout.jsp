@@ -339,15 +339,61 @@
 												<label class="form-label">Country*</label>																	
 													<select class="selectpicker" data-size="5" title="Nothing selected" data-live-search="true" name="country">
 													<option value="Algeria">Algeria</option>
-												
+													<option value="Argentina">Argentina</option>
+													<option value="Australia" selected="">Australia</option>
+													<option value="Austria">Austria (Österreich)</option>
+													<option value="Belgium">Belgium (België)</option>
+													<option value="Bolivia">Bolivia</option>
+													<option value="Brazil">Brazil</option>
+													<option value="Canada">Canada</option>
+													<option value="Chile">Chile</option>
+													<option value="Colombia">Colombia</option>
+													<option value="Costa Rica">Costa Rica</option>
+													<option value="Cyprus">Cyprus</option>
+													<option value="Czech Republic">Czech Republic</option>
+													<option value="Denmark">Denmark</option>
+													<option value="Dominican Republic">Dominican Republic</option>
+													<option value="Estonia">Estonia</option>
+													<option value="Finland">Finland</option>
+													<option value="France">France</option>
+													<option value="Germany">Germany</option>
+													<option value="Greece">Greece</option>
+													<option value="Hong Kong">Hong Kong</option>
+													<option value="Iceland">Iceland</option>
+													<option value="India">India</option>
+													<option value="Indonesia">Indonesia</option>
+													<option value="Ireland">Ireland</option>
+													<option value="Israel">Israel</option>
+													<option value="Italy">Italy</option>
+													<option value="Japan">Japan</option>
+													<option value="Latvia">Latvia</option>
+													<option value="Lithuania">Lithuania</option>
+													<option value="Luxembourg">Luxembourg</option>
+													<option value="Malaysia">Malaysia</option>
+													<option value="Mexico">Mexico</option>
+													<option value="Nepal">Nepal</option>
+													<option value="Netherlands">Netherlands</option>
 													<option value="New Zealand">New Zealand</option>
 													<option value="Norway">Norway</option>
+													<option value="Paraguay">Paraguay</option>
+													<option value="Peru">Peru</option>
+													<option value="Philippines">Philippines</option>
+													<option value="Poland">Poland</option>
+													<option value="Portugal">Portugal</option>
+													<option value="Singapore">Singapore</option>
+													<option value="Slovakia">Slovakia</option>
+													<option value="Slovenia">Slovenia</option>
+													<option value="South Africa">South Africa</option>
+													<option value="South Korea">South Korea</option>
+													<option value="Spain">Spain</option>
+													<option value="Sweden">Sweden</option>
+													<option value="Switzerland">Switzerland</option>
 													<option value="Tanzania">Tanzania</option>
 													<option value="Thailand">Thailand</option>
 													<option value="Turkey">Turkey</option>
 													<option value="United Kingdom">United Kingdom</option>
 													<option value="United States">United States</option>
-													<option value="Vietnam">Vietnam</option>																					
+													<option value="Vietnam">Vietnam</option>																						
 												</select>
 											</div>
 										</div>
