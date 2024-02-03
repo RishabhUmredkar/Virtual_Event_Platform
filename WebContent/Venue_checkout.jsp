@@ -300,6 +300,8 @@
                                 <%
                                     HttpSession session1 = request.getSession();
                                     int quantity = Integer.parseInt(request.getParameter("quantity"));
+                                    System.out.println(quantity);
+
                                     Integer id = (Integer) session1.getAttribute("id");
                                     String email = (String) session.getAttribute("email");
                                     RegisterUser user = new UserDao().getOneUserByEmail(email);
@@ -313,7 +315,7 @@
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">First Name*</label>
-                            <input class="form-control h_50" type="text" placeholder="" value="<%= user.getFirst_name() %>" disabled>
+                            <input class="form-control h_50" type="text" placeholder="" value="<%=user.getFirst_name() %>" disabled>
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-12">
@@ -469,7 +471,7 @@
 							<div class="order-summary-content p_30">
 								<div class="event-order-dt">
 									<div class="event-thumbnail-img">
-										<img src="Online_Event_Image/<%= event.getEvent_image() %>" alt="">
+										<img src="Venue_Event_Image/<%= event.getEvent_image() %>" alt="">
 									</div>
 									<div class="event-order-dt-content">
 										<h5><%= event.getEvent_name() %></h5>

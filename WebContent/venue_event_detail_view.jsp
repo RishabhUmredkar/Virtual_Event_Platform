@@ -46,6 +46,8 @@
 	
 <%
     int id = Integer.parseInt(request.getParameter("id"));
+System.out.println(id);
+
 	Venue_Event_Dao OD = new Venue_Event_Dao();
 	VenueEvent event = OD.getOneEvent(id);
     System.out.println(event);
@@ -276,6 +278,7 @@
 				</div>
 			</div>
 		</div>
+		<form action="Venue_checkout.jsp" method="post">
 		<div class="event-dt-block p-80">
 			<div class="container">
 				<div class="row">
@@ -379,7 +382,7 @@
 								
 							</div>
 							<div class="booking-btn">
-								<a href="Venue_checkout.jsp" class="main-btn btn-hover w-100">Book Now</a>
+								<button type="submit" class="main-btn btn-hover w-100">Book Now</a>
 							</div>
 						</div>
 					</div>
@@ -435,6 +438,7 @@
 				</div>
 			</div>
 		</div>
+		</form>
 	</div>
 	<!-- Body End-->
 	<!-- Footer Start-->
