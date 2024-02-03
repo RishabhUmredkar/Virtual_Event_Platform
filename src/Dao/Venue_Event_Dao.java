@@ -103,4 +103,133 @@ public class Venue_Event_Dao {
 
         return searchResults;
     }
+    
+    public List<VenueEvent> getTodayEventData() {
+        String sql = "SELECT * FROM Venue_Event_ticket WHERE DATE(event_date) = ? ORDER BY event_date ASC";
+        List<VenueEvent> le = new ArrayList<>();
+
+        try (Connection con = getConnect();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            // Set today's date as a parameter
+            ps.setDate(1, java.sql.Date.valueOf(java.time.LocalDate.now()));
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    VenueEvent e = new VenueEvent(
+                            rs.getInt(1),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getDate(4),
+                            rs.getTime(5),
+                            rs.getInt(6),
+                            rs.getString(7),
+                            rs.getString(8),
+                            rs.getString(9),
+                            rs.getString(10),
+                            rs.getString(11),
+                            rs.getString(12),
+                            rs.getString(13),
+                            rs.getString(14),
+                            rs.getInt(15),
+                            rs.getInt(16),
+                            rs.getInt(17)
+                    );
+
+                    le.add(e);
+                }
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+
+        return le;
+    }
+
+    
+
+    public List<VenueEvent> getAllEventDataByDate(java.sql.Date filterDate) {
+        String sql = "SELECT * FROM Venue_Event_ticket WHERE DATE(event_date) = ? ORDER BY event_date ASC";
+        List<VenueEvent> le = new ArrayList<>();
+
+        try (Connection con = getConnect();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            // Set the provided date as a parameter
+            ps.setDate(1, filterDate);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    VenueEvent e = new VenueEvent(
+                            rs.getInt(1),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getDate(4),
+                            rs.getTime(5),
+                            rs.getInt(6),
+                            rs.getString(7),
+                            rs.getString(8),
+                            rs.getString(9),
+                            rs.getString(10),
+                            rs.getString(11),
+                            rs.getString(12),
+                            rs.getString(13),
+                            rs.getString(14),
+                            rs.getInt(15),
+                            rs.getInt(16),
+                            rs.getInt(17)
+                    );
+
+                    le.add(e);
+                }
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+
+        return le;
+    }
+    
+    public VenueEvent getOneEvent(int eventId) {
+        String sql = "SELECT * FROM Venue_Event_ticket WHERE id = ?";
+        VenueEvent event = null;
+
+        try (Connection con = getConnect();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, eventId);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    event = new VenueEvent(
+                            rs.getInt(1),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getDate(4),
+                            rs.getTime(5),
+                            rs.getInt(6),
+                            rs.getString(7),
+                            rs.getString(8),
+                            rs.getString(9),
+                            rs.getString(10),
+                            rs.getString(11),
+                            rs.getString(12),
+                            rs.getString(13),
+                            rs.getString(14),
+                            rs.getInt(15),
+                            rs.getInt(16),
+                            rs.getInt(17)
+                    );
+                }
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+
+        return event;
+    }
+
 }

@@ -109,7 +109,10 @@
 										<li><a class="dropdown-item" href="contact_us.jsp">Contact Us</a></li>
 									</ul>
 								</li>
-								<li class="nav-item dropdown">
+								
+								
+								
+							<!-- 	<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 										Pages
 									</a>
@@ -152,7 +155,10 @@
 										<li><a class="dropdown-item" href="term_and_conditions.jsp">Terms &amp; Conditions</a></li>
 										<li><a class="dropdown-item" href="privacy_policy.jsp">Privacy Policy</a></li>
 									</ul>
-								</li>
+								</li> -->
+								
+								
+								
 							</ul>
 						</div>
 						<div class="offcanvas-footer">
@@ -213,7 +219,7 @@
 					<div class="col-xl-7 col-lg-9 col-md-10">
 						<div class="hero-banner-content">
 							<h2>The Easiest and Most Powerful Online Event Booking and Ticketing System</h2>
-							<p>Barren is an all-in-one event ticketing platform for event organisers, promoters, and managers. Easily create, promote and manage your events of any type and size.</p>
+							<p>Rishabh is an all-in-one event ticketing platform for event organisers, promoters, and managers. Easily create, promote and manage your events of any type and size.</p>
 							<a href="explore_events.jsp" class="main-btn btn-hover">Explore Event <i class="fa-solid fa-arrow-right ms-3"></i></a>
 						</div>
 					</div>
@@ -249,14 +255,14 @@
 												<div class="main-card mt-4">
 										
 											<div class="event-thumbnail">
-												<a href="online_event_detail_view.jsp" class="thumbnail-img">
+												<a href="online_event_detail_view.jsp?id=<%=event.getId() %>" class="thumbnail-img">
                             				<img src="Online_Event_Image/<%= event.getEvent_image() %>" alt="fdgdf">
 												</a>
 												<span class="" title="Bookmark"></span>
 											</div>
 											
 											<div class="event-content">
-												<a href="venue_event_detail_view.jsp" class="event-title"><%= event.getEvent_name() %></a>
+												<a href="online_event_detail_view.jsp?id=<%=event.getId() %>" class="event-title"><%= event.getEvent_name() %></a>
 												<div class="duration-price-remaining">
 													<span class="duration-price">Rs. <%= event.getEvent_price() %></span>
 													<span class="remaining"></span>
@@ -354,7 +360,7 @@
 				<div class="row">
 					<div class="col-lg-10">
 						<div class="main-title">
-							<h3>Host Engaging Online and Venue Events with Barren</h3>
+							<h3>Host Engaging Online and Venue Events with Rishabh</h3>
 							<p>Organise venue events and host online events with unlimited possibilities using our built-in virtual event platform. Build a unique event experience for you and your attendees.</p>
 						</div>
 					</div>
@@ -379,7 +385,7 @@
 												<img src="images/icons/webinar.png" alt="">
 											</div>
 											<h4>Webinar</h4>
-											<p>Webinars tend to be one-way events. Barren helps to make them more engaging.</p>
+											<p>Webinars tend to be one-way events. Rishabh helps to make them more engaging.</p>
 										</div>
 									</div>
 								</div>
@@ -428,7 +434,7 @@
 					<div class="col-lg-10">
 						<div class="main-title">
 							<h3>No Feature Overload, Get Exactly What You Need</h3>
-							<p>As well as being the most affordable online-based event registration tool and one of the best online event ticketing systems in Australia, Barren is super easy-to-use and built with a simplistic layout which is totally convenient for the organisers to operate.</p>
+							<p>As well as being the most affordable online-based event registration tool and one of the best online event ticketing systems in Australia, Rishabh is super easy-to-use and built with a simplistic layout which is totally convenient for the organisers to operate.</p>
 						</div>
 					</div>
 					<div class="col-lg-12">

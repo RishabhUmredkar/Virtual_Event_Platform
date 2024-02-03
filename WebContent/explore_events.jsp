@@ -311,14 +311,14 @@
 											<div class="main-card mt-4">
 										
 											<div class="event-thumbnail">
-												<a href="venue_event_detail_view.jsp" class="thumbnail-img">
+												<a href="venue_event_detail_view.jsp?id=<%=event.getId() %>" class="thumbnail-img">
 													<img src="Venue_Event_Image/<%= event.getEvent_image() %>" alt="fdgdf">
 												</a>
 												<span class="" title="Bookmark"></span>
 											</div>
 											
 											<div class="event-content">
-												<a href="venue_event_detail_view.jsp" class="event-title"><%= event.getEvent_name() %></a>online<Br>
+												<a href="venue_event_detail_view.jsp?id=<%=event.getId() %>" class="event-title"><%= event.getEvent_name() %></a>online<Br>
 												<%= event.getEvent_description()%>
 												<div class="duration-price-remaining">
 													<span class="duration-price">Rs. <%= event.getEvent_price() %></span>

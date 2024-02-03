@@ -1,7 +1,19 @@
 <%@ page import="javax.servlet.http.Cookie" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="Dao.Venue_Event_Dao"%>
+<%@page import="Model.VenueEvent"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+<%@ page import="java.util.List" %>
+<%@ page import="Model.OnlineEvent" %>
+<%@ page import="Model.Online_Event_Ticket" %>
 
-<html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">﻿
+<%@ page import="Dao.Online_Event_Dao" %>
+<%@ page import="java.sql.Date" %>
+<%@ page import="java.sql.Time" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">
 
 	
 		<meta charset="utf-8">
@@ -32,6 +44,29 @@
 		
 	<c:if test="${not empty cookie.email.value}">
 	
+<%
+    int id = Integer.parseInt(request.getParameter("id"));
+	Venue_Event_Dao OD = new Venue_Event_Dao();
+	VenueEvent event = OD.getOneEvent(id);
+    System.out.println(event);
+
+     String email = (String) session.getAttribute("email");
+	System.out.println("User login ho gya112121fds  "+email); 
+	session.setAttribute("id", id);
+
+
+    String eventName = event.getEvent_name();
+    String category = event.getEvent_category();
+    
+    // Convert Date to String
+
+    int duration = event.getEvent_duration();
+    String image = event.getEvent_image(); 
+    int price =  event.getEvent_price(); 
+    String description =  event.getEvent_description();
+    String hosting = event.getEvent_state();
+    int totalTickets = event.getEvent_total_tickets();
+%>
 
 
 	<!-- Header Start-->
@@ -227,7 +262,7 @@
 								<span class="event-date">30</span>
 							</div>
 							<div class="event-top-dt">
-								<h3 class="event-main-title">Spring Showcase Saturday April 30th 2022 at 7pm</h3>
+								<h3 class="event-main-title"><%=event.getEvent_name() %></h3>
 								<div class="event-top-info-status">
 									<span class="event-type-name"><i class="fa-solid fa-location-dot"></i>Venue Event</span>
 									<span class="event-type-name details-hr">Starts on <span class="ev-event-date">Sat, Apr 30, 2022 11:30 AM</span></span>
