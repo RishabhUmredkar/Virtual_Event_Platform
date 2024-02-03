@@ -59,15 +59,39 @@
     String category = event.getEvent_category();
     
     // Convert Date to String
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    String dateStr = dateFormat.format(event.getEvent_date());
+
+    // Convert Time to String
+    SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+    String timeStr = timeFormat.format(event.getEvent_time());
 
     int duration = event.getEvent_duration();
-    String image = event.getEvent_image(); 
-    int price =  event.getEvent_price(); 
+    String image = event.getEvent_image();
     String description =  event.getEvent_description();
-    String hosting = event.getEvent_state();
+    String event_venue = event.getEvent_venue();
+    String event_address1 = event.getEvent_address1();
+    String event_address2 = event.getEvent_address2();
+    String event_country = event.getEvent_country();
+    String event_state = event.getEvent_state();
+    String event_city = event.getEvent_city();
+    int event_pin_code =  event.getEvent_pin_code(); 
+    int price =  event.getEvent_price(); 
     int totalTickets = event.getEvent_total_tickets();
+    
 %>
 
+<%
+    // Assuming the correct class name is Online_Event_Ticket
+    // Assuming the correct class name is VenueEvent
+    VenueEvent oet = new VenueEvent(
+        email, eventName, category, Date.valueOf(dateStr), Time.valueOf(timeStr),
+        duration, image, description, event_venue, event_address1, event_address2,
+        event_country, event_state, event_city, event_pin_code, price, totalTickets
+    );
+%>
+
+%>
 
 	<!-- Header Start-->
 		<header class="header">
@@ -258,15 +282,15 @@
 					<div class="col-xl-12 col-lg-12 col-md-12">
 						<div class="event-top-dts">
 							<div class="event-top-date">
-								<span class="event-month">Apr</span>
-								<span class="event-date">30</span>
+								<span class="event-month"><%=event.getEvent_date() %></span>
+								<span class="event-date">ID : <%=event.getId() %></span>
 							</div>
 							<div class="event-top-dt">
 								<h3 class="event-main-title"><%=event.getEvent_name() %></h3>
 								<div class="event-top-info-status">
-									<span class="event-type-name"><i class="fa-solid fa-location-dot"></i>Venue Event</span>
-									<span class="event-type-name details-hr">Starts on <span class="ev-event-date">Sat, Apr 30, 2022 11:30 AM</span></span>
-									<span class="event-type-name details-hr">2h</span>
+									<span class="event-type-name"><i class="fa-solid fa-video"></i>Venue Event</span>
+									<span class="event-type-name details-hr">Starts on <span class="ev-event-date"><%=event.getEvent_date() %> , <%=event.getEvent_time() %></span></span>
+									<span class="event-type-name details-hr"><%=event.getEvent_duration() %> min.</span>
 								</div>
 							</div>
 						</div>
@@ -274,7 +298,7 @@
 					<div class="col-xl-8 col-lg-7 col-md-12">
 						<div class="main-event-dt">
 							<div class="event-img">
-								<img src="images/event-imgs/big-2.jpg" alt="">		
+										<img src="Venue_Event_Image/<%= event.getEvent_image() %>" alt="">
 							</div>
 							<div class="share-save-btns dropdown">
 								<button class="sv-btn me-2"><i class="fa-regular fa-bookmark me-2"></i>Save</button>
@@ -288,8 +312,7 @@
 							</div>
 							<div class="main-event-content">
 								<h4>About This Event</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor justo, sodales mattis orci et, mattis faucibus est. Nulla semper consectetur sapien a tempor. Ut vel lacus lorem. Nulla mauris massa, pharetra a mi ut, mattis euismod libero. Ut pretium bibendum urna nec egestas. Etiam tempor vehicula libero. Aenean cursus venenatis orci, ac porttitor leo porta sit amet. Nulla eleifend mollis enim sed rutrum. Nunc cursus ex a ligula consequat aliquet. Donec semper tellus ac ante vestibulum, vitae varius leo mattis. In vestibulum blandit tempus. Etiam elit turpis, volutpat hendrerit varius ut, posuere a sapien. Maecenas molestie bibendum finibus. Nulla euismod neque vel sem hendrerit faucibus. Nam sit amet metus sollicitudin, luctus eros at, consectetur libero.</p>
-								<p>In malesuada luctus libero sed gravida. Suspendisse nunc est, maximus vel viverra nec, suscipit non massa. Maecenas efficitur vestibulum pellentesque. Ut finibus ullamcorper congue. Sed ut libero sit amet lorem venenatis facilisis. Mauris egestas tortor vel massa auctor, eget gravida mauris cursus. Etiam elementum semper fermentum. Suspendisse potenti. Morbi lobortis leo urna, non laoreet enim ultricies id. Integer id felis nec sapien consectetur porttitor. Proin tempor mauris in odio iaculis semper. Cras ultricies nulla et dui viverra, eu convallis orci fermentum.</p>
+								<p><%=event.getEvent_description() %></p>
 							</div>							
 						</div>
 					</div>
@@ -298,29 +321,14 @@
 							<div class="bp-title">
 								<h4>Event Details</h4>
 							</div>
-							<div class="time-left">
-								<div class="countdown">
-									<div class="countdown-item">
-										<span id="day"></span>days
-									</div>  
-									<div class="countdown-item">							
-										<span id="hour"></span>Hours
-									</div>
-									<div class="countdown-item">
-										<span id="minute"></span>Minutes
-									</div> 
-									<div class="countdown-item">
-										<span id="second"></span>Seconds
-									</div>														
-								</div>
-							</div>
+							
 							<div class="event-dt-right-group mt-5">
 								<div class="event-dt-right-icon">
 									<i class="fa-solid fa-circle-user"></i>
 								</div>
 								<div class="event-dt-right-content">
 									<h4>Organised by</h4>
-									<h5>The Teeny Rabbit</h5>
+									<h5><%=event.getEvent_category() %></h5>
 									<a href="attendee_profile_view.jsp">View Profile</a>
 								</div>
 							</div>
@@ -330,7 +338,7 @@
 								</div>
 								<div class="event-dt-right-content">
 									<h4>Date and Time</h4>
-									<h5>Sat, Apr 30, 2022 11:30 AM</h5>
+									<h5><%=event.getEvent_date() %> , <%=event.getEvent_time() %></h5>
 									<div class="add-to-calendar">
 										<a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 											<i class="fa-regular fa-calendar-days me-3"></i>Add to Calendar
@@ -350,30 +358,28 @@
 								</div>
 								<div class="event-dt-right-content">
 									<h4>Location</h4>
-									<h5 class="mb-0">00 Challis St, Newport, Victoria, 0000, Australia</h5>
+									<h5 class="mb-0"><%=event.getEvent_address1() %>, <%=event.getEvent_city() %> <%=event.getEvent_state() %>,  <%=event.getEvent_country() %>  <%=event.getEvent_pin_code() %></h5>
 									<a href="#"><i class="fa-solid fa-location-dot me-2"></i>View Map</a>
 								</div>
 							</div>
 							<div class="select-tickets-block">
 								<h6>Select Tickets</h6>
 								<div class="select-ticket-action">
-									<div class="ticket-price">AUD $75.00</div>
+									<div class="ticket-price">Rs. <%=event.getEvent_price() %></div>
 									<div class="quantity">
-										<div class="counter">
-											<span class="down" onclick="decreaseCount(event, this)">-</span>
-											<input type="text" value="0">
-											<span class="up" onclick="increaseCount(event, this)">+</span>
-										</div>
-									</div>
+						                <div class="counter">
+						                    <span class="down" onclick="decreaseCount(event, this)">-</span>
+						                    <!-- Add a hidden input field to store the quantity -->
+						                    <input type="hidden" name="quantity" id="quantity" value="0">
+						                    <input type="text" value="0" oninput="updateQuantity(this.value)">
+						                    <span class="up" onclick="increaseCount(event, this)">+</span>
+						                </div>
+						            </div>
 								</div>
-								<p>2 x pair hand painted leather earrings 1 x glass of bubbles / or coffee Individual grazing box / fruit cup</p>
-								<div class="xtotel-tickets-count">
-									<div class="x-title">1x Ticket(s)</div>
-									<h4>AUD <span>$0.00</span></h4>
-								</div>
+								
 							</div>
 							<div class="booking-btn">
-								<a href="checkout.jsp" class="main-btn btn-hover w-100">Book Now</a>
+								<a href="Venue_checkout.jsp" class="main-btn btn-hover w-100">Book Now</a>
 							</div>
 						</div>
 					</div>
@@ -384,168 +390,45 @@
 								<a href="explore_events.jsp" class="view-all-link">Browse All<i class="fa-solid fa-right-long ms-2"></i></a>
 							</div>
 							<div class="owl-carousel moreEvents-slider owl-theme">
+								<%
+									    List<VenueEvent> todayEvents = new Venue_Event_Dao().getAllEventData();
+									    int count = 0;
+										System.out.print(email);
+									for (VenueEvent event1 : todayEvents) { %>
+									
 								<div class="item">
 									<div class="main-card mt-4">
 										<div class="event-thumbnail">
-											<a href="venue_event_detail_view.jsp" class="thumbnail-img">
-												<img src="images/event-imgs/img-1.jpg" alt="">
+												<a href="venue_event_detail_view.jsp?id=<%=event1.getId() %>" class="thumbnail-img">
+                            				<img src="Venue_Event_Image/<%= event1.getEvent_image() %>" alt="fdgdf">
 											</a>
-											<span class="bookmark-icon" title="Bookmark"></span>
 										</div>
+										
+										
 										<div class="event-content">
-											<a href="venue_event_detail_view.jsp" class="event-title">A New Way Of Life</a>
-											<div class="duration-price-remaining">
-												<span class="duration-price">AUD $100.00*</span>
-												<span class="remaining"></span>
-											</div>
-										</div>
-										<div class="event-footer">
-											<div class="event-timing">
-												<div class="publish-date">
-													<span><i class="fa-solid fa-calendar-day me-2"></i>15 Apr</span>
-													<span class="dot"><i class="fa-solid fa-circle"></i></span>
-													<span>Fri, 3.45 PM</span>
+												<a href="venue_event_detail_view.jsp?id=<%=event1.getId() %>" class="event-title"><%= event1.getEvent_name() %></a>
+												<div class="duration-price-remaining">
+													<span class="duration-price">Rs. <%= event1.getEvent_price() %></span>
+													<span class="remaining"></span>
 												</div>
-												<span class="publish-time"><i class="fa-solid fa-clock me-2"></i>1h</span>
 											</div>
-										</div>
+
+									<div class="event-footer">
+												<div class="event-timing">
+													<div class="publish-date">
+														<span><i class="fa-solid fa-calendar-day me-2"></i><%= event1.getEvent_date() %></span>
+														<span class="dot"><i class="fa-solid fa-circle"></i></span>
+														<span><%= event1.getEvent_time()%></span>
+													</div>
+													<span class="publish-time"><i class="fa-solid fa-clock me-2"></i><%= event1.getEvent_duration()%> min.</span>
+												</div>
+											</div>
 									</div>
 								</div>
-								<div class="item">
-									<div class="main-card mt-4">
-										<div class="event-thumbnail">
-											<a href="online_event_detail_view.jsp" class="thumbnail-img">
-												<img src="images/event-imgs/img-2.jpg" alt="">
-											</a>
-											<span class="bookmark-icon" title="Bookmark"></span>
-										</div>
-										<div class="event-content">
-											<a href="online_event_detail_view.jsp" class="event-title">Earrings Workshop with Bronwyn David</a>
-											<div class="duration-price-remaining">
-												<span class="duration-price">AUD $75.00*</span>
-												<span class="remaining"><i class="fa-solid fa-ticket fa-rotate-90"></i>6 Remaining</span>
-											</div>
-										</div>
-										<div class="event-footer">
-											<div class="event-timing">
-												<div class="publish-date">
-													<span><i class="fa-solid fa-calendar-day me-2"></i>30 Apr</span>
-													<span class="dot"><i class="fa-solid fa-circle"></i></span>
-													<span>Sat, 11.20 PM</span>
-												</div>
-												<span class="publish-time"><i class="fa-solid fa-clock me-2"></i>2h</span>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="item">
-									<div class="main-card mt-4">
-										<div class="event-thumbnail">
-											<a href="venue_event_detail_view.jsp" class="thumbnail-img">
-												<img src="images/event-imgs/img-3.jpg" alt="">
-											</a>
-											<span class="bookmark-icon" title="Bookmark"></span>
-										</div>
-										<div class="event-content">
-											<a href="venue_event_detail_view.jsp" class="event-title">Spring Showcase Saturday April 30th 2022 at 7pm</a>
-											<div class="duration-price-remaining">
-												<span class="duration-price">Free*</span>
-												<span class="remaining"></span>
-											</div>
-										</div>
-										<div class="event-footer">
-											<div class="event-timing">
-												<div class="publish-date">
-													<span><i class="fa-solid fa-calendar-day me-2"></i>1 May</span>
-													<span class="dot"><i class="fa-solid fa-circle"></i></span>
-													<span>Sun, 4.30 PM</span>
-												</div>
-												<span class="publish-time"><i class="fa-solid fa-clock me-2"></i>3h</span>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="item">
-									<div class="main-card mt-4">
-										<div class="event-thumbnail">
-											<a href="online_event_detail_view.jsp" class="thumbnail-img">
-												<img src="images/event-imgs/img-4.jpg" alt="">
-											</a>
-											<span class="bookmark-icon" title="Bookmark"></span>
-										</div>
-										<div class="event-content">
-											<a href="online_event_detail_view.jsp" class="event-title">Shutter Life</a>
-											<div class="duration-price-remaining">
-												<span class="duration-price">AUD $85.00</span>
-												<span class="remaining"><i class="fa-solid fa-ticket fa-rotate-90"></i>7 Remaining</span>
-											</div>
-										</div>
-										<div class="event-footer">
-											<div class="event-timing">
-												<div class="publish-date">
-													<span><i class="fa-solid fa-calendar-day me-2"></i>1 May</span>
-													<span class="dot"><i class="fa-solid fa-circle"></i></span>
-													<span>Sun, 5.30 PM</span>
-												</div>
-												<span class="publish-time"><i class="fa-solid fa-clock me-2"></i>1h</span>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="item">
-									<div class="main-card mt-4">
-										<div class="event-thumbnail">
-											<a href="venue_event_detail_view.jsp" class="thumbnail-img">
-												<img src="images/event-imgs/img-5.jpg" alt="">
-											</a>
-											<span class="bookmark-icon" title="Bookmark"></span>
-										</div>
-										<div class="event-content">
-											<a href="venue_event_detail_view.jsp" class="event-title">Friday Night Dinner at The Old Station May 27 2022</a>
-											<div class="duration-price-remaining">
-												<span class="duration-price">AUD $41.50*</span>
-												<span class="remaining"></span>
-											</div>
-										</div>
-										<div class="event-footer">
-											<div class="event-timing">
-												<div class="publish-date">
-													<span><i class="fa-solid fa-calendar-day me-2"></i>27 May</span>
-													<span class="dot"><i class="fa-solid fa-circle"></i></span>
-													<span>Fri, 12.00 PM</span>
-												</div>
-												<span class="publish-time"><i class="fa-solid fa-clock me-2"></i>5h</span>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="item">
-									<div class="main-card mt-4">
-										<div class="event-thumbnail">
-											<a href="venue_event_detail_view.jsp" class="thumbnail-img">
-												<img src="images/event-imgs/img-6.jpg" alt="">
-											</a>
-											<span class="bookmark-icon" title="Bookmark"></span>
-										</div>
-										<div class="event-content">
-											<a href="venue_event_detail_view.jsp" class="event-title">Step Up Open Mic Show</a>
-											<div class="duration-price-remaining">
-												<span class="duration-price">AUD $200.00*</span>
-												<span class="remaining"></span>
-											</div>
-										</div>
-										<div class="event-footer">
-											<div class="event-timing">
-												<div class="publish-date">
-													<span><i class="fa-solid fa-calendar-day me-2"></i>30 Jun</span>
-													<span class="dot"><i class="fa-solid fa-circle"></i></span>
-													<span>Thu, 4.30 PM</span>
-												</div>
-												<span class="publish-time"><i class="fa-solid fa-clock me-2"></i>1h</span>
-											</div>
-										</div>
-									</div>
-								</div>
+								<%} %>
+								
+							
+								
 							</div>
 						</div>
 					</div>

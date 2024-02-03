@@ -5,6 +5,7 @@ import java.sql.Time;
 
 public class VenueEvent {
     private int id;
+    private String email;
     private String event_name;
     private String event_category;
     private Date event_date;
@@ -31,6 +32,35 @@ public class VenueEvent {
     public VenueEvent(int id) {
 		super();
 		this.id = id;
+	}
+
+	public VenueEvent(String email) {
+		super();
+		this.email = email;
+	}
+
+	public VenueEvent(String email, String event_name, String event_category, Date event_date, Time event_time,
+			int event_duration, String event_image, String event_description, String event_venue, String event_address1,
+			String event_address2, String event_country, String event_state, String event_city, int event_pin_code,
+			int event_price, int event_total_tickets) {
+		super();
+		this.email = email;
+		this.event_name = event_name;
+		this.event_category = event_category;
+		this.event_date = event_date;
+		this.event_time = event_time;
+		this.event_duration = event_duration;
+		this.event_image = event_image;
+		this.event_description = event_description;
+		this.event_venue = event_venue;
+		this.event_address1 = event_address1;
+		this.event_address2 = event_address2;
+		this.event_country = event_country;
+		this.event_state = event_state;
+		this.event_city = event_city;
+		this.event_pin_code = event_pin_code;
+		this.event_price = event_price;
+		this.event_total_tickets = event_total_tickets;
 	}
 
 	public VenueEvent(int id, String event_name, String event_category, Date event_date, Time event_time,
@@ -115,6 +145,14 @@ public class VenueEvent {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getEvent_name() {

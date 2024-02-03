@@ -299,7 +299,7 @@
 					<div class="col-xl-8 col-lg-7 col-md-12">
 						<div class="main-event-dt">
 							<div class="event-img">
-								<img src="images/event-imgs/big-1.jpg" alt="">		
+										<img src="Online_Event_Image/<%= event.getEvent_image() %>" alt="">	
 							</div>
 							<div class="share-save-btns dropdown">
 								<button class="sv-btn me-2"><i class="fa-regular fa-bookmark me-2"></i>Save</button>
