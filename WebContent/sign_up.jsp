@@ -1,6 +1,7 @@
 <%@ page import="javax.servlet.http.Cookie" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
+<%@ page errorPage="Error.jsp" %>
 
 <!DOCTYPE html><html lang="en" class="h-100"><head>
 		<meta charset="utf-8">

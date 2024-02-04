@@ -8,6 +8,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="Model.OnlineEvent" %>
 <%@ page import="Dao.Online_Event_Dao" %>
+<%@ page errorPage="Error.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>

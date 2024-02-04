@@ -2,6 +2,7 @@
 <%@page import="Model.RegisterUser"%>
 <%@ page import="javax.servlet.http.Cookie" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page errorPage="Error.jsp" %>
 
 <!DOCTYPE html>
 <html lang="en">

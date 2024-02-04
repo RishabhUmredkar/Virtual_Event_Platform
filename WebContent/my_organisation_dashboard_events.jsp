@@ -8,6 +8,7 @@
 <%@page import="Dao.Venue_Event_Dao"%>
 <%@page import="Dao.Online_Event_Dao"%>
 <%@page import="Servlet.ProcessEventServlet"%>
+<%@ page errorPage="Error.jsp" %>
 
 
 <html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">

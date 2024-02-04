@@ -12,6 +12,8 @@
 <%@ page import="java.sql.Date" %>
 <%@ page import="java.sql.Time" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page errorPage="Error.jsp" %>
+
 <html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">
 
 	
@@ -42,6 +44,7 @@
 		<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">		
 		
 	
+<c:if test="${not empty cookie.email.value}">
 
 
 	<!-- Header Start-->
@@ -649,4 +652,9 @@ session.setAttribute("orderId", orderDetails.getId());
 	<script src="js/custom.js"></script>
 	<script src="js/night-mode.js"></script>
 
+</c:if>
+	
+<c:if test="${empty cookie.email.value}">
+    <c:redirect url="sign_up.jsp" />
+</c:if>
 </body></html>

@@ -4,6 +4,7 @@
 
 <%@page import="Dao.UserDao"%>
 <%@page import="Model.RegisterUser"%>
+<%@ page errorPage="Error.jsp" %>
 <html lang="en" class="h-100"><head>
  <style type="text/css">
      /* Add or update these styles in your CSS file or inline styles */

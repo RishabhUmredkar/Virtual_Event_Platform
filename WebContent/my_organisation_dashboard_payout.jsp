@@ -1,5 +1,6 @@
 <%@ page import="javax.servlet.http.Cookie" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page errorPage="Error.jsp" %>
 
 <html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">
 <c:if test="${not empty cookie.email.value}">
