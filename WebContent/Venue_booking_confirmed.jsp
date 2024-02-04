@@ -305,7 +305,7 @@
 												</div>
 											</div>
 										</div>
-										<a href="invoice.jsp" class="main-btn btn-hover h_50 w-100 mt-5"><i class="fa-solid fa-ticket rotate-icon me-3"></i>View Ticket</a>
+										<a href="Venue_invoice.jsp" class="main-btn btn-hover h_50 w-100 mt-5"><i class="fa-solid fa-ticket rotate-icon me-3"></i>View Ticket</a>
 									</div>
 								</div>
 							</div>
