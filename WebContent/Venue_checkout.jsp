@@ -581,7 +581,6 @@ try {
     out.println("An error occurred during order processing. Please try again.");
 }
 %>
-%>
 
 	</form>
 	user(First Name,Last Name,Email,Address,Country,State,City,pin code,image,event name,event price, date, time,duration description, event hosting , price, total ticket)

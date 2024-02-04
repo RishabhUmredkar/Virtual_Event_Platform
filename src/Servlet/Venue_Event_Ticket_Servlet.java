@@ -26,7 +26,7 @@ public class Venue_Event_Ticket_Servlet extends HttpServlet {
             String email = (String) session.getAttribute("email");
             Integer orderId = (Integer) session.getAttribute("orderId");
             System.out.println("orderId: " + orderId);
-
+           
             // Retrieve additional details from the request parameters
             String address = request.getParameter("address");
             String country = request.getParameter("country");
@@ -73,7 +73,7 @@ public class Venue_Event_Ticket_Servlet extends HttpServlet {
 
             if (rowsAffected > 0) {
                 System.out.println("Data inserted successfully.");
-                response.sendRedirect("booking_confirmed.jsp");
+                response.sendRedirect("Venue_booking_confirmed.jsp");
 
                 // Add any additional logic or response handling if needed
             } else {
