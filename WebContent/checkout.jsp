@@ -45,6 +45,19 @@
 
 
 	<!-- Header Start-->
+	
+	
+	  <%
+                                    HttpSession session1 = request.getSession();
+                                    int quantity = Integer.parseInt(request.getParameter("quantity"));
+                                    Integer id = (Integer) session1.getAttribute("id");
+                                    String email = (String) session.getAttribute("email");
+                                    RegisterUser user = new UserDao().getOneUserByEmail(email);
+                                    OnlineEvent event = new Online_Event_Dao().getOneEvent(id);
+                                    int total = quantity * event.getEvent_price();
+                                    System.out.println("ye hai id"+id);
+                                    System.out.println("ye hai mail id"+email);
+                                %>
 	<header class="header">
 		<div class="header-inner">
 			<nav class="navbar navbar-expand-lg bg-barren barren-head navbar fixed-top justify-content-sm-start pt-0 pb-0">
@@ -267,7 +280,7 @@
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
 									<li class="breadcrumb-item"><a href="explore_events.jsp">Explore Events</a></li>
-									<li class="breadcrumb-item"><a href="online_event_detail_view.jsp">Online Event Detail View</a></li>
+									<li class="breadcrumb-item"><a href="online_event_detail_view.jsp?id=<%=event.getId() %>">Online Event Detail View</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Checkout</li>
 								</ol>
 							</nav>
@@ -297,17 +310,7 @@
 								</div>
 									
 					<%-- Java code to retrieve user and event details --%>
-                                <%
-                                    HttpSession session1 = request.getSession();
-                                    int quantity = Integer.parseInt(request.getParameter("quantity"));
-                                    Integer id = (Integer) session1.getAttribute("id");
-                                    String email = (String) session.getAttribute("email");
-                                    RegisterUser user = new UserDao().getOneUserByEmail(email);
-                                    OnlineEvent event = new Online_Event_Dao().getOneEvent(id);
-                                    int total = quantity * event.getEvent_price();
-                                    System.out.println("ye hai id"+id);
-                                    System.out.println("ye hai mail id"+email);
-                                %>
+                              
 								<div class="bp-content bp-form">
 									<div class="row">
 										<div class="col-lg-6 col-md-12">

@@ -384,6 +384,28 @@ System.out.println(id);
 							<div class="booking-btn">
 								<button type="submit" class="main-btn btn-hover w-100">Book Now</a>
 							</div>
+							
+<!-- JavaScript to update the hidden input field -->
+<script>
+    function updateQuantity(value) {
+        // Update the hidden input field with the current quantity
+        document.getElementById("quantity").value = value;
+    }
+
+    function decreaseCount(event, element) {
+        // Implement your decrease logic
+        // ...
+        // After updating the quantity, call updateQuantity function
+        updateQuantity(updatedQuantity);
+    }
+
+    function increaseCount(event, element) {
+        // Implement your increase logic
+        // ...
+        // After updating the quantity, call updateQuantity function
+        updateQuantity(updatedQuantity);
+    }
+</script>
 						</div>
 					</div>
 					<div class="col-xl-12 col-lg-12 col-md-12">
