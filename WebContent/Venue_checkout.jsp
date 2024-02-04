@@ -1,11 +1,12 @@
 <%@ page import="javax.servlet.http.Cookie" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="Dao.Venue_Event_Dao" %>
-<%@ page import="Dao.Online_Event_Ticket_Dao" %>
+<%@ page import="Dao.Venue_Event_Ticket_Dao" %>
 <%@ page import="Model.VenueEvent" %>
 <%@ page import="Model.OnlineEvent" %>
 <%@ page import="Model.RegisterUser" %>
 <%@ page import="Model.OnlineOrderDetails" %>
+<%@ page import="Model.VenueOrderDetails" %>
 <%@ page import="Model.Online_Event_Ticket" %>
 <%@ page import="Dao.Online_Event_Dao" %>
 <%@ page import="Dao.UserDao" %>
@@ -233,7 +234,7 @@
 	</header>
 	<!-- Header End-->
 	<!-- Body Start-->
-    <form action="hello" method="post">
+    <form action="venueTicket" method="post">
 	
 	
 <%-- 
@@ -507,49 +508,81 @@
 			</div>
 		</div>
 	</div>
-	<%
-	request.setAttribute("firstName", user.getFirst_name());
-	request.setAttribute("lastName", user.getLast_name());
-	request.setAttribute("email", user.getEmail());
-	
-	
-	request.setAttribute("eventimage", event.getEvent_image());
-	request.setAttribute("eventName", event.getEvent_name());
-	request.setAttribute("eventCategory", event.getEvent_category());
-	request.setAttribute("eventDate", event.getEvent_date());
-	request.setAttribute("eventTime", event.getEvent_time());
-	request.setAttribute("eventDuration", event.getEvent_duration());
-	request.setAttribute("eventDescription", event.getEvent_description());
-	request.setAttribute("quantity", quantity);
-	request.setAttribute("total", total);%>
-	
-	
-	 <h3>User Details:</h3>
-    <p>First Name: <%= request.getAttribute("firstName") %></p>
-    <p>Last Name: <%= request.getAttribute("lastName") %></p>
-    <p>eamil Name: <%= request.getAttribute("email") %></p>
-    <!-- ... Other user details ... -->
-
-    <h3>Event Details:</h3>
-    <p>Event Name: <%= request.getAttribute("eventName") %></p>
-    <p>Event eventimage: Rs.<%= request.getAttribute("eventimage") %></p>
-    <p>Event eventCategory: Rs.<%= request.getAttribute("eventCategory") %></p>
-    <p>Event eventdate: Rs.<%= request.getAttribute("eventDate") %></p>
-    <p>Event eventTime: Rs.<%= request.getAttribute("eventTime") %></p>
-    <p>Event eventDuration: Rs.<%= request.getAttribute("eventDuration") %></p>
-    <p>Event eventHost: Rs.<%= request.getAttribute("eventHost") %></p>
-
-    <!-- ... Other event details ... -->
-
-    <h3>Order Summary:</h3>
-    <p>Total Ticket: <%= request.getAttribute("quantity") %></p>
-    <p>Sub Total: Rs.<%= request.getAttribute("total") %></p>
-    <p>Total: Rs.<%= request.getAttribute("total") %></p>
-<!-- 		user(First Name,Last Name,Email,Address,Country,State,City,pin code,image,event name,event price, date, time,duration description, event hosting , price, total ticket)
- -->	
- 
 <%
+    request.setAttribute("firstName", user.getFirst_name());
+    request.setAttribute("lastName", user.getLast_name());
+    request.setAttribute("email", user.getEmail());
+    
+    request.setAttribute("eventimage", event.getEvent_image());
+    request.setAttribute("eventName", event.getEvent_name());
+    request.setAttribute("eventCategory", event.getEvent_category());
+    request.setAttribute("eventDate", event.getEvent_date());
+    request.setAttribute("eventTime", event.getEvent_time());
+    request.setAttribute("eventDuration", event.getEvent_duration());
+    request.setAttribute("eventDescription", event.getEvent_description());
+    request.setAttribute("eventAddress1", event.getEvent_address1());
+    request.setAttribute("eventAddress2", event.getEvent_address2());
+    request.setAttribute("eventCity", event.getEvent_city());
+    request.setAttribute("eventState", event.getEvent_state());
+    request.setAttribute("eventCountry", event.getEvent_country());
+    request.setAttribute("eventPinCode", event.getEvent_pin_code());
+
+    request.setAttribute("quantity", quantity);
+    request.setAttribute("total", total);
 %>
+
+<h3>User Details:</h3>
+<p>First Name: <%= request.getAttribute("firstName") %></p>
+<p>Last Name: <%= request.getAttribute("lastName") %></p>
+<p>Email: <%= request.getAttribute("email") %></p>
+<!-- ... Other user details ... -->
+
+<h3>Event Details:</h3>
+<p>Event Name: <%= request.getAttribute("eventName") %></p>
+<p>Event Image: Rs.<%= request.getAttribute("eventimage") %></p>
+<p>Event Category: Rs.<%= request.getAttribute("eventCategory") %></p>
+<p>Event Date: Rs.<%= request.getAttribute("eventDate") %></p>
+<p>Event Time: Rs.<%= request.getAttribute("eventTime") %></p>
+<p>Event Duration: Rs.<%= request.getAttribute("eventDuration") %></p>
+<p>Event Address: <%= request.getAttribute("eventAddress1") %>,
+<p>Event Address2: <%= request.getAttribute("eventAddress2") %>,
+    <%= request.getAttribute("eventCity") %> <%= request.getAttribute("eventState") %>,
+    <%= request.getAttribute("eventCountry") %> <%= request.getAttribute("eventPinCode") %></p>
+<!-- ... Other event details ... -->
+
+<h3>Order Summary:</h3>
+<p>Total Ticket: <%= request.getAttribute("quantity") %></p>
+<p>Sub Total: Rs.<%= request.getAttribute("total") %></p>
+<p>Total: Rs.<%= request.getAttribute("total") %></p>
+
+<%
+
+VenueOrderDetails orderDetails = new VenueOrderDetails(
+        user.getFirst_name(),
+        user.getLast_name(), user.getEmail(),event.getEvent_image(),event.getEvent_name(),
+        event.getEvent_category(),event.getEvent_date(),event.getEvent_time(), event.getEvent_duration(),
+        event.getEvent_description(),event.getEvent_address1(),event.getEvent_address2(), event.getEvent_city(),
+        event.getEvent_city(), event.getEvent_state(),event.getEvent_country(),  quantity, total);
+
+
+System.out.print(orderDetails);
+System.out.println("Debug: Order Details - " + orderDetails); // Print orderDetails for debugging
+
+Venue_Event_Ticket_Dao ud = new Venue_Event_Ticket_Dao();
+try {
+    int orderId = ud.insert(orderDetails);
+    request.setAttribute("orderDetails", orderDetails);
+    out.println("Order ID: " + orderId);
+    System.out.println("Debug: Order ID - " + orderId);
+    session.setAttribute("orderId", orderDetails.getId());
+
+} catch (Exception e) {
+    e.printStackTrace(); // Print the exception details for debugging
+    out.println("An error occurred during order processing. Please try again.");
+}
+%>
+%>
+
 	</form>
 	user(First Name,Last Name,Email,Address,Country,State,City,pin code,image,event name,event price, date, time,duration description, event hosting , price, total ticket)
 	<!-- Body End-->

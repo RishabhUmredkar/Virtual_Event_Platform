@@ -134,3 +134,40 @@ ADD COLUMN expiry_date DATE AFTER card_number,
 ADD COLUMN cvv INT AFTER expiry_date;
 
 select * from Virtual_Event_platform.OnlineEventTicketBook;
+
+
+
+
+
+
+
+CREATE TABLE Virtual_Event_platform.VenueEventTicketBook (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(45),
+    last_name VARCHAR(45),
+    email VARCHAR(45),
+    address VARCHAR(255),
+    country VARCHAR(255),
+    state VARCHAR(255),
+    city VARCHAR(255),
+    pin_code INT,
+    event_image VARCHAR(255),
+    event_name VARCHAR(45),
+    event_category VARCHAR(45),
+    event_date DATE,
+    event_time TIME,
+    event_duration INT,
+    event_description VARCHAR(255),
+    event_address1 VARCHAR(255),
+    event_address2 VARCHAR(255),
+    event_city VARCHAR(255),
+    event_state VARCHAR(255),
+    event_country VARCHAR(255),
+    event_pin_code VARCHAR(255),
+    quantity INT,
+    total INT,
+    event_card_number VARCHAR(16),
+    expiry_date DATE,
+    cvv INT
+);
+select * from Virtual_Event_platform.VenueEventTicketBook;
