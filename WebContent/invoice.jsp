@@ -13,7 +13,8 @@
 <%@ page import="java.sql.Time" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page errorPage="Error.jsp" %>
-<html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">
+<html lang="en" class="h-100">
+<head></head><body class="d-flex flex-column h-100">
 
 	
 		<meta charset="utf-8">
@@ -75,7 +76,7 @@
 
 
 	<!-- Invoice Start-->
-	<div class="invoice clearfix">
+    <div class="invoice clearfix" id="invoiceContent">
 		<div class="container">
 			<div class="row justify-content-md-center">
 				<div class="col-lg-8 col-md-10">
@@ -84,7 +85,8 @@
 							<img src="images/RishabhDark Final.png" alt="">
 						</div>
 						<div class="invoice-header-text">
-							<a href="#" class="download-link">Download</a>
+        <a  class="download-link" onclick="downloadPDF()">Download PDF</a>
+        
 						</div>
 					</div>
 					<div class="invoice-body">
@@ -199,13 +201,64 @@
 	</div>
 	<!-- Invoice End-->
 	
-	
-	<script src="js/jquery-3.6.0.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="vendor/OwlCarousel/owl.carousel.js"></script>
-	<script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>	
-	<script src="js/custom.js"></script>
-	<script src="js/night-mode.js"></script>
+	  <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/OwlCarousel/owl.carousel.js"></script>
+    <script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/night-mode.js"></script>
+    <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+   <script>
+    function downloadPDF() {
+        // Get the HTML element to be converted to PDF
+        var element = document.getElementById("invoiceContent");
+
+        // Use html2pdf library to generate PDF
+        html2pdf(element, {
+            margin: 3,
+            filename: '<%= ticket.getFirstName() %>_invoice.pdf', // Set the filename dynamically
+            image: { type: 'jpeg', quality: 1 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        }).then(function (pdf) {
+            // Save the PDF on the server (you need to implement this on the server side)
+            savePDFOnServer(pdf.output('blob'));
+        });
+    }
+
+    function savePDFOnServer(pdfBlob) {
+        // Create a new XMLHttpRequest
+        var xhr = new XMLHttpRequest();
+        
+        // Specify the server-side script that handles saving the PDF (replace 'save_pdf.jsp' with the correct URL)
+        xhr.open('POST', 'save_pdf.jsp', true);
+
+        // Set the request header for the PDF content
+        xhr.setRequestHeader('Content-Type', 'application/pdf');
+
+        // Send the PDF blob to the server
+        xhr.send(pdfBlob);
+
+        // Handle the server response
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                // Check for a successful response (status 200)
+                if (xhr.status == 200) {
+                    // Optionally handle the server response
+                    console.log('PDF saved successfully on the server.');
+                } else {
+                    // Handle errors or unexpected responses
+                    console.error('Error saving PDF on the server. Status:', xhr.status);
+                }
+            }
+        };
+    }
+</script>
+
+
+
 <%
 
   } else {

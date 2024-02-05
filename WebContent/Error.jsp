@@ -17,7 +17,7 @@
             text-align: center; /* Center-align the text */
         }
         img {
-            max-width: 10%; /* Ensure the image doesn't exceed the width of its container */
+            max-width: 20%; /* Ensure the image doesn't exceed the width of its container */
         }
         h1 {
             display: inline-block; /* Make each letter a block to apply color individually */
@@ -48,7 +48,8 @@
     </script>
 </head>
 <body>
-    <img src="Error/error.png" alt="Error Image">
+
+    <img src="Error/RajatError.png" alt="Error Image">
     
     <h1>
         <span>Error</span>
@@ -63,5 +64,7 @@
         <span>re</span>
         <span>...........</span>
     </h1>
+        <img src="Error/AError.png" alt="Error Image">
+    
 </body>
 </html>
