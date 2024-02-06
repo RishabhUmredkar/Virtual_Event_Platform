@@ -153,7 +153,7 @@ public class OnlineOrderDetails {
 		public OnlineOrderDetails(int id, String firstName, String lastName, String email, String address,
 				String country, String state, String city, int pinCode, String eventImage, String eventName,
 				String eventCategory, Date eventDate, Time eventTime, int eventDuration, String eventDescription,
-				String eventHost, int quantity,int price, int total) {
+				String eventHost,int price,  int quantity,int total) {
 			super();
 			this.id = id;
 			this.firstName = firstName;
@@ -172,8 +172,9 @@ public class OnlineOrderDetails {
 			this.eventDuration = eventDuration;
 			this.eventDescription = eventDescription;
 			this.eventHost = eventHost;
-			this.quantity = quantity;
 			this.price = price;
+
+			this.quantity = quantity;
 
 			this.total = total;
 		}
