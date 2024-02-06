@@ -177,7 +177,7 @@ public class Online_Event_Ticket_Dao {
 	                    rs.getString("country"), rs.getString("state"), rs.getString("city"), rs.getInt("pin_code"),
 	                    rs.getString("event_image"), rs.getString("event_name"), rs.getString("event_category"),
 	                    rs.getDate("event_date"), rs.getTime("event_time"), rs.getInt("event_duration"),
-	                    rs.getString("event_description"), rs.getString("event_host"), rs.getInt("quantity"),rs.getInt("price"),
+	                    rs.getString("event_description"), rs.getString("event_host"),rs.getInt("price"), rs.getInt("quantity"),
 	                    rs.getInt("total"));
 
 	            // Set additional properties if needed
