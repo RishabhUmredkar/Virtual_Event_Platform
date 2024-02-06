@@ -23,6 +23,7 @@ public class OnlineOrderDetails {
 	    private String eventDescription;
 	    private String eventHost;
 	    private int quantity;
+	    private int price;
 	    private int total;
 	    private String eventCardNumber;
 	    private java.sql.Date eventExpiryDate;
@@ -47,7 +48,7 @@ public class OnlineOrderDetails {
 		}
 		public OnlineOrderDetails(String firstName, String lastName, String email, String eventImage, String eventName,
 				String eventCategory, Date eventDate, Time eventTime, int eventDuration, String eventDescription,
-				String eventHost, int quantity, int total) {
+				String eventHost,int price, int quantity, int total) {
 			super();
 			this.firstName = firstName;
 			this.lastName = lastName;
@@ -61,6 +62,7 @@ public class OnlineOrderDetails {
 			this.eventDescription = eventDescription;
 			this.eventHost = eventHost;
 			this.quantity = quantity;
+			this.price = price;
 			this.total = total;
 		}	
 		public OnlineOrderDetails(String firstName, String lastName, String email, String eventImage, String eventName,
@@ -78,7 +80,7 @@ public class OnlineOrderDetails {
 		public OnlineOrderDetails(String firstName, String lastName, String email, String address, String country,
 				String state, String city, int pinCode, String eventImage, String eventName, String eventCategory,
 				Date eventDate, Time eventTime, int eventDuration, String eventDescription, String eventHost,
-				int quantity, int total) {
+				int price,int quantity, int total) {
 			super();
 			this.firstName = firstName;
 			this.lastName = lastName;
@@ -97,6 +99,8 @@ public class OnlineOrderDetails {
 			this.eventDescription = eventDescription;
 			this.eventHost = eventHost;
 			this.quantity = quantity;
+			this.price = price;
+
 			this.total = total;
 		}
 		
@@ -128,7 +132,7 @@ public class OnlineOrderDetails {
 		
 		public OnlineOrderDetails(String firstName, String lastName, String email, String address, String eventImage,
 				String eventName, String eventCategory, Date eventDate, Time eventTime, int eventDuration,
-				String eventDescription, String eventHost, int quantity, int total) {
+				String eventDescription, String eventHost, int quantity, int price,int total) {
 			super();
 			this.firstName = firstName;
 			this.lastName = lastName;
@@ -143,12 +147,13 @@ public class OnlineOrderDetails {
 			this.eventDescription = eventDescription;
 			this.eventHost = eventHost;
 			this.quantity = quantity;
+			this.price = price;
 			this.total = total;
 		}
 		public OnlineOrderDetails(int id, String firstName, String lastName, String email, String address,
 				String country, String state, String city, int pinCode, String eventImage, String eventName,
 				String eventCategory, Date eventDate, Time eventTime, int eventDuration, String eventDescription,
-				String eventHost, int quantity, int total) {
+				String eventHost, int quantity,int price, int total) {
 			super();
 			this.id = id;
 			this.firstName = firstName;
@@ -168,6 +173,8 @@ public class OnlineOrderDetails {
 			this.eventDescription = eventDescription;
 			this.eventHost = eventHost;
 			this.quantity = quantity;
+			this.price = price;
+
 			this.total = total;
 		}
 		
@@ -177,7 +184,7 @@ public class OnlineOrderDetails {
 		public OnlineOrderDetails(int id, String firstName, String lastName, String email, String address,
 				String country, String state, String city, int pinCode, String eventImage, String eventName,
 				String eventCategory, Date eventDate, Time eventTime, int eventDuration, String eventDescription,
-				String eventHost, int quantity, int total, String eventCardNumber, Date eventExpiryDate, int cvv) {
+				String eventHost, int quantity, int price,int total, String eventCardNumber, Date eventExpiryDate, int cvv) {
 			super();
 			this.id = id;
 			this.firstName = firstName;
@@ -197,6 +204,7 @@ public class OnlineOrderDetails {
 			this.eventDescription = eventDescription;
 			this.eventHost = eventHost;
 			this.quantity = quantity;
+			this.price = price;
 			this.total = total;
 			this.eventCardNumber = eventCardNumber;
 			this.eventExpiryDate = eventExpiryDate;
@@ -309,6 +317,13 @@ public class OnlineOrderDetails {
 		}
 		public void setQuantity(int quantity) {
 			this.quantity = quantity;
+		}
+		
+		public int getPrice() {
+			return price;
+		}
+		public void setPrice(int price) {
+			this.price = price;
 		}
 		public int getTotal() {
 			return total;

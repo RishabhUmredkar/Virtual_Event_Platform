@@ -41,8 +41,8 @@ public class Online_Event_Ticket_Dao {
 	    String sql = "INSERT INTO Virtual_Event_platform.OnlineEventTicketBook (" +
 	            "first_name, last_name, email, address, country, state, city, pin_code, " +
 	            "event_image, event_name, event_category, event_date, event_time, event_duration, " +
-	            "event_description, event_host, quantity, total) " +
-	            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	            "event_description, event_host, quantity,price, total) " +
+	            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?)";
 
 	    con = getconnect();
 	    PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -64,7 +64,8 @@ public class Online_Event_Ticket_Dao {
 	    ps.setString(15, ticket.getEventDescription());
 	    ps.setString(16, ticket.getEventHost());
 	    ps.setInt(17, ticket.getQuantity());
-	    ps.setInt(18, ticket.getTotal());
+	    ps.setInt(18, ticket.getPrice());
+	    ps.setInt(19, ticket.getTotal());
 	    
 	    int result = ps.executeUpdate();
 
@@ -158,4 +159,34 @@ public class Online_Event_Ticket_Dao {
 		        }
 		    }
 		}
+	 
+	 
+	 public List<OnlineOrderDetails> getOneUser(String email) throws ClassNotFoundException, SQLException {
+	        String sql = "SELECT * FROM Virtual_Event_platform.OnlineEventTicketBook WHERE email = ?"; // Update table name
+	        con = getconnect();
+	        PreparedStatement pstmt = con.prepareStatement(sql);
+	        pstmt.setString(1, email);
+	        ResultSet rs = pstmt.executeQuery();
+
+	        List<OnlineOrderDetails> le = new ArrayList<>();
+
+	        while (rs.next()) {
+	            OnlineOrderDetails e = new OnlineOrderDetails(rs.getInt("id"), rs.getString("first_name"),
+	                    rs.getString("last_name"), rs.getString("email"), rs.getString("address"),
+	                    rs.getString("country"), rs.getString("state"), rs.getString("city"), rs.getInt("pin_code"),
+	                    rs.getString("event_image"), rs.getString("event_name"), rs.getString("event_category"),
+	                    rs.getDate("event_date"), rs.getTime("event_time"), rs.getInt("event_duration"),
+	                    rs.getString("event_description"), rs.getString("event_host"), rs.getInt("quantity"),rs.getInt("price"),
+	                    rs.getInt("total"));
+
+	            // Set additional properties if needed
+	            e.setEventCardNumber(rs.getString("card_number"));
+	            e.setEventExpiryDate(rs.getDate("expiry_date"));
+	            e.setCvv(rs.getInt("cvv"));
+
+	            le.add(e);
+	        }
+
+	        return le;
+	    }
 	}

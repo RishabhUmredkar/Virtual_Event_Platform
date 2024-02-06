@@ -319,6 +319,7 @@
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">First Name*</label>
+												Rs.<%=event.getEvent_price() %>
                             <input class="form-control h_50" type="text" placeholder="" value="<%= user.getFirst_name() %>" disabled>
 											</div>
 										</div>
@@ -515,7 +516,6 @@
 	request.setAttribute("lastName", user.getLast_name());
 	request.setAttribute("email", user.getEmail());
 	
-	
 	request.setAttribute("eventimage", event.getEvent_image());
 	request.setAttribute("eventName", event.getEvent_name());
 	request.setAttribute("eventCategory", event.getEvent_category());
@@ -524,6 +524,7 @@
 	request.setAttribute("eventDuration", event.getEvent_duration());
 	request.setAttribute("eventDescription", event.getEvent_description());
 	request.setAttribute("eventHost", event.getEvent_hosting());
+	request.setAttribute("price", event.getEvent_price());
 	request.setAttribute("quantity", quantity);
 	request.setAttribute("total", total);%>
 	
@@ -542,6 +543,8 @@
     <p>Event eventTime: Rs.<%= request.getAttribute("eventTime") %></p>
     <p>Event eventDuration: Rs.<%= request.getAttribute("eventDuration") %></p>
     <p>Event eventHost: Rs.<%= request.getAttribute("eventHost") %></p>
+    <p>Event eventHost: Rs.<%= request.getAttribute("quantity") %></p>
+    <p>Event eventHost: Rs.<%= request.getAttribute("price") %></p>
 
     <!-- ... Other event details ... -->
 
@@ -556,7 +559,7 @@
 OnlineOrderDetails orderDetails = new OnlineOrderDetails(user.getFirst_name(), user.getLast_name(), user.getEmail(),
         event.getEvent_image(), event.getEvent_name(),
         event.getEvent_category(), event.getEvent_date(), event.getEvent_time(), event.getEvent_duration(),
-        event.getEvent_description(), event.getEvent_hosting(), quantity, total);
+        event.getEvent_description(), event.getEvent_hosting(), event.getEvent_price(), quantity, total);
 System.out.print(orderDetails);
 request.setAttribute("orderDetails", orderDetails);
 

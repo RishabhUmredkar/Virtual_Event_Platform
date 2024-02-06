@@ -165,4 +165,35 @@ public class Venue_Event_Ticket_Dao {
 		        }
 		    }
 		}
+	 public List<VenueOrderDetails> getOneUser(String email) throws ClassNotFoundException, SQLException {
+		    String sql = "SELECT * FROM Virtual_Event_platform.VenueEventTicketBook WHERE email = ?";
+		    con = getconnect();
+		    PreparedStatement pstmt = con.prepareStatement(sql);
+		    pstmt.setString(1, email);
+		    ResultSet rs = pstmt.executeQuery();
+
+		    List<VenueOrderDetails> le = new ArrayList<>();
+
+		    while (rs.next()) {
+		    	VenueOrderDetails e = new VenueOrderDetails(
+		    		    rs.getInt("id"), rs.getString("first_name"),
+		    		    rs.getString("last_name"), rs.getString("email"),
+		    		    rs.getString("address"), rs.getString("country"),
+		    		    rs.getString("state"), rs.getString("city"),
+		    		    rs.getInt("pin_code"), rs.getString("event_image"),
+		    		    rs.getString("event_name"), rs.getString("event_category"),
+		    		    rs.getDate("event_date"), rs.getTime("event_time"),
+		    		    rs.getInt("event_duration"), rs.getString("event_description"),
+		    		    rs.getString("event_address1"), rs.getString("event_address2"),
+		    		    rs.getString("event_city"), rs.getString("event_state"),
+		    		    rs.getString("event_country"), rs.getString("event_pin_code"),
+		    		    rs.getInt("quantity"), rs.getInt("total"),
+		    		    rs.getString("event_card_number"), rs.getDate("expiry_date"), rs.getInt("cvv"));
+		    			
+		        le.add(e);
+		    }
+
+		    return le;
+		}
+
 	}

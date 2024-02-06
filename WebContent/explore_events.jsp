@@ -198,7 +198,7 @@
 										</div>
 									</li>
 									<li class="profile-link">
-										<a href="organiser_profile_view.jsp" class="link-item">My Profile</a>									
+										<a href="hello.jsp" class="link-item">My Profile</a>									
 										<a href="sign_in.jsp" class="link-item">Sign in / Sign Out</a>									
 									</li>
 								</ul>
