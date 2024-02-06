@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import Dao.Online_Event_Ticket_Dao;
 import Dao.Venue_Event_Ticket_Dao;
 import Model.OnlineOrderDetails;
+import Model.VenueOrderDetails;
 
 
 @WebServlet("/venueTicket")
@@ -41,7 +42,7 @@ public class Venue_Event_Ticket_Servlet extends HttpServlet {
 
             // Assuming you have access to an instance of OnlineOrderDetails
             // Assuming you have access to an instance of OnlineOrderDetails
-            OnlineOrderDetails ticket = new OnlineOrderDetails();
+            VenueOrderDetails ticket = new VenueOrderDetails();
             ticket.setAddress(address);
             ticket.setCountry(country);
             ticket.setState(state);

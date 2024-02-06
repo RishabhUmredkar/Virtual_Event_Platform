@@ -75,7 +75,7 @@
 
 
 	<!-- Invoice Start-->
-	<div class="invoice clearfix">
+    <div class="invoice clearfix" id="invoiceContent">
 		<div class="container">
 			<div class="row justify-content-md-center">
 				<div class="col-lg-8 col-md-10">
@@ -84,7 +84,7 @@
 							<img src="images/RishabhDark Final.png" alt="">
 						</div>
 						<div class="invoice-header-text">
-							<a href="#" class="download-link">Download</a>
+        					<a  class="download-link" onclick="downloadPDF()">Download PDF</a>
 						</div>
 					</div>
 					<div class="invoice-body">
@@ -132,7 +132,7 @@
 											<td><a href="#" target="_blank"><%=ticket.getEventCategory() %></a></td>	
 											<td>Online</td>	
 											<td><%=ticket.getQuantity() %></td>
-											<td>Rs. <%=ticket.getTotal() %></td>
+											<td>Rs. <%=ticket.getPrice() %></td>
 											<td>Rs. <%=ticket.getTotal() %></td>
 										</tr>
 										<tr>
@@ -175,16 +175,14 @@
 									</div>
 									<div class="col-lg-5">
 										<div class="QR-dt p-4">
-											<ul class="QR-counter-type">
-												<li>Online</li>
-												<li>Counter</li>
-												<li>0000000001</li>
-											</ul>
-											<div class="QR-scanner">
-												<img src="images/qr.png" alt="QR-Ticket-Scanner">
-											</div>
-											<p>Powered by Barren</p>
-										</div>
+                                                <ul class="QR-counter-type">
+                                                    <li>Online</li>
+                                                    <li>Counter</li>
+                                                    <li>0000000001</li>
+                                                </ul>
+                                                <div class="QR-scanner" id="qrcode"></div>
+                                                <p>Powered by Barren</p>
+                                            </div>
 									</div>
 								</div>
 							</div>
@@ -199,33 +197,100 @@
 	</div>
 	<!-- Invoice End-->
 	
-	
-	<script src="js/jquery-3.6.0.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="vendor/OwlCarousel/owl.carousel.js"></script>
-	<script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>	
-	<script src="js/custom.js"></script>
-	<script src="js/night-mode.js"></script>
-<%
+	  
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/OwlCarousel/owl.carousel.js"></script>
+        <script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+        <script src="js/custom.js"></script>
+        <script src="js/night-mode.js"></script>
+        <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 
-  } else {
-                // No record found for the given order ID
-                System.out.println("No ticket found for ID: " + orderId);
-            }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            // Handle exceptions appropriately
-        } catch (java.sql.SQLException e) {
-            e.printStackTrace();
-            // Handle exceptions appropriately
+        <script>
+     // Function to generate QR code dynamically based on first name and total amount
+        function generateQRCode() {
+            var qrcode = new QRCode(document.getElementById("qrcode"), {
+                text: `Event: <%=ticket.getEventCategory()%>\nAmount: <%=ticket.getTotal()%> Rs.\nDate: <%=ticket.getEventDate()%>\nTime: <%=ticket.getEventTime()%>\n`,
+                width: 100,
+                height: 100
+            });
         }
-        %>
-        
-        
-</c:if>
-	
-<c:if test="${empty cookie.email.value}">
-    <c:redirect url="sign_up.jsp" />
-</c:if>
-</body></html>
-</body></html>
+
+
+
+
+
+        function downloadPDF() {
+            // Generate QR code first
+            generateQRCode();
+
+            // Get the HTML element to be converted to PDF
+            var element = document.getElementById("invoiceContent");
+
+            // Use html2pdf library to generate PDF
+            html2pdf(element, {
+                margin: 4,
+                filename: '<%= ticket.getFirstName() %>_invoice.pdf',
+                image: { type: 'jpeg', quality: 1 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            }).then(function (pdf) {
+                // Save the PDF on the server (you need to implement this on the server side)
+                savePDFOnServer(pdf.output('blob'));
+            });
+        }
+
+            function savePDFOnServer(pdfBlob) {
+                // Create a new XMLHttpRequest
+                var xhr = new XMLHttpRequest();
+
+                // Specify the server-side script that handles saving the PDF (replace 'save_pdf.jsp' with the correct URL)
+                xhr.open('POST', 'save_pdf.jsp', true);
+
+                // Set the request header for the PDF content
+                xhr.setRequestHeader('Content-Type', 'application/pdf');
+
+                // Send the PDF blob to the server
+                xhr.send(pdfBlob);
+
+                // Handle the server response
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+                        // Check for a successful response (status 200)
+                        if (xhr.status == 200) {
+                            // Optionally handle the server response
+                            console.log('PDF saved successfully on the server.');
+                        } else {
+                            // Handle errors or unexpected responses
+                            console.error('Error saving PDF on the server. Status:', xhr.status);
+                        }
+                    }
+                };
+            }
+            generateQRCode();
+        </script>
+
+
+        <%
+          } else {
+                        // No record found for the given order ID
+                        System.out.println("No ticket found for ID: " + orderId);
+                    }
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                    // Handle exceptions appropriately
+                } catch (java.sql.SQLException e) {
+                    e.printStackTrace();
+                    // Handle exceptions appropriately
+                }
+            %>
+        </c:if>
+
+        <c:if test="${empty cookie.email.value}">
+            <c:redirect url="sign_up.jsp" />
+        </c:if>
+
+    </body>
+    </html>

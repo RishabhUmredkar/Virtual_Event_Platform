@@ -43,8 +43,8 @@ public class Venue_Event_Ticket_Dao {
 	            "first_name, last_name, email, address, country, state, city, pin_code, " +
 	            "event_image, event_name, event_category, event_date, event_time, event_duration, " +
 	            "event_description, event_address1, event_address2, event_city, event_state, " +
-	            "event_country, event_pin_code, quantity, total) " +
-	            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	            "event_country, event_pin_code, price, quantity,total) " +
+	            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?)";
 
 	    con = getconnect();
 	    PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -70,8 +70,9 @@ public class Venue_Event_Ticket_Dao {
 	    ps.setString(19, ticket.getEventState());
 	    ps.setString(20, ticket.getEventCountry());
 	    ps.setString(21, ticket.getEventPinCode());
-	    ps.setInt(22, ticket.getQuantity());
-	    ps.setInt(23, ticket.getTotal());
+	    ps.setInt(22, ticket.getPrice());
+	    ps.setInt(23, ticket.getQuantity());
+	    ps.setInt(24, ticket.getTotal());
 
 	    int result = ps.executeUpdate();
 
@@ -87,7 +88,7 @@ public class Venue_Event_Ticket_Dao {
 	}
 
 
-	 public int insertnew(OnlineOrderDetails ticket, Integer id) throws ClassNotFoundException, SQLException {
+	 public int insertnew(VenueOrderDetails ticket, Integer id) throws ClassNotFoundException, SQLException {
 	        String sql = "INSERT INTO Virtual_Event_platform.VenueEventTicketBook (" +
 	                "address, id, country, state, city, pin_code, event_card_number, " +
 	                "expiry_date, cvv) " +
@@ -150,6 +151,7 @@ public class Venue_Event_Ticket_Dao {
 		            ticket.setEventTime(rs.getTime("event_time"));
 		            ticket.setEventDuration(rs.getInt("event_duration"));
 		            ticket.setEventDescription(rs.getString("event_description"));
+		            ticket.setPrice(rs.getInt("price"));
 		            ticket.setQuantity(rs.getInt("quantity"));
 		            ticket.setTotal(rs.getInt("total"));
 
@@ -187,7 +189,7 @@ public class Venue_Event_Ticket_Dao {
 		    		    rs.getString("event_address1"), rs.getString("event_address2"),
 		    		    rs.getString("event_city"), rs.getString("event_state"),
 		    		    rs.getString("event_country"), rs.getString("event_pin_code"),
-		    		    rs.getInt("quantity"), rs.getInt("total"),
+		    		    rs.getInt("price"),rs.getInt("quantity"), rs.getInt("total"),
 		    		    rs.getString("event_card_number"), rs.getDate("expiry_date"), rs.getInt("cvv"));
 		    			
 		        le.add(e);

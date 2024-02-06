@@ -30,6 +30,7 @@ public class VenueOrderDetails {
 	    private String eventPinCode;
 	    
 	    private int quantity;
+	    private int price;
 	    private int total;
 	    
 	    private String eventCardNumber;
@@ -60,7 +61,7 @@ public class VenueOrderDetails {
 		public VenueOrderDetails(String firstName, String lastName, String email, String eventImage, String eventName,
 		        String eventCategory, Date eventDate, Time eventTime, int eventDuration, String eventDescription,
 		        String eventAddress1, String eventAddress2, String eventCity, String eventState, String eventCountry, String eventPinCode,
-		        int quantity, int total) {
+		        int price,int quantity, int total) {
 		    super();
 		    this.firstName = firstName;
 		    this.lastName = lastName;
@@ -78,6 +79,7 @@ public class VenueOrderDetails {
 		    this.eventState = eventState;
 		    this.eventCountry = eventCountry;
 		    this.eventPinCode = eventPinCode;
+		    this.price = price;
 		    this.quantity = quantity;
 		    this.total = total;
 		}		
@@ -113,7 +115,7 @@ public class VenueOrderDetails {
 				String state, String city, int pinCode, String eventImage, String eventName, String eventCategory,
 				Date eventDate, Time eventTime, int eventDuration, String eventDescription, String eventAddress1,
 				String eventAddress2, String eventCity, String eventState, String eventCountry, String eventPinCode,
-				int quantity, int total, String eventCardNumber, Date eventExpiryDate, int cvv) {
+				int quantity, int price,int total, String eventCardNumber, Date eventExpiryDate, int cvv) {
 			super();
 			this.firstName = firstName;
 			this.lastName = lastName;
@@ -137,6 +139,7 @@ public class VenueOrderDetails {
 			this.eventCountry = eventCountry;
 			this.eventPinCode = eventPinCode;
 			this.quantity = quantity;
+		    this.price = price;
 			this.total = total;
 			this.eventCardNumber = eventCardNumber;
 			this.eventExpiryDate = eventExpiryDate;
@@ -147,7 +150,7 @@ public class VenueOrderDetails {
 				String country, String state, String city, int pinCode, String eventImage, String eventName,
 				String eventCategory, Date eventDate, Time eventTime, int eventDuration, String eventDescription,
 				String eventAddress1, String eventAddress2, String eventCity, String eventState, String eventCountry,
-				String eventPinCode, int quantity, int total, String eventCardNumber, Date eventExpiryDate, int cvv) {
+				String eventPinCode, int quantity, int price,int total, String eventCardNumber, Date eventExpiryDate, int cvv) {
 			super();
 			this.id = id;
 			this.firstName = firstName;
@@ -172,6 +175,7 @@ public class VenueOrderDetails {
 			this.eventCountry = eventCountry;
 			this.eventPinCode = eventPinCode;
 			this.quantity = quantity;
+		    this.price = price;
 			this.total = total;
 			this.eventCardNumber = eventCardNumber;
 			this.eventExpiryDate = eventExpiryDate;
@@ -364,6 +368,14 @@ public class VenueOrderDetails {
 
 		public int getTotal() {
 			return total;
+		}
+
+		public int getPrice() {
+			return price;
+		}
+
+		public void setPrice(int price) {
+			this.price = price;
 		}
 
 		public void setTotal(int total) {

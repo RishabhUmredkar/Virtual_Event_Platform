@@ -146,6 +146,7 @@ public class Online_Event_Ticket_Dao {
 		            ticket.setEventHost(rs.getString("event_host"));
 		            ticket.setQuantity(rs.getInt("quantity"));
 		            ticket.setTotal(rs.getInt("total"));
+		            ticket.setPrice(rs.getInt("price"));
 
 		            ticket.setEventCardNumber(rs.getString("card_number"));
 		            ticket.setEventExpiryDate(rs.getDate("expiry_date"));

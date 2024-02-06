@@ -490,6 +490,7 @@
 									</div>
 									<div class="order-total-dt">
 										<div class="order-text">Sub Total</div>
+										
 										<div class="order-number">Rs.<%=total%></div>
 									</div>
 									<div class="divider-line"></div>
@@ -528,6 +529,7 @@
     request.setAttribute("eventState", event.getEvent_state());
     request.setAttribute("eventCountry", event.getEvent_country());
     request.setAttribute("eventPinCode", event.getEvent_pin_code());
+    request.setAttribute("price", event.getEvent_price());
 
     request.setAttribute("quantity", quantity);
     request.setAttribute("total", total);
@@ -554,17 +556,18 @@
 
 <h3>Order Summary:</h3>
 <p>Total Ticket: <%= request.getAttribute("quantity") %></p>
+<p>Total price: <%= request.getAttribute("price") %></p>
 <p>Sub Total: Rs.<%= request.getAttribute("total") %></p>
 <p>Total: Rs.<%= request.getAttribute("total") %></p>
 
 <%
 
 VenueOrderDetails orderDetails = new VenueOrderDetails(
-        user.getFirst_name(),
-        user.getLast_name(), user.getEmail(),event.getEvent_image(),event.getEvent_name(),
+        user.getFirst_name(),user.getLast_name(), user.getEmail(),
+        event.getEvent_image(),event.getEvent_name(),
         event.getEvent_category(),event.getEvent_date(),event.getEvent_time(), event.getEvent_duration(),
         event.getEvent_description(),event.getEvent_address1(),event.getEvent_address2(), event.getEvent_city(),
-        event.getEvent_city(), event.getEvent_state(),event.getEvent_country(),  quantity, total);
+        event.getEvent_city(), event.getEvent_state(),event.getEvent_country(),event.getEvent_price(),  quantity, total);
 
 
 System.out.print(orderDetails);

@@ -156,7 +156,7 @@
 											<td><a href="#" target="_blank"><%=ticket.getEventCategory() %></a></td>	
 											<td>Online</td>	
 											<td><%=ticket.getQuantity() %></td>
-											<td>Rs. <%=ticket.getTotal() %></td>
+											<td>Rs. <%=ticket.getPrice() %></td>
 											<td>Rs. <%=ticket.getTotal() %></td>
 										</tr>
 										<tr>

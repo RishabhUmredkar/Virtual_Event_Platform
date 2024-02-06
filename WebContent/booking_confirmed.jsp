@@ -300,7 +300,7 @@
 												<div class="buyer-name"><%=ticket.getEventName() %></div>
 												<div class="booking-total-tickets">
 													<i class="fa-solid fa-ticket rotate-icon"></i>
-													<span class="booking-count-tickets mx-2"><%=ticket.getQuantity() %></span>x Ticket
+													<span class="booking-count-tickets mx-2"><%=ticket.getQuantity() %></span>x<%=ticket.getPrice() %> Rs.
 												</div>
 												<div class="booking-total-grand">
 													Total : <span>Rs.<%=ticket.getTotal() %></span>
