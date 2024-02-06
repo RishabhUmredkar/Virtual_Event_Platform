@@ -329,8 +329,12 @@
 											<a class="nav-link active" id="feed-tab" data-bs-toggle="tab" href="#feed" role="tab" aria-controls="feed" aria-selected="true"><i class="fa-solid fa-box"></i>My Orders</a>
 										</li>
 										<li class="nav-item">
+											<a class="nav-link" id="venue-tab" data-bs-toggle="tab" href="#venue" role="tab" aria-controls="venue" aria-selected="false"><i class="fa-solid fa-box"></i>About</a>
+										</li>
+										<li class="nav-item">
 											<a class="nav-link" id="about-tab" data-bs-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="false"><i class="fa-solid fa-circle-info"></i>About</a>
 										</li>
+										
 										
 										
 									</ul>
@@ -339,23 +343,22 @@
 									
 										<div class="tab-pane fade active show" id="feed" role="tabpanel" aria-labelledby="feed-tab">
 											<%
-int pageSize = 10; // Adjust this value based on the number of items you want to display per page
-int currentPage = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
-
-if (email != null && !email.isEmpty()) {
-    Online_Event_Ticket_Dao dao = new Online_Event_Ticket_Dao();
-    List<OnlineOrderDetails> orderDetailsList = dao.getOneUser(email);
-
-    out.println("<h2>Order Details</h2>");
-
-    int startIndex = (currentPage - 1) * pageSize;
-    int endIndex = Math.min(startIndex + pageSize, orderDetailsList.size());
-
-    for (int i = startIndex; i < endIndex; i++) {
-        OnlineOrderDetails orderDetails = orderDetailsList.get(i);
-        %>
-										            <div class="main-card mt-4">
-											
+										int pageSize = 10; // Adjust this value based on the number of items you want to display per page
+										int currentPage = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
+										
+										if (email != null && !email.isEmpty()) {
+										    Online_Event_Ticket_Dao dao = new Online_Event_Ticket_Dao();
+										    List<OnlineOrderDetails> orderDetailsList = dao.getOneUser(email);
+										
+										    out.println("<h2>Order Details</h2>");
+										
+										    int startIndex = (currentPage - 1) * pageSize;
+										    int endIndex = Math.min(startIndex + pageSize, orderDetailsList.size());
+										
+										    for (int i = startIndex; i < endIndex; i++) {
+										        OnlineOrderDetails orderDetails = orderDetailsList.get(i);
+										        %>
+										     <div class="main-card mt-4">
 												<div class="card-top p-4">
 													<div class="card-event-img">
 														<img src="images/event-imgs/img-7.jpg" alt="">
@@ -407,44 +410,159 @@ if (email != null && !email.isEmpty()) {
 											
 											</div>
 											 <%
-    }
-
-    // Include the pagination logic here
-    int totalPages = (int) Math.ceil((double) orderDetailsList.size() / pageSize);
-    %>
-    <!-- Pagination -->
-    <div class="pagination">
-        <ul class="pagination justify-content-center">
-            <% if (currentPage > 1) { %>
-                <li class="page-item">
-                    <a class="page-link" href="?page=<%= currentPage - 1 %>" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-            <% } %>
-
-            <% for (int i = 1; i <= totalPages; i++) { %>
-                <li class="page-item <%= (i == currentPage) ? "active" : "" %>">
-                    <a class="page-link" href="?page=<%= i %>"><%= i %></a>
-                </li>
-            <% } %>
-
-            <% if (currentPage < totalPages) { %>
-                <li class="page-item">
-                    <a class="page-link" href="?page=<%= currentPage + 1 %>" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            <% } %>
-        </ul>
-    </div>
-    <!-- End Pagination -->
-    <%
-} else {
-    response.sendRedirect("sign_up.jsp");
-}
-%>
+											    }
+											
+											    // Include the pagination logic here
+											    int totalPages = (int) Math.ceil((double) orderDetailsList.size() / pageSize);
+											    %>
+											    <!-- Pagination -->
+											    <div class="pagination">
+											        <ul class="pagination justify-content-center">
+											            <% if (currentPage > 1) { %>
+											                <li class="page-item">
+											                    <a class="page-link" href="?page=<%= currentPage - 1 %>" aria-label="Previous">
+											                        <span aria-hidden="true">&laquo;</span>
+											                    </a>
+											                </li>
+											            <% } %>
+											
+											            <% for (int i = 1; i <= totalPages; i++) { %>
+											                <li class="page-item <%= (i == currentPage) ? "active" : "" %>">
+											                    <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+											                </li>
+											            <% } %>
+											
+											            <% if (currentPage < totalPages) { %>
+											                <li class="page-item">
+											                    <a class="page-link" href="?page=<%= currentPage + 1 %>" aria-label="Next">
+											                        <span aria-hidden="true">&raquo;</span>
+											                    </a>
+											                </li>
+											            <% } %>
+											        </ul>
+											    </div>
+											    <!-- End Pagination -->
+											    <%
+											} else {
+											    response.sendRedirect("sign_up.jsp");
+											}
+											%>
 										</div>
+										
+										
+										
+										
+										
+										
+										<div class="tab-pane fade" id="venue" role="tabpanel" aria-labelledby="venue-tab">
+											<%
+										int pageSize1 = 10; // Adjust this value based on the number of items you want to display per page
+										int currentPage11 = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
+										
+										if (email != null && !email.isEmpty()) {
+										    Online_Event_Ticket_Dao dao = new Online_Event_Ticket_Dao();
+										    List<OnlineOrderDetails> orderDetailsList = dao.getOneUser(email);
+										
+										    out.println("<h2>Order Details</h2>");
+										
+										    int startIndex = (currentPage11 - 1) * pageSize1;
+										    int endIndex = Math.min(startIndex + pageSize1, orderDetailsList.size());
+										
+										    for (int i = startIndex; i < endIndex; i++) {
+										        OnlineOrderDetails orderDetails = orderDetailsList.get(i);
+										        %>
+										     <div class="main-card mt-4">
+												<div class="card-top p-4">
+													<div class="card-event-img">
+														<img src="images/event-imgs/img-7.jpg" alt="">
+													</div>
+													<div class="card-event-dt">
+														<h5><%=orderDetails.getEventName() %> || <%=orderDetails.getEventCategory() %></h5>
+														<div class="invoice-id">Order ID : <span><%=orderDetails.getId() %></span></div>
+													</div>
+												</div>
+												<div class="card-bottom">
+													<div class="card-bottom-item">
+														<div class="card-icon">
+															<i class="fa-solid fa-calendar-days"></i>
+														</div>
+														<div class="card-dt-text">
+															<h6>Event Starts on</h6>
+															<span><%=orderDetails.getEventDate() %> <%=orderDetails.getEventTime() %></span>
+														</div>
+													</div>
+													<div class="card-bottom-item">
+														<div class="card-icon">
+															<i class="fa-solid fa-ticket"></i>
+														</div>
+														<div class="card-dt-text">
+															<h6>Total Tickets</h6>
+															<span><%=orderDetails.getQuantity() %></span>
+														</div>
+													</div>
+													<div class="card-bottom-item">
+														<div class="card-icon">
+															<i class="fa-solid fa-money-bill"></i>
+														</div>
+														<div class="card-dt-text">
+															<h6>Paid Amount</h6>
+															<span>Rs. <%=orderDetails.getTotal() %></span>
+														</div>
+													</div>
+													<div class="card-bottom-item">
+														<div class="card-icon">
+															<i class="fa-solid fa-money-bill"></i>
+														</div>
+														<div class="card-dt-text">
+															<h6>Invoice</h6>
+															<a href="invoice.jsp">Download</a>
+														</div>
+													</div>
+												</div>
+												
+											
+											</div>
+											 <%
+											    }
+											
+											    // Include the pagination logic here
+											    int totalPages = (int) Math.ceil((double) orderDetailsList.size() / pageSize1);
+											    %>
+											    <!-- Pagination -->
+											    <div class="pagination">
+											        <ul class="pagination justify-content-center">
+											            <% if (currentPage11 > 1) { %>
+											                <li class="page-item">
+											                    <a class="page-link" href="?page=<%= currentPage11 - 1 %>" aria-label="Previous">
+											                        <span aria-hidden="true">&laquo;</span>
+											                    </a>
+											                </li>
+											            <% } %>
+											
+											            <% for (int i = 1; i <= totalPages; i++) { %>
+											                <li class="page-item <%= (i == currentPage11) ? "active" : "" %>">
+											                    <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+											                </li>
+											            <% } %>
+											
+											            <% if (currentPage11 < totalPages) { %>
+											                <li class="page-item">
+											                    <a class="page-link" href="?page=<%= currentPage11 + 1 %>" aria-label="Next">
+											                        <span aria-hidden="true">&raquo;</span>
+											                    </a>
+											                </li>
+											            <% } %>
+											        </ul>
+											    </div>
+											    <!-- End Pagination -->
+											    <%
+											} else {
+											    response.sendRedirect("sign_up.jsp");
+											}
+											%>
+										</div>
+										
+										
 										<div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
 											<div class="main-card mt-4">
 												<div class="bp-title position-relative">
