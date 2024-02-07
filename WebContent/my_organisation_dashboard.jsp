@@ -252,7 +252,8 @@
 					</button>
 					<a class="navbar-brand order-1 order-lg-0 ml-lg-0 ml-2 me-auto" href="index.jsp">
 						<div class="res-main-logo">
-							<img src="images/logo-icon.svg" alt="">
+							<img src="images/RishabhLight Final.png"  alt="">
+							<img class="logo-inverse" src="images/RishabhDark Final.png" alt="">
 						</div>
 						<div class="main-logo" id="logo">
 							<img src="images/RishabhLight Final.png" alt="">

@@ -3,6 +3,8 @@
 <%@ page import="Model.RegisterUser" %>
 <%@ page import="Dao.Online_Event_Ticket_Dao" %>
 <%@ page import="Model.OnlineOrderDetails" %>
+<%@ page import="Dao.Venue_Event_Ticket_Dao" %>
+<%@ page import="Model.VenueOrderDetails" %>
 <%@ page import="Dao.UserDao" %>
 <html lang="en" class="h-100"><head>
 <style type="text/css">
@@ -15,8 +17,8 @@
 
 .pagination .page-link {
     color: #fff; /* Text color */
-    background-color: #000 !important; /* Button background color */
-    border: 1px solid #000; /* Border color */
+    background-color: #008000 !important; /* Button background color */
+    border: 1px solid #008000; /* Border color */
     padding: 0.375rem 0.75rem; /* Adjust padding as needed */
     margin-right: 5px; /* Adjust margin as needed */
     text-decoration: none;
@@ -24,13 +26,13 @@
 }
 
 .pagination .page-link:hover {
-    background-color: #333 !important; /* Hover background color */
-    border: 1px solid #333; /* Hover border color */
+    background-color: #70FF00 !important; /* Hover background color */
+    border: 1px solid #70FF00; /* Hover border color */
 }
 
 .pagination .page-item.active .page-link {
-    background-color: #333 !important; /* Active page background color */
-    border: 1px solid #333; /* Active page border color */
+    background-color: #70FF00 !important; /* Active page background color */
+    border: 1px solid #70FF00; /* Active page border color */
 }
 
     </style>
@@ -76,11 +78,12 @@
 					</button>
 					<a class="navbar-brand order-1 order-lg-0 ml-lg-0 ml-2 me-auto" href="index.jsp">
 						<div class="res-main-logo">
-							<img src="images/logo-icon.svg" alt="">
+							<img src="images/RishabhLight Final.png"  alt="">
+							<img class="logo-inverse" src="images/RishabhDark Final.png" alt="">
 						</div>
 						<div class="main-logo" id="logo">
-							<img src="images/logo.svg" alt="">
-							<img class="logo-inverse" src="images/dark-logo.svg" alt="">
+							<img src="images/RishabhLight Final.png" alt="">
+							<img class="logo-inverse" src="images/RishabhDark Final.png" alt="">
 						</div>
 					</a>
 					<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -326,10 +329,10 @@
 								<div class="profile-tabs">
 									<ul class="nav nav-pills nav-fill p-2 garren-line-tab" id="myTab" role="tablist">
 										<li class="nav-item">
-											<a class="nav-link active" id="feed-tab" data-bs-toggle="tab" href="#feed" role="tab" aria-controls="feed" aria-selected="true"><i class="fa-solid fa-box"></i>My Orders</a>
+											<a class="nav-link active" id="feed-tab" data-bs-toggle="tab" href="#feed" role="tab" aria-controls="feed" aria-selected="true"><i class="fa-solid fa-box"></i>My Online Orders</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" id="venue-tab" data-bs-toggle="tab" href="#venue" role="tab" aria-controls="venue" aria-selected="false"><i class="fa-solid fa-box"></i>About</a>
+											<a class="nav-link" id="venue-tab" data-bs-toggle="tab" href="#venue" role="tab" aria-controls="venue" aria-selected="false"><i class="fa-solid fa-box"></i>My Venue Orders</a>
 										</li>
 										<li class="nav-item">
 											<a class="nav-link" id="about-tab" data-bs-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="false"><i class="fa-solid fa-circle-info"></i>About</a>
@@ -343,7 +346,7 @@
 									
 										<div class="tab-pane fade active show" id="feed" role="tabpanel" aria-labelledby="feed-tab">
 											<%
-										int pageSize = 10; // Adjust this value based on the number of items you want to display per page
+										int pageSize = 5; // Adjust this value based on the number of items you want to display per page
 										int currentPage = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
 										
 										if (email != null && !email.isEmpty()) {
@@ -456,20 +459,20 @@
 										
 										<div class="tab-pane fade" id="venue" role="tabpanel" aria-labelledby="venue-tab">
 											<%
-										int pageSize1 = 10; // Adjust this value based on the number of items you want to display per page
+										int pageSize1 = 5; // Adjust this value based on the number of items you want to display per page
 										int currentPage11 = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
 										
 										if (email != null && !email.isEmpty()) {
-										    Online_Event_Ticket_Dao dao = new Online_Event_Ticket_Dao();
-										    List<OnlineOrderDetails> orderDetailsList = dao.getOneUser(email);
+										    Venue_Event_Ticket_Dao dao = new Venue_Event_Ticket_Dao();
+										    List<VenueOrderDetails> venueDetailsList = dao.getOneUser(email);
 										
 										    out.println("<h2>Order Details</h2>");
 										
 										    int startIndex = (currentPage11 - 1) * pageSize1;
-										    int endIndex = Math.min(startIndex + pageSize1, orderDetailsList.size());
+										    int endIndex = Math.min(startIndex + pageSize1, venueDetailsList.size());
 										
 										    for (int i = startIndex; i < endIndex; i++) {
-										        OnlineOrderDetails orderDetails = orderDetailsList.get(i);
+										        VenueOrderDetails venueDetails = venueDetailsList.get(i);
 										        %>
 										     <div class="main-card mt-4">
 												<div class="card-top p-4">
@@ -477,8 +480,8 @@
 														<img src="images/event-imgs/img-7.jpg" alt="">
 													</div>
 													<div class="card-event-dt">
-														<h5><%=orderDetails.getEventName() %> || <%=orderDetails.getEventCategory() %></h5>
-														<div class="invoice-id">Order ID : <span><%=orderDetails.getId() %></span></div>
+														<h5><%=venueDetails.getEventName() %> || <%=venueDetails.getEventCategory() %></h5>
+														<div class="invoice-id">Order ID : <span><%=venueDetails.getId() %></span></div>
 													</div>
 												</div>
 												<div class="card-bottom">
@@ -488,7 +491,7 @@
 														</div>
 														<div class="card-dt-text">
 															<h6>Event Starts on</h6>
-															<span><%=orderDetails.getEventDate() %> <%=orderDetails.getEventTime() %></span>
+															<span><%=venueDetails.getEventDate() %> <%=venueDetails.getEventTime() %></span>
 														</div>
 													</div>
 													<div class="card-bottom-item">
@@ -497,7 +500,7 @@
 														</div>
 														<div class="card-dt-text">
 															<h6>Total Tickets</h6>
-															<span><%=orderDetails.getQuantity() %></span>
+															<span><%=venueDetails.getQuantity() %></span>
 														</div>
 													</div>
 													<div class="card-bottom-item">
@@ -506,7 +509,7 @@
 														</div>
 														<div class="card-dt-text">
 															<h6>Paid Amount</h6>
-															<span>Rs. <%=orderDetails.getTotal() %></span>
+															<span>Rs. <%=venueDetails.getTotal() %></span>
 														</div>
 													</div>
 													<div class="card-bottom-item">
@@ -526,7 +529,7 @@
 											    }
 											
 											    // Include the pagination logic here
-											    int totalPages = (int) Math.ceil((double) orderDetailsList.size() / pageSize1);
+											    int totalPages = (int) Math.ceil((double) venueDetailsList.size() / pageSize1);
 											    %>
 											    <!-- Pagination -->
 											    <div class="pagination">
@@ -564,6 +567,19 @@
 										
 										
 										<div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
+											<%
+							    if (email != null && !email.isEmpty()) {
+							        UserDao dao = new UserDao();
+							        List<RegisterUser> registerUsers; // Change variable name to start with a lowercase letter
+							
+							        try {
+							            registerUsers = dao.searchUserByEmail(email);
+							
+							            out.println("<h2>User Details</h2>");
+							
+							            for (RegisterUser user : registerUsers) {
+							              
+							                %>
 											<div class="main-card mt-4">
 												<div class="bp-title position-relative">
 													<h4>About</h4>
@@ -572,11 +588,15 @@
 												<div class="about-details">
 													<div class="about-step">
 														<h5>Name</h5>
-														<span>Joginder Singh</span>
+														<span><%=user.getFirst_name()  %> <%=user.getLast_name()  %> </span>
 													</div>
 													<div class="about-step">
 														<h5>Tell us about yourself and let people know who you are</h5>
-														<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt interdum nunc et auctor. Phasellus quis pharetra sapien. Integer ligula sem, sodales vitae varius in, varius eget augue.</p>
+														<p class="mb-0"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt interdum nunc et auctor. Phasellus quis pharetra sapien. Integer ligula sem, sodales vitae varius in, varius eget augue.</p>
+													</div>
+													<div class="about-step">
+														<h5>Password</h5>
+														<p class="mb-0"><%=user.getPassword()  %></p>
 													</div>
 													<div class="about-step">
 														<h5>Find me on</h5>
@@ -589,12 +609,20 @@
 															<a href="#" class="social-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Website"><i class="fa-solid fa-globe"></i></a>
 														</div>
 													</div>
-													<div class="about-step">
-														<h5>Address</h5>
-														<p class="mb-0">00 Challis St, Newport, Victoria, 0000, Australia</p>
-													</div>
+													
 												</div>
 											</div>
+													
+						<%
+						            }
+						        } catch (Exception e) {
+						            // Handle exceptions appropriately, e.g., log or display an error message
+						            e.printStackTrace();
+						        }
+						    } else {
+						        response.sendRedirect("sign_up.jsp");
+						    }
+						%>
 										</div>
 										
 										

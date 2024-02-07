@@ -108,7 +108,8 @@ System.out.println(id);
 					</button>
 					<a class="navbar-brand order-1 order-lg-0 ml-lg-0 ml-2 me-auto" href="index.jsp">
 						<div class="res-main-logo">
-							<img src="images/logo-icon.svg" alt="">
+							<img src="images/RishabhLight Final.png"  alt="">
+							<img class="logo-inverse" src="images/RishabhDark Final.png" alt="">
 						</div>
 						<div class="main-logo" id="logo">
 							<img src="images/RishabhLight Final.png" alt="">
@@ -118,21 +119,14 @@ System.out.println(id);
 					<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 						<div class="offcanvas-header">
 							<div class="offcanvas-logo" id="offcanvasNavbarLabel">
-								<img src="images/logo-icon.svg" alt="">
+								<img src="images/RishabhDark-Final (1).svg" alt="">
 							</div>
 							<button type="button" class="close-btn" data-bs-dismiss="offcanvas" aria-label="Close">
 								<i class="fa-solid fa-xmark"></i>
 							</button>
 						</div>
 						<div class="offcanvas-body">
-							<div class="offcanvas-top-area">
-								<div class="create-bg">
-									<a href="create.jsp" class="offcanvas-create-btn">
-										<i class="fa-solid fa-calendar-days"></i>
-										<span>Create Event</span>
-									</a>
-								</div>
-							</div>							
+													
 							<ul class="navbar-nav justify-content-end flex-grow-1 pe_5">
 								<li class="nav-item">
 									<a class="nav-link " aria-current="page" href="index.jsp">Home</a>
