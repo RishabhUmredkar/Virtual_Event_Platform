@@ -12,7 +12,6 @@
 <%@ page import="java.sql.Date" %>
 <%@ page import="java.sql.Time" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page errorPage="Error.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,7 +68,7 @@
 		<c:if test="${not empty cookie.email.value}">
 		
         <%
-            Integer orderId = (Integer) session.getAttribute("orderId");
+            Integer orderId = (Integer) session.getAttribute("orderId1");
             System.out.println("orderId: " + orderId);
             try {
                 Online_Event_Ticket_Dao dao = new Online_Event_Ticket_Dao();
@@ -86,11 +85,11 @@
                     System.out.println("Pin Code: " + ticket.getPinCode());
                     System.out.println("Card Number: " + ticket.getEventCardNumber());
 
-                    // Format Expiry Date using SimpleDateFormat
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("MM/yy");
+             /*        // Format Expiry Date using SimpleDateFormat
+                  SimpleDateFormat dateFormat = new SimpleDateFormat("MM/yy");
                     String formattedExpiryDate = dateFormat.format(ticket.getEventExpiryDate());
                     System.out.println("Expiry Date: " + formattedExpiryDate);
-
+  */
                     System.out.println("CVV: " + ticket.getCvv());
                     // Print other properties as needed
         %>
