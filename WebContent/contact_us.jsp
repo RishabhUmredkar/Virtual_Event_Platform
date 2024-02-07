@@ -72,8 +72,6 @@
 									</a>
 									<ul class="dropdown-menu dropdown-submenu">
 										<li><a class="dropdown-item" href="explore_events.jsp">Explore Events</a></li>
-										<li><a class="dropdown-item" href="venue_event_detail_view.jsp">Venue Event Detail View</a></li>
-										<li><a class="dropdown-item" href="online_event_detail_view.jsp">Online Event Detail View</a></li>
 									</ul>
 								</li>
 								

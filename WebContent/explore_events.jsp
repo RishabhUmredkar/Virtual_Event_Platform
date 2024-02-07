@@ -84,13 +84,11 @@
 									<a class="nav-link " aria-current="page" href="index.jsp">Home</a>
 								</li>
 								<li class="nav-item dropdown ">
-									<a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 										Explore Events
 									</a>
-									<ul class="dropdown-menu dropdown-submenu ">
+									<ul class="dropdown-menu dropdown-submenu">
 										<li><a class="dropdown-item" href="explore_events.jsp">Explore Events</a></li>
-										<li><a class="dropdown-item" href="venue_event_detail_view.jsp">Venue Event Detail View</a></li>
-										<li><a class="dropdown-item" href="online_event_detail_view.jsp">Online Event Detail View</a></li>
 									</ul>
 								</li>
 								

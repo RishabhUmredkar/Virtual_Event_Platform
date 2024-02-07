@@ -101,8 +101,6 @@
 									</a>
 									<ul class="dropdown-menu dropdown-submenu">
 										<li><a class="dropdown-item" href="explore_events.jsp">Explore Events</a></li>
-										<li><a class="dropdown-item" href="venue_event_detail_view.jsp">Venue Event Detail View</a></li>
-										<li><a class="dropdown-item" href="online_event_detail_view.jsp">Online Event Detail View</a></li>
 									</ul>
 								</li>
 								
@@ -111,7 +109,6 @@
 										Blog
 									</a>
 									<ul class="dropdown-menu dropdown-submenu">
-										<li><a class="dropdown-item" href="our_blog.jsp">Our Blog</a></li>
 										<li><a class="dropdown-item" href="blog_detail_view.jsp">Blog Detail View</a></li>
 									</ul>
 								</li>
@@ -120,8 +117,6 @@
 										Help
 									</a>
 									<ul class="dropdown-menu dropdown-submenu">
-										<li><a class="dropdown-item" href="faq.jsp">FAQ</a></li>
-										<li><a class="dropdown-item" href="help_center.jsp">Help Center</a></li>
 										<li><a class="dropdown-item" href="contact_us.jsp">Contact Us</a></li>
 									</ul>
 								</li>
@@ -143,12 +138,7 @@
 					</div>
 					<div class="right-header order-2">
 						<ul class="align-self-stretch">
-							<li>
-								<a href="create.jsp" class="create-btn btn-hover">
-									<i class="fa-solid fa-calendar-days"></i>
-									<span>Create Event</span>
-								</a>
-							</li>
+							
 							<li class="dropdown account-dropdown">
 								<a href="#" class="account-link" role="button" id="accountClick" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
 									<img src="images/profile-imgs/img-13.jpg" alt="">
@@ -165,7 +155,6 @@
 										</div>
 									</li>
 									<li class="profile-link">
-										<a href="my_organisation_dashboard.jsp" class="link-item">My Organisation</a>
 										<a href="organiser_profile_view.jsp" class="link-item">My Profile</a>									
 										<a href="sign_in.jsp" class="link-item">Sign Out</a>									
 									</li>
@@ -268,7 +257,6 @@
 										<div class="col-lg-6 col-md-12">
 											<div class="form-group mt-4">
 												<label class="form-label">First Name*</label>
-												Rs.<%=event.getEvent_price() %>
                             <input class="form-control h_50" type="text" placeholder="" value="<%= user.getFirst_name() %>" disabled>
 											</div>
 										</div>

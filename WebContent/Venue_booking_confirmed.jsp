@@ -104,14 +104,7 @@
 							</button>
 						</div>
 						<div class="offcanvas-body">
-							<div class="offcanvas-top-area">
-								<div class="create-bg">
-									<a href="create.jsp" class="offcanvas-create-btn">
-										<i class="fa-solid fa-calendar-days"></i>
-										<span>Create Event</span>
-									</a>
-								</div>
-							</div>							
+												
 							<ul class="navbar-nav justify-content-end flex-grow-1 pe_5">
 								<li class="nav-item">
 									<a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
@@ -122,8 +115,6 @@
 									</a>
 									<ul class="dropdown-menu dropdown-submenu">
 										<li><a class="dropdown-item" href="explore_events.jsp">Explore Events</a></li>
-										<li><a class="dropdown-item" href="venue_event_detail_view.jsp">Venue Event Detail View</a></li>
-										<li><a class="dropdown-item" href="online_event_detail_view.jsp">Online Event Detail View</a></li>
 									</ul>
 								</li>
 								<li class="nav-item">
@@ -134,7 +125,6 @@
 										Blog
 									</a>
 									<ul class="dropdown-menu dropdown-submenu">
-										<li><a class="dropdown-item" href="our_blog.jsp">Our Blog</a></li>
 										<li><a class="dropdown-item" href="blog_detail_view.jsp">Blog Detail View</a></li>
 									</ul>
 								</li>
@@ -143,55 +133,10 @@
 										Help
 									</a>
 									<ul class="dropdown-menu dropdown-submenu">
-										<li><a class="dropdown-item" href="faq.jsp">FAQ</a></li>
-										<li><a class="dropdown-item" href="help_center.jsp">Help Center</a></li>
 										<li><a class="dropdown-item" href="contact_us.jsp">Contact Us</a></li>
 									</ul>
 								</li>
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-										Pages
-									</a>
-									<ul class="dropdown-menu dropdown-submenu">
-										<li>
-											<a class="dropdown-item submenu-item" href="#">Other Pages</a>
-											<ul class="submenu dropdown-menu">
-												<li><a class="dropdown-item pe-5" href="sign_in.jsp">Sign In</a></li>
-												<li><a class="dropdown-item pe-5" href="sign_up.jsp">Sign Up</a></li>
-												<li><a class="dropdown-item pe-5" href="forgot_password.jsp">Forgot Password</a></li>
-												<li><a class="dropdown-item pe-5" href="about_us.jsp">About Us</a></li>
-												<li><a class="dropdown-item pe-5" href="checkout.jsp">Checkout</a></li>
-												<li><a class="dropdown-item pe-5" href="checkout_premium.jsp">Checkout Premium</a></li>
-												<li><a class="dropdown-item pe-5" href="invoice.jsp">Invoice</a></li>
-												<li><a class="dropdown-item pe-5" href="coming_soon.jsp">Coming Soon</a></li>
-												<li><a class="dropdown-item pe-5" href="error_404.jsp">Error 404</a></li>
-											</ul>
-										</li>
-										<li>
-											<a class="dropdown-item submenu-item" href="#">Create Event</a>
-											<ul class="submenu dropdown-menu">
-												<li><a class="dropdown-item pe-5" href="create.jsp">Create</a></li>
-												<li><a class="dropdown-item pe-5" href="create_venue_event.jsp">Create Venue Event</a></li>
-												<li><a class="dropdown-item pe-5" href="create_online_event.jsp">Create Online Event</a></li>
-											</ul>
-										</li>
-										<li>
-											<a class="dropdown-item submenu-item" href="#">Events View</a>
-											<ul class="submenu dropdown-menu">
-												<li><a class="dropdown-item pe-5" href="online_event_detail_view.jsp">Online Event Detail View</a></li>
-												<li><a class="dropdown-item pe-5" href="venue_event_detail_view.jsp">Venue Event Detail View</a></li>
-											</ul>
-										</li>
-										<li><a class="dropdown-item" href="booking_confirmed.jsp">Booking Confirmed</a></li>
-										<li><a class="dropdown-item" href="attendee_profile_view.jsp">Attendee Profile View</a></li>
-										<li><a class="dropdown-item" href="organiser_profile_view.jsp">Organiser Profile View</a></li>
-										<li><a class="dropdown-item" href="my_organisation_dashboard.jsp">Organization Dashboard</a></li>
-										<li><a class="dropdown-item" href="sell_tickets_online.jsp">Sell Tickets Online</a></li>
-										<li><a class="dropdown-item" href="refer_a_friend.jsp">Refer a Friend</a></li>
-										<li><a class="dropdown-item" href="term_and_conditions.jsp">Terms &amp; Conditions</a></li>
-										<li><a class="dropdown-item" href="privacy_policy.jsp">Privacy Policy</a></li>
-									</ul>
-								</li>
+								
 							</ul>
 						</div>
 						<div class="offcanvas-footer">
@@ -209,12 +154,7 @@
 					</div>
 					<div class="right-header order-2">
 						<ul class="align-self-stretch">
-							<li>
-								<a href="create.jsp" class="create-btn btn-hover">
-									<i class="fa-solid fa-calendar-days"></i>
-									<span>Create Event</span>
-								</a>
-							</li>
+							
 							<li class="dropdown account-dropdown">
 								<a href="#" class="account-link" role="button" id="accountClick" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
 									<img src="images/profile-imgs/img-13.jpg" alt="">
