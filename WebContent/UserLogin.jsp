@@ -32,7 +32,7 @@
               response.addCookie(c);
               
               // Redirect to the explore_events.jsp page
-              response.sendRedirect("create.jsp");
+              response.sendRedirect("my_organisation_dashboard.jsp");
             
         } else {
             // Regular user login check
