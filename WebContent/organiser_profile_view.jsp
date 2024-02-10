@@ -1,3 +1,5 @@
+<%@ page import="javax.servlet.http.Cookie" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="Model.RegisterUser" %>
@@ -65,6 +67,7 @@
 		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">		
 	
+<c:if test="${not empty cookie.email.value}">
 
 	<!-- Header Start-->
 	<header class="header">
@@ -657,4 +660,9 @@
 	<script src="js/custom.js"></script>
 	<script src="js/night-mode.js"></script>
 
+</c:if>
+	
+<c:if test="${empty cookie.email.value}">
+    <c:redirect url="sign_up.jsp" />
+</c:if>
 </body></html>
