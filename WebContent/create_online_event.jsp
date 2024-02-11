@@ -14,9 +14,7 @@
 		<meta name="author" content="Gambolthemes">		
 		<title>Rishabh - Simple Online Event Ticketing System</title>
 		
-		<!-- Favicon Icon -->
-		<link rel="icon" type="image/png" href="images/fav.png">
-		
+
 		<!-- Stylesheets -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">

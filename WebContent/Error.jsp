@@ -64,7 +64,7 @@
         <span>re</span>
         <span>...........</span>
     </h1>
-        <img src="Error/AError.png" alt="Error Image">
+        <img src="Error/error.png" alt="Error Image">
     
 </body>
 </html>
