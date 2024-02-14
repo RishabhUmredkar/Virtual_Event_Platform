@@ -237,4 +237,43 @@ public class Online_Event_Ticket_Dao {
 	            return allDataList;
 	        }
 	    }
+	   
+	   
+	   
+	   
+	   
+	    // Assuming you have a method to retrieve the current quantity from the database based on event name
+	   public int getCurrentQuantityByEventId(int id) throws ClassNotFoundException, SQLException {
+		    String sql = "SELECT quantity FROM Virtual_Event_platform.Online_Event WHERE id = ?";
+		    PreparedStatement pstmt = con.prepareStatement(sql);
+	        pstmt.setInt(1, id);
+	        ResultSet rs = pstmt.executeQuery();
+		   
+		        if (rs.next()) {
+		            return rs.getInt("event_total_tickets");
+		        } else {
+		            return 0;  // Default to 0 if no quantity is found
+		        }
+		    
+		   
+
+		}
+
+
+	    // Assuming you have a method to update the quantity in the database based on event name
+	   public int updateQuantityByEventId(int eventId, int updatedQuantity) throws ClassNotFoundException, SQLException {
+		    String sql = "UPDATE Virtual_Event_platform.Online_Event SET quantity = ? WHERE id = ?";
+		    
+		    try (Connection con = getconnect();
+		         PreparedStatement ps = con.prepareStatement(sql)) {
+
+		        ps.setInt(1, updatedQuantity);
+		        ps.setInt(2, eventId);
+
+		        return ps.executeUpdate();
+		    }
+		}
+
+
+
 	}

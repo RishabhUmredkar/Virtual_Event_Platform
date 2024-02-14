@@ -58,6 +58,18 @@
                                     int total = quantity * event.getEvent_price();
                                     System.out.println("ye hai id"+id);
                                     System.out.println("ye hai mail id"+email);
+                                    Online_Event_Ticket_Dao ud = new Online_Event_Ticket_Dao();
+                                    System.out.println("ye hai id.............."+id);
+
+                                  //Get current quantity from the database based on event ID
+                                   /*  int currentQuantity = ud.getCurrentQuantityByEventId(id);
+                                  System.out.print(currentQuantity);
+                                  System.out.println("ye hai id.............."+id);
+
+ */                                    ///Update quantity in the database based on event ID
+                                  /* int updatedQuantity = currentQuantity - quantity;
+                                  ud.updateQuantityByEventId(event.getId(), updatedQuantity);
+                                   */
                                 %>
 	<header class="header">
 		<div class="header-inner">
@@ -450,7 +462,7 @@
 	request.setAttribute("firstName", user.getFirst_name());
 	request.setAttribute("lastName", user.getLast_name());
 	request.setAttribute("email", user.getEmail());
-	
+
 	request.setAttribute("eventimage", event.getEvent_image());
 	request.setAttribute("eventName", event.getEvent_name());
 	request.setAttribute("eventCategory", event.getEvent_category());
@@ -461,8 +473,10 @@
 	request.setAttribute("eventHost", event.getEvent_hosting());
 	request.setAttribute("price", event.getEvent_price());
 	request.setAttribute("quantity", quantity);
-	request.setAttribute("total", total);%>
-	
+	request.setAttribute("total", total);
+	session.setAttribute("eventId", event.getId());
+
+%>
 	
 	 <h3>User Details:</h3>
     <p>First Name: <%= request.getAttribute("firstName") %></p>
@@ -497,16 +511,17 @@ OnlineOrderDetails orderDetails = new OnlineOrderDetails(user.getFirst_name(), u
         event.getEvent_description(), event.getEvent_hosting(), event.getEvent_price(), quantity, total);
 System.out.print(orderDetails);
 request.setAttribute("orderDetails", orderDetails);
-
-Online_Event_Ticket_Dao ud = new Online_Event_Ticket_Dao();
+//Insert order details into the database
 int orderId = ud.insert(orderDetails);
 out.println("Order ID: " + orderDetails.getId());
-System.out.print(orderDetails.getId());
 
+//Print Order ID
+out.println("Order ID: " + orderDetails.getId());
+
+//Store Order ID in Session
 session.setAttribute("orderId", orderDetails.getId());
-
 %>
-	</form>
+</form>
 	user(First Name,Last Name,Email,Address,Country,State,City,pin code,image,event name,event price, date, time,duration description, event hosting , price, total ticket)
 	<!-- Body End-->
 	<!-- Footer Start-->
