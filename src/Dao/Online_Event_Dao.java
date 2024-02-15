@@ -216,4 +216,31 @@ public List<OnlineEvent> getAllEventDataByDate(Date filterDate) throws ClassNotF
         return event;
     }
 	
+    
+    // Assuming you have a method to retrieve the current quantity from the database based on event name
+    public int getCurrentQuantityByEventId(Connection con, int id) throws SQLException {
+        String sql = "SELECT event_total_tickets FROM Virtual_Event_platform.Online_Event WHERE id = ?";
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("event_total_tickets");
+            } else {
+                return 0;  // Default to 0 if no quantity is found
+            }
+        }
+    }
+
+
+	    // Assuming you have a method to update the quantity in the database based on event name
+    public int updateQuantityByEventId(Connection con, int eventId, int updatedQuantity) throws SQLException {
+        String sql = "UPDATE Virtual_Event_platform.Online_Event SET event_total_tickets = ? WHERE id = ?";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, updatedQuantity);
+            ps.setInt(2, eventId);
+
+            return ps.executeUpdate();
+        }
+    }
 }
