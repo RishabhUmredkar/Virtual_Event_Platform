@@ -215,7 +215,7 @@
 												<a href="online_event_detail_view.jsp?id=<%=event.getId() %>" class="event-title"><%= event.getEvent_name() %></a>
 												<div class="duration-price-remaining">
 													<span class="duration-price">Rs. <%= event.getEvent_price() %></span>
-													<span class="remaining"></span>
+													<span class="remaining"><i class="fa-solid fa-ticket fa-rotate-90"></i><%=event.getEvent_total_tickets() %> Remaining</span>
 												</div>
 											</div>
 											<div class="event-footer">
@@ -266,7 +266,7 @@
 												<%= event.getEvent_description()%>
 												<div class="duration-price-remaining">
 													<span class="duration-price">Rs. <%= event.getEvent_price() %></span>
-													<span class="remaining"></span>
+													<span class="remaining"><i class="fa-solid fa-ticket fa-rotate-90"></i><%=event.getEvent_total_tickets() %> Remaining</span>
 												</div>
 											</div>
 											<div class="event-footer">
