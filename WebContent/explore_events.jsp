@@ -263,8 +263,7 @@
 											
 											<div class="event-content">
 												<a href="venue_event_detail_view.jsp?id=<%=event.getId() %>" class="event-title"><%= event.getEvent_name() %></a>online<Br>
-												<%= event.getEvent_description()%>
-												<div class="duration-price-remaining">
+													<div class="duration-price-remaining">
 													<span class="duration-price">Rs. <%= event.getEvent_price() %></span>
 													<span class="remaining"><i class="fa-solid fa-ticket fa-rotate-90"></i><%=event.getEvent_total_tickets() %> Remaining</span>
 												</div>

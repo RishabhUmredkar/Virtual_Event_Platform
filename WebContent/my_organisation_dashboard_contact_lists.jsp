@@ -477,7 +477,7 @@
                         <span class="icon">
                             <i class="fa-solid fa-ticket"></i>
                         </span>
-                        <p>Ticket Price</p>
+                        <p>Total Ticket Price</p>
                         <h6 class="coupon-status"><%= e.getTotal() %></h6>
                     </div>
                     <div class="icon-box">
@@ -525,7 +525,7 @@
 													</div>
 													<div class="card-event-dt">
 														<h5><%=e.getEventName() %> || <%=e.getEventCategory() %></h5>
-														<p><%=e.getFirstName() %>  <%=e.getLastName() %> </p>
+                            							<p><%= e.getEventDescription()%>  </p>
 													</div>
 												</div>
 												<div class="dropdown">
@@ -539,6 +539,13 @@
 												</div>
 											</div>
 											<div class="bottom d-flex flex-wrap justify-content-between align-items-center p-4">
+												<div class="icon-box ">
+							                        <span class="icon">
+							                            <i class="fa-solid fa-location-dot"></i>
+							                        </span>
+							                        <p>Ticket Holder</p>
+							                       			<h6 class="coupon-status"><%=e.getFirstName()%>   <%=e.getLastName() %> </h6>
+							                    </div>
 												<div class="icon-box ">
 													<span class="icon">
 														<i class="fa-solid fa-location-dot"></i>
@@ -557,15 +564,23 @@
 													<span class="icon">
 														<i class="fa-solid fa-ticket"></i>
 													</span>
-													<p>Ticket Price</p>
-													<h6 class="coupon-status"><%=e.getPrice() %></h6>
+													<p>Total Ticket Price</p>
+													<h6 class="coupon-status"><%=e.getTotal() %></h6>
 												</div>
+												<div class="icon-box">
+							                        <span class="icon">
+							                            <i class="fa-solid fa-ticket"></i>
+							                        </span>
+							                        <p>Unit Price</p>
+							                        <h6 class="coupon-status"><%= e.getPrice() %></h6>
+							                    </div>
+												
 												<div class="icon-box">
 													<span class="icon">
 														<i class="fa-solid fa-tag"></i>
 													</span>
 													<p>Total Tickets </p>
-													<h6 class="coupon-status"><%=e.getTotal() %></h6>
+													<h6 class="coupon-status"><%=e.getQuantity() %></h6>
 												</div>
 											</div>
 										</div>
