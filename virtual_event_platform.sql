@@ -132,6 +132,8 @@ ALTER TABLE Virtual_Event_platform.OnlineEventTicketBook
 ADD COLUMN card_number VARCHAR(16) AFTER total,
 ADD COLUMN expiry_date DATE AFTER card_number,
 ADD COLUMN cvv INT AFTER expiry_date;
+ALTER TABLE Virtual_Event_platform.OnlineEventTicketBook
+ADD COLUMN price INT AFTER total;
 
 select * from Virtual_Event_platform.OnlineEventTicketBook;
 
@@ -171,3 +173,16 @@ CREATE TABLE Virtual_Event_platform.VenueEventTicketBook (
     cvv INT
 );
 select * from Virtual_Event_platform.VenueEventTicketBook;
+ALTER TABLE Virtual_Event_platform.VenueEventTicketBook
+ADD COLUMN price INT AFTER total;
+
+
+
+
+/*  Truncate all data from dataTable*/
+
+TRUNCATE TABLE Virtual_Event_platform.RegisterUser;
+TRUNCATE TABLE Virtual_Event_platform.Venue_Event_ticket;
+TRUNCATE TABLE Virtual_Event_platform.Online_Event;
+TRUNCATE TABLE Virtual_Event_platform.OnlineEventTicketBook;
+TRUNCATE TABLE Virtual_Event_platform.VenueEventTicketBook;
