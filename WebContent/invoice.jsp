@@ -12,6 +12,8 @@
 <%@ page import="java.sql.Date" %>
 <%@ page import="java.sql.Time" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page errorPage="Error.jsp" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

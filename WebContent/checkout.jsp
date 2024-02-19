@@ -18,6 +18,7 @@
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.PreparedStatement" %>
+<%@ page errorPage="Error.jsp" %>
 
 <html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">
 

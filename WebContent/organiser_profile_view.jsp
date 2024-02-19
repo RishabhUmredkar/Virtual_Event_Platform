@@ -8,6 +8,8 @@
 <%@ page import="Dao.Venue_Event_Ticket_Dao" %>
 <%@ page import="Model.VenueOrderDetails" %>
 <%@ page import="Dao.UserDao" %>
+<%@ page errorPage="Error.jsp" %>
+
 <html lang="en" class="h-100"><head>
 <style type="text/css">
      /* Add or update these styles in your CSS file or inline styles */
