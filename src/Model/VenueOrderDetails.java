@@ -418,10 +418,5 @@ public class VenueOrderDetails {
 					+ quantity + ", total=" + total + ", eventCardNumber=" + eventCardNumber + ", eventExpiryDate="
 					+ eventExpiryDate + ", cvv=" + cvv + "]";
 		}
-		
-		
 
-	    
-		
-		
 }

@@ -11,7 +11,7 @@ public class VenueEvent {
     private Date event_date;
     private Time event_time;
     private int event_duration;
-    private String event_image; // I'm assuming event_image is placed after event_duration
+    private String event_image; 
     private String event_description;
     private String event_venue;
     private String event_address1;
@@ -23,7 +23,6 @@ public class VenueEvent {
     private int event_price;
     private int event_total_tickets;
 
-    // Constructors, getters, and setters
 
     public VenueEvent() {
         // Default constructor
@@ -111,11 +110,7 @@ public class VenueEvent {
 		this.event_total_tickets = event_total_tickets;
 	}
 
-	// Add getters and setters for each field
-
-    
-    
-    // toString() method for debugging or logging purposes
+	
     @Override
     public String toString() {
         return "VenueEventTicket{" +

@@ -59,9 +59,7 @@ public class OnlineEvent {
         this.event_total_tickets = event_total_tickets;
     }
 
-    // Add getters and setters for each field
-
-    // toString() method for debugging or logging purposes
+   
     @Override
     public String toString() {
         return "OnlineEvent{" + "id=" + id + ", event_name='" + event_name + '\'' + ", event_category='"
@@ -159,5 +157,4 @@ public class OnlineEvent {
 		this.event_total_tickets = event_total_tickets;
 	}
 
-    // Rest of the code (getters and setters) remains unchanged
 }

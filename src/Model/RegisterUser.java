@@ -10,7 +10,6 @@ public class RegisterUser {
 	
 	public RegisterUser() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public RegisterUser(int id) {

@@ -18,12 +18,15 @@ public class Venue_Event_Dao {
     String upass = "abc123";
     String driver = "com.mysql.cj.jdbc.Driver";
 
-    public Connection getConnect() throws ClassNotFoundException, SQLException {
+    public Connection getConnect() throws ClassNotFoundException, SQLException 
+    {
         Class.forName(driver);
         return DriverManager.getConnection(url, uname, upass);
     }
 
-    public List<VenueEvent> getAllEventData() {
+    
+    public List<VenueEvent> getAllEventData() 
+    {
         String sql = "SELECT * FROM Venue_Event_ticket ORDER BY event_date ASC";
         List<VenueEvent> eventList = new ArrayList<>();
 
@@ -51,18 +54,18 @@ public class Venue_Event_Dao {
                         resultSet.getInt(16),
                         resultSet.getInt(17)
                 );
-
                 eventList.add(event);
             }
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace(); // Handle the exception appropriately
         }
-
         return eventList;
     }
 
-    public List<VenueEvent> searchEventByName(String searchEvent) {
+    
+    public List<VenueEvent> searchEventByName(String searchEvent)
+    {
         String sql = "SELECT * FROM Venue_Event_ticket WHERE event_name LIKE ?";
         List<VenueEvent> searchResults = new ArrayList<>();
 
@@ -104,7 +107,9 @@ public class Venue_Event_Dao {
         return searchResults;
     }
     
-    public List<VenueEvent> getTodayEventData() {
+    
+    public List<VenueEvent> getTodayEventData()
+    {
         String sql = "SELECT * FROM Venue_Event_ticket WHERE DATE(event_date) = ? ORDER BY event_date ASC";
         List<VenueEvent> le = new ArrayList<>();
 
@@ -149,7 +154,8 @@ public class Venue_Event_Dao {
 
     
 
-    public List<VenueEvent> getAllEventDataByDate(java.sql.Date filterDate) {
+    public List<VenueEvent> getAllEventDataByDate(java.sql.Date filterDate) 
+    {
         String sql = "SELECT * FROM Venue_Event_ticket WHERE DATE(event_date) = ? ORDER BY event_date ASC";
         List<VenueEvent> le = new ArrayList<>();
 
@@ -180,19 +186,18 @@ public class Venue_Event_Dao {
                             rs.getInt(16),
                             rs.getInt(17)
                     );
-
                     le.add(e);
                 }
             }
-
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace(); // Handle the exception appropriately
         }
-
         return le;
     }
     
-    public VenueEvent getOneEvent(int eventId) {
+    
+    public VenueEvent getOneEvent(int eventId) 
+    {
         String sql = "SELECT * FROM Venue_Event_ticket WHERE id = ?";
         VenueEvent event = null;
 
@@ -224,17 +229,15 @@ public class Venue_Event_Dao {
                     );
                 }
             }
-
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace(); // Handle the exception appropriately
         }
-
         return event;
     }
     
     
- // Assuming you have a method to retrieve the current quantity from the database based on event name
-    public int getCurrentQuantityByEventId(Connection con, int id) throws SQLException {
+    public int getCurrentQuantityByEventId(Connection con, int id) throws SQLException
+    {
         String sql = "SELECT event_total_tickets FROM Virtual_Event_platform.Venue_Event_ticket WHERE id = ?";
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setInt(1, id);
@@ -247,8 +250,10 @@ public class Venue_Event_Dao {
             }
         }
     }
-    // Assuming you have a method to update the quantity in the database based on event name
-public int updateQuantityByEventId(Connection con, int eventId, int updatedQuantity) throws SQLException {
+
+    
+    public int updateQuantityByEventId(Connection con, int eventId, int updatedQuantity) throws SQLException 
+    {
     String sql = "UPDATE Virtual_Event_platform.Venue_Event_ticket SET event_total_tickets = ? WHERE id = ?";
     try (PreparedStatement ps = con.prepareStatement(sql)) {
         ps.setInt(1, updatedQuantity);
@@ -256,6 +261,6 @@ public int updateQuantityByEventId(Connection con, int eventId, int updatedQuant
 
         return ps.executeUpdate();
     }
-}
+    }
 
 }

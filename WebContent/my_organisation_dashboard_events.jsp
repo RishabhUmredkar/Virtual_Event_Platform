@@ -9,6 +9,7 @@
 <%@page import="Dao.Online_Event_Dao"%>
 <%@page import="Servlet.ProcessEventServlet"%>
 <%@ page errorPage="Error.jsp" %>
+<%@ page import="java.util.ArrayList" %>
 
 
 <html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">
@@ -273,41 +274,38 @@
 						
 						<div class="event-list">
 							<div class="tab-content">
-							<% 
-														 String searchEvent = request.getParameter("event");
-													    List<VenueEvent> le = null;
+							<%
+    String searchEvent = request.getParameter("event");
+    List<VenueEvent> venueEvents = null;
+    List<OnlineEvent> onlineEvents = null;
 
-													    if (searchEvent != null && !searchEvent.isEmpty()) {
-													        // If email is provided, get data for that email
-													        le = new Venue_Event_Dao().searchEventByName(searchEvent);
-													    } else {
-													        // If no email is provided, get all user data
-													        le = new Venue_Event_Dao().getAllEventData();
-													    }
-						
-						   
-							
-							
-							
-							
-							
-							
-							
-							     int currentPage = 1;
-													      int recordsPerPage = 10;
-													      if (request.getParameter("page") != null) {
-													        currentPage = Integer.parseInt(request.getParameter("page"));
-													      }
-													      int totalRecords = le.size();
-													      int totalPages = (int) Math.ceil((double) totalRecords / recordsPerPage);
-													      int start = (currentPage - 1) * recordsPerPage;
-													      int end = Math.min(start + recordsPerPage, totalRecords);
-													      List<VenueEvent> currentPageData = le.subList(start, end);
+    if (searchEvent != null && !searchEvent.isEmpty()) {
+        // If event search parameter is provided, get data for that event
+        venueEvents = new Venue_Event_Dao().searchEventByName(searchEvent);
+        onlineEvents = (List<OnlineEvent>) (List<?>) new Online_Event_Dao().searchEventByName(searchEvent);
+    } else {
+        // If no event search parameter is provided, get all data for both types of events
+        venueEvents = new Venue_Event_Dao().getAllEventData();
+        onlineEvents = new Online_Event_Dao().getAllEventData();
+    }
 
-														 %>
+    int currentPage = 1;
+    int recordsPerPage = 5;
+    if (request.getParameter("page") != null) {
+        currentPage = Integer.parseInt(request.getParameter("page"));
+    }
+
+    int totalRecords = venueEvents.size() + onlineEvents.size();
+    int totalPages = (int) Math.ceil((double) totalRecords / recordsPerPage);
+    int start = (currentPage - 1) * recordsPerPage;
+    int end = Math.min(start + recordsPerPage, totalRecords);
+
+    List<VenueEvent> currentPageVenueData = venueEvents.subList(start, Math.min(end, venueEvents.size()));
+    List<OnlineEvent> currentPageOnlineData = onlineEvents.subList(Math.max(0, start - venueEvents.size()), end - venueEvents.size());
+%>
 								<div class="tab-pane fade show active" id="all-tab" role="tabpanel">
 								
-								 <% for (VenueEvent e : currentPageData) { %>	
+   								 <% for (VenueEvent e : currentPageVenueData) { %>
 									<div class="main-card mt-4">
 										<div class="contact-list">
 											<div class="card-top event-top p-4 align-items-center top d-md-flex flex-wrap justify-content-between">
@@ -336,6 +334,62 @@
 													</span>
 													<p>Location</p>
 													<h6 class="coupon-status"><%=e.getEvent_venue() %> <%=" , "+e.getEvent_address1() %><%=" , "+e.getEvent_city() %><%= " , "+ e.getEvent_state() %> <%=" , "+e.getEvent_country() %> <%= " , "+ e.getEvent_pin_code() %></h6>
+												</div>
+												<div class="icon-box">
+													<span class="icon">
+														<i class="fa-solid fa-calendar-days"></i>
+													</span>
+													<p>Starts on</p>
+													<h6 class="coupon-status"><%= e.getEvent_date() %> <%=e.getEvent_time() %></h6>
+												</div>
+												<div class="icon-box">
+													<span class="icon">
+														<i class="fa-solid fa-ticket"></i>
+													</span>
+													<p>Ticket Price</p>
+													<h6 class="coupon-status"><%=e.getEvent_price() %></h6>
+												</div>
+												<div class="icon-box">
+													<span class="icon">
+														<i class="fa-solid fa-tag"></i>
+													</span>
+													<p>Total Tickets </p>
+													<h6 class="coupon-status"><%=e.getEvent_total_tickets() %></h6>
+												</div>
+											</div>
+										</div>
+									</div>
+									<%} %>
+									
+									
+    									<% for (OnlineEvent e : currentPageOnlineData) { %>
+									<div class="main-card mt-4">
+										<div class="contact-list">
+											<div class="card-top event-top p-4 align-items-center top d-md-flex flex-wrap justify-content-between">
+												<div class="d-md-flex align-items-center event-top-info">
+													<div class="card-event-img">
+														<img src="Online_Event_Image/<%=e.getEvent_image() %>" alt="fdgdf">
+													</div>
+													<div class="card-event-dt">
+														<h5><%=e.getEvent_name() %> || <%=e.getEvent_category() %></h5>
+														<p><%=e.getEvent_description() %> </p>													</div>
+												</div>
+												<div class="dropdown">
+													<button class="option-btn" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+													<div class="dropdown-menu dropdown-menu-right">
+														<a href="#" class="dropdown-item"><i class="fa-solid fa-gear me-3"></i>Manage</a>
+														<a href="#" class="dropdown-item"><i class="fa-solid fa-eye me-3"></i>Preview Event</a>
+														<a href="#" class="dropdown-item"><i class="fa-solid fa-clone me-3"></i>Duplicate</a>
+														<a href="#" class="dropdown-item delete-event"><i class="fa-solid fa-trash-can me-3"></i>Delete</a>
+													</div>
+												</div>
+											</div>
+											<div class="bottom d-flex flex-wrap justify-content-between align-items-center p-4">
+												<div class="icon-box ">
+													<span class="icon">
+														<i class="fa-solid fa-location-dot"></i>
+													</span>
+													<p>Location</p>
 												</div>
 												<div class="icon-box">
 													<span class="icon">
@@ -448,17 +502,7 @@
             </div>
         </div>
     <% } %>
-								</div>
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
+</div>
 						
 						
 								<div class="tab-pane fade" id="venue-tab" role="tabpanel">
@@ -522,14 +566,7 @@
 									</div>
 									<%} %>
 								</div>
-								
-								
-								
-								
-								
-								
-								
-								
+							
 							</div>
 						</div>
 					</div>

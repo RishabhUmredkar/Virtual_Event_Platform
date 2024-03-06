@@ -17,23 +17,17 @@ import Model.RegisterUser;
 import Model.VenueEvent;
 
 public class Online_Event_Ticket_Dao {
-
-	
 	String url = "jdbc:mysql://localhost:3306/Virtual_Event_platform";
 	String uname = "root";
 	String upass = "abc123";
 	String driver = "com.mysql.cj.jdbc.Driver";
-	
 	Connection con;
 	
-
-
 	private Connection getconnect() throws ClassNotFoundException, SQLException
 	{
 		Class.forName(driver);
 		Connection con = DriverManager.getConnection(url,uname,upass);
 		return con;
-		
 	}
 	
 	
@@ -76,7 +70,6 @@ public class Online_Event_Ticket_Dao {
 	    }
 
 	    con.close();
-
 	    return result;
 	}
 
@@ -110,12 +103,7 @@ public class Online_Event_Ticket_Dao {
 	        }
 	    }
 	 
-	 
-	 
-	 
-	 
-	 
-	 
+
 	 public OnlineOrderDetails getTicketById(int orderId) throws ClassNotFoundException, SQLException {
 		    String sql = "SELECT * FROM Virtual_Event_platform.OnlineEventTicketBook WHERE id = ?";
 		    
@@ -147,13 +135,10 @@ public class Online_Event_Ticket_Dao {
 		            ticket.setQuantity(rs.getInt("quantity"));
 		            ticket.setTotal(rs.getInt("total"));
 		            ticket.setPrice(rs.getInt("price"));
-
 		            ticket.setEventCardNumber(rs.getString("card_number"));
 		            ticket.setEventExpiryDate(rs.getDate("expiry_date"));
 		            ticket.setCvv(rs.getInt("cvv"));
-		            // Set other properties as needed
-
-
+		            
 		            return ticket;
 		        } else {
 		            return null;  // No record found for the given ID
@@ -168,7 +153,6 @@ public class Online_Event_Ticket_Dao {
 	        PreparedStatement pstmt = con.prepareStatement(sql);
 	        pstmt.setString(1, email);
 	        ResultSet rs = pstmt.executeQuery();
-
 	        List<OnlineOrderDetails> le = new ArrayList<>();
 
 	        while (rs.next()) {
@@ -180,14 +164,12 @@ public class Online_Event_Ticket_Dao {
 	                    rs.getString("event_description"), rs.getString("event_host"),rs.getInt("price"), rs.getInt("quantity"),
 	                    rs.getInt("total"));
 
-	            // Set additional properties if needed
 	            e.setEventCardNumber(rs.getString("card_number"));
 	            e.setEventExpiryDate(rs.getDate("expiry_date"));
 	            e.setCvv(rs.getInt("cvv"));
 
 	            le.add(e);
 	        }
-
 	        return le;
 	    }
 	 
@@ -202,7 +184,6 @@ public class Online_Event_Ticket_Dao {
 	            ResultSet rs = stmt.executeQuery(sql);
 
 	            List<OnlineOrderDetails> allDataList = new ArrayList<>();
-
 	            while (rs.next()) {
 	                OnlineOrderDetails ticket = new OnlineOrderDetails();
 	                ticket.setId(rs.getInt("id"));
@@ -225,25 +206,14 @@ public class Online_Event_Ticket_Dao {
 	                ticket.setQuantity(rs.getInt("quantity"));
 	                ticket.setTotal(rs.getInt("total"));
 	                ticket.setPrice(rs.getInt("price"));
-
 	                ticket.setEventCardNumber(rs.getString("card_number"));
 	                ticket.setEventExpiryDate(rs.getDate("expiry_date"));
 	                ticket.setCvv(rs.getInt("cvv"));
-	                // Set other properties as needed
-
+	                
 	                allDataList.add(ticket);
 	            }
-
 	            return allDataList;
 	        }
 	    }
-	   
-	   
-	   
-	   
-	   
-	 
 
-
-
-	}
+}

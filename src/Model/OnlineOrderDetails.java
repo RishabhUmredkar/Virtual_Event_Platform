@@ -46,6 +46,7 @@ public class OnlineOrderDetails {
 			this.id = id;
 			this.email = email;
 		}
+		
 		public OnlineOrderDetails(String firstName, String lastName, String email, String eventImage, String eventName,
 				String eventCategory, Date eventDate, Time eventTime, int eventDuration, String eventDescription,
 				String eventHost,int price, int quantity, int total) {
@@ -65,6 +66,7 @@ public class OnlineOrderDetails {
 			this.price = price;
 			this.total = total;
 		}	
+		
 		public OnlineOrderDetails(String firstName, String lastName, String email, String eventImage, String eventName,
 				String eventCategory, Date eventDate) {
 			super();
@@ -75,8 +77,8 @@ public class OnlineOrderDetails {
 			this.eventName = eventName;
 			this.eventCategory = eventCategory;
 			this.eventDate = eventDate;
-			
 		}
+		
 		public OnlineOrderDetails(String firstName, String lastName, String email, String address, String country,
 				String state, String city, int pinCode, String eventImage, String eventName, String eventCategory,
 				Date eventDate, Time eventTime, int eventDuration, String eventDescription, String eventHost,
@@ -100,12 +102,8 @@ public class OnlineOrderDetails {
 			this.eventHost = eventHost;
 			this.quantity = quantity;
 			this.price = price;
-
 			this.total = total;
 		}
-		
-		
-		
 		
 		public OnlineOrderDetails(String firstName, String lastName, String email,
 			String eventImage, String eventName, String eventCategory,
@@ -114,7 +112,6 @@ public class OnlineOrderDetails {
 			this.firstName = firstName;
 			this.lastName = lastName;
 			this.email = email;
-
 			this.eventImage = eventImage;
 			this.eventName = eventName;
 			this.eventCategory = eventCategory;
@@ -123,11 +120,6 @@ public class OnlineOrderDetails {
 			this.eventDuration = eventDuration;
 			
 		}
-		
-		
-		
-		
-		
 		
 		
 		public OnlineOrderDetails(String firstName, String lastName, String email, String address, String eventImage,
@@ -150,6 +142,7 @@ public class OnlineOrderDetails {
 			this.price = price;
 			this.total = total;
 		}
+		
 		public OnlineOrderDetails(int id, String firstName, String lastName, String email, String address,
 				String country, String state, String city, int pinCode, String eventImage, String eventName,
 				String eventCategory, Date eventDate, Time eventTime, int eventDuration, String eventDescription,
@@ -178,9 +171,6 @@ public class OnlineOrderDetails {
 
 			this.total = total;
 		}
-		
-		
-		
 		
 		public OnlineOrderDetails(int id, String firstName, String lastName, String email, String address,
 				String country, String state, String city, int pinCode, String eventImage, String eventName,
@@ -211,6 +201,7 @@ public class OnlineOrderDetails {
 			this.eventExpiryDate = eventExpiryDate;
 			this.cvv = cvv;
 		}
+		
 		public int getId() {
 			return id;
 		}

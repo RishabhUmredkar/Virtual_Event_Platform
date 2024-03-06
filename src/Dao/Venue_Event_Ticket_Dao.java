@@ -17,28 +17,25 @@ import Model.RegisterUser;
 import Model.VenueEvent;
 import Model.VenueOrderDetails;
 
-public class Venue_Event_Ticket_Dao {
-
+public class Venue_Event_Ticket_Dao
+{
 	
 	String url = "jdbc:mysql://localhost:3306/Virtual_Event_platform";
 	String uname = "root";
 	String upass = "abc123";
 	String driver = "com.mysql.cj.jdbc.Driver";
-	
 	Connection con;
 	
-
-
 	private Connection getconnect() throws ClassNotFoundException, SQLException
 	{
 		Class.forName(driver);
 		Connection con = DriverManager.getConnection(url,uname,upass);
 		return con;
-		
 	}
 	
 	
-	public int insert(VenueOrderDetails ticket) throws ClassNotFoundException, SQLException {
+	public int insert(VenueOrderDetails ticket) throws ClassNotFoundException, SQLException 
+	{
 	    String sql = "INSERT INTO Virtual_Event_platform.VenueEventTicketBook (" +
 	            "first_name, last_name, email, address, country, state, city, pin_code, " +
 	            "event_image, event_name, event_category, event_date, event_time, event_duration, " +
@@ -88,7 +85,8 @@ public class Venue_Event_Ticket_Dao {
 	}
 
 
-	 public int insertnew(VenueOrderDetails ticket, Integer id) throws ClassNotFoundException, SQLException {
+	 public int insertnew(VenueOrderDetails ticket, Integer id) throws ClassNotFoundException, SQLException 
+	 {
 	        String sql = "INSERT INTO Virtual_Event_platform.VenueEventTicketBook (" +
 	                "address, id, country, state, city, pin_code, event_card_number, " +
 	                "expiry_date, cvv) " +
@@ -120,11 +118,8 @@ public class Venue_Event_Ticket_Dao {
 	 
 	 
 	 
-	 
-	 
-	 
-	 
-	 public VenueOrderDetails getTicketById(int orderId) throws ClassNotFoundException, SQLException {
+	 public VenueOrderDetails getTicketById(int orderId) throws ClassNotFoundException, SQLException 
+	 {
 		    String sql = "SELECT * FROM Virtual_Event_platform.VenueEventTicketBook WHERE id = ?";
 		    
 		    try (Connection con = getconnect();
@@ -132,7 +127,6 @@ public class Venue_Event_Ticket_Dao {
 
 		        ps.setInt(1, orderId);
 		        ResultSet rs = ps.executeQuery();
-
 		        if (rs.next()) {
 		            VenueOrderDetails ticket = new VenueOrderDetails();
 		            ticket.setId(rs.getInt("id"));
@@ -158,8 +152,6 @@ public class Venue_Event_Ticket_Dao {
 		            ticket.setEventCardNumber(rs.getString("event_card_number"));
 		            ticket.setEventExpiryDate(rs.getDate("expiry_date"));
 		            ticket.setCvv(rs.getInt("cvv"));
-		            // Set other properties as needed
-
 
 		            return ticket;
 		        } else {
@@ -167,7 +159,9 @@ public class Venue_Event_Ticket_Dao {
 		        }
 		    }
 		}
-	 public List<VenueOrderDetails> getOneUser(String email) throws ClassNotFoundException, SQLException {
+	 
+	 public List<VenueOrderDetails> getOneUser(String email) throws ClassNotFoundException, SQLException
+	 {
 		    String sql = "SELECT * FROM Virtual_Event_platform.VenueEventTicketBook WHERE email = ?";
 		    con = getconnect();
 		    PreparedStatement pstmt = con.prepareStatement(sql);
@@ -197,7 +191,9 @@ public class Venue_Event_Ticket_Dao {
 
 		    return le;
 		}
-	    public List<VenueOrderDetails> getAllData() throws ClassNotFoundException, SQLException {
+	 
+	    public List<VenueOrderDetails> getAllData() throws ClassNotFoundException, SQLException 
+	    {
 	        String sql = "SELECT * FROM Virtual_Event_platform.VenueEventTicketBook";
 
 	        try (Connection con = getconnect();
@@ -242,9 +238,7 @@ public class Venue_Event_Ticket_Dao {
 
 	                allDataList.add(ticket);
 	            }
-
 	            return allDataList;
 	        }
 	    }
-
-	}
+}

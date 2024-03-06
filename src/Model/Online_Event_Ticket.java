@@ -48,6 +48,7 @@ public class Online_Event_Ticket {
 			this.event_price = event_price;
 			this.event_total_tickets = event_total_tickets;
 		}
+		
 		public Online_Event_Ticket(int id, String email, String event_name, String event_category, Date event_date,
 				Time event_time, int event_duration, String event_image, String event_description, String event_hosting,
 				int event_price, int event_total_tickets) {
@@ -65,6 +66,7 @@ public class Online_Event_Ticket {
 			this.event_price = event_price;
 			this.event_total_tickets = event_total_tickets;
 		}
+		
 		public int getId() {
 			return id;
 		}
@@ -137,10 +139,4 @@ public class Online_Event_Ticket {
 		public void setEvent_total_tickets(int event_total_tickets) {
 			this.event_total_tickets = event_total_tickets;
 		}
-		
-	    
-	    
-	    
-	    
-
 }
