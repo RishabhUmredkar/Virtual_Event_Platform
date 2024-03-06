@@ -276,18 +276,7 @@
 									</a>
 								</div>
 							</div>
-							<ul class="navbar-nav justify-content-end flex-grow-1 pe_5">
-								<li class="nav-item">
-									<a class="nav-link" href="organiser_profile_view.jsp">
-										<i class="fa-solid fa-right-left me-2"></i>My Home
-									</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="explore_events.jsp">
-										<i class="fa-solid fa-compass me-2"></i>Explore Events
-									</a>
-								</li>
-							</ul>
+
 						</div>
 						<div class="offcanvas-footer">
 							<div class="offcanvas-social">
