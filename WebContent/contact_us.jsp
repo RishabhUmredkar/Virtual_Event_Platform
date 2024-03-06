@@ -360,7 +360,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="footer-copyright-text">
-							<p class="mb-0">© 2022, <strong>Rishabh</strong>. All rights reserved. Powered by Gambolthemes</p>
+							<p class="mb-0">© 2024, <strong>Rishabh</strong>. All rights reserved. Powered by Gambolthemes</p>
 						</div>
 					</div>
 				</div>
@@ -369,7 +369,6 @@
 	</footer>
 	<!-- Footer End-->
 	
-	
 	<script src="js/jquery-3.6.0.min.js"></script>
 	<script src="js/bootstrap.bundle.min.js"></script>
 	<script src="js/owl.carousel.js"></script>
@@ -377,4 +376,5 @@
 	<script src="js/custom.js"></script>
 	<script src="js/night-mode.js"></script>
 
-</body></html>
+</body>
+</html>

@@ -57,18 +57,6 @@
     
     
     
-   <%--   Part filePart = request.getPart("event_image");
-    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-        String uploadDir = "/WebContent/images/"; // Specify the directory where you want to store the uploaded images
-
-        // Save the uploaded file
-        try (InputStream input = filePart.getInputStream()) {
-            Files.copy(input, Paths.get(uploadDir, fileName), StandardCopyOption.REPLACE_EXISTING);
-        }
-    %>
-
-    <!-- Rest of your code to display event details -->
-    <h2>Event Image: <%= fileName != null ? fileName : "No image uploaded" %></h2>
-     --%>
+ 
 </body>
 </html>

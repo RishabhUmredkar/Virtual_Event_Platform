@@ -5,15 +5,12 @@
 <html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">
 <c:if test="${not empty cookie.email.value}">
 
-
-	
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, shrink-to-fit=9">
 		<meta name="description" content="Gambolthemes">
 		<meta name="author" content="Gambolthemes">		
 		<title>Rishabh - Simple Online Event Ticketing System</title>
-		
 
 		<!-- Stylesheets -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,9 +32,6 @@
 		<link href="vendor/chartist/dist/chartist.min.css" rel="stylesheet">
 		<link href="vendor/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.css" rel="stylesheet">
 		
-	
-
-
 	<!-- Add Organisation Model Start-->
 	<div class="modal fade" id="addorganisationModal" tabindex="-1" aria-labelledby="addorganisationLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg">

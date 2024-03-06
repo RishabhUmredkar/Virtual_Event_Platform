@@ -13,8 +13,6 @@
 		<meta name="author" content="Gambolthemes">		
 		<title>Rishabh - Simple Online Event Ticketing System</title>
 		
-		
-
 		<!-- Stylesheets -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -752,7 +750,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="footer-copyright-text">
-							<p class="mb-0">© 2022, <strong>Rishabh</strong>. All rights reserved. Powered by Gambolthemes</p>
+							<p class="mb-0">© 2024, <strong>Rishabh</strong>. All rights reserved. Powered by Gambolthemes</p>
 						</div>
 					</div>
 				</div>

@@ -3,8 +3,9 @@
 <%@ page import="java.util.List" %>
 <%@ page errorPage="Error.jsp" %>
 
-
-<html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">
+<html lang="en" class="h-100">
+<head></head>
+<body class="d-flex flex-column h-100">
 
 	
 		<meta charset="utf-8">
@@ -411,32 +412,32 @@
 															    </div>
 															</div>
 															<div class="form-group pt_30 pb-2">
-    <label class="form-label fs-16">What type of online event are you hosting?*</label>
-    <p class="mt-2 fs-14 d-block mb-3">Choosing the type of your event helps us to create a more tailored experience for you. <a href="#" class="a-link">Learn more</a></p>
-    <div class="stepper-data-set">
-        <div class="content-holder template-selector">
-            <div class="row g-3">
-                <!-- Standard Webinar -->
-                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6">
-                    <div class="template-item mt-3">
-                        <input id="standard_webinar" type="radio" name="event_type" value="standard webinar">
-                        <label class="template sw-template" for="standard_webinar">
-                            <img src="images/icons/standard-webinar.png" alt="">
-                        </label>											
-                        <h6 class="hosting-title fs-14 mt-2 mb-0">Standard Webinar</h6>
-                    </div>
-                </div>
-                <!-- Training and Workshop -->
-               <!-- Training and Workshop -->
-<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6">
-    <div class="template-item mt-3">
-        <input id="traning_workshop" type="radio" name="event_type" value="training workshop">
-        <label class="template tw-template" for="traning_workshop">
-																						<img src="images/icons/health-and-welbeing.png" alt="">
-        </label>											
-        <h6 class="hosting-title fs-14 mt-2 mb-0">Training and Workshop</h6>
-    </div>
-</div>
+												    <label class="form-label fs-16">What type of online event are you hosting?*</label>
+												    <p class="mt-2 fs-14 d-block mb-3">Choosing the type of your event helps us to create a more tailored experience for you. <a href="#" class="a-link">Learn more</a></p>
+												    <div class="stepper-data-set">
+												        <div class="content-holder template-selector">
+												            <div class="row g-3">
+			                <!-- Standard Webinar -->
+			                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6">
+			                    <div class="template-item mt-3">
+			                        <input id="standard_webinar" type="radio" name="event_type" value="standard webinar">
+			                        <label class="template sw-template" for="standard_webinar">
+			                            <img src="images/icons/standard-webinar.png" alt="">
+			                        </label>											
+			                        <h6 class="hosting-title fs-14 mt-2 mb-0">Standard Webinar</h6>
+			                    </div>
+			                </div>
+						<!-- Training and Workshop -->
+						<!-- Training and Workshop -->
+							<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6">
+							    <div class="template-item mt-3">
+							        <input id="traning_workshop" type="radio" name="event_type" value="training workshop">
+							        <label class="template tw-template" for="traning_workshop">
+									<img src="images/icons/health-and-welbeing.png" alt="">
+							        </label>											
+							        <h6 class="hosting-title fs-14 mt-2 mb-0">Training and Workshop</h6>
+							    </div>
+							</div>
 
                 <!-- Online Classes -->
                 <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6">

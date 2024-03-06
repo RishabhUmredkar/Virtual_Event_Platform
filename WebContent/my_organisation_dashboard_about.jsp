@@ -1,4 +1,4 @@
-<html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">﻿
+<html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">
 
 	
 		<meta charset="utf-8">
@@ -29,11 +29,6 @@
 		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">	
 		
-	
-
-
-	
-	
 	<!-- Header Start-->
 	<header class="header">
 		<div class="header-inner">		

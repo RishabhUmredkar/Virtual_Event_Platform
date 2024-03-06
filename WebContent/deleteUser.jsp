@@ -27,27 +27,10 @@ String pass= request.getParameter("pass");
 
 RegisterUser u =new RegisterUser(id);		
 UserDao ud = new UserDao();
-
-
 		ud.delete(id);
-
         response.sendRedirect("my_organisation_dashboard_my_user.jsp");
-
 %>
 Delete User
-
-			<%-- 
-			<jsp:forward page=>
-			<jsp:param value="<%=email%>" name="email"/>
-			<jsp:param value="<%=pass%>" name="pass"/>
-			</jsp:forward>	
-				
-		 --%>
-
-
-
-
-
 
 </c:if>
 	
@@ -55,6 +38,5 @@ Delete User
     <c:redirect url="sign_up.jsp" />
 </c:if>
 
-</body></html>
-
-
+</body>
+</html>

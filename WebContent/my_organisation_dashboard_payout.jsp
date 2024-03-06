@@ -12,9 +12,7 @@
 		<meta name="description" content="Gambolthemes">
 		<meta name="author" content="Gambolthemes">		
 		<title>Barren - Simple Online Event Ticketing System</title>
-		
-		
-
+	
 		<!-- Stylesheets -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -34,8 +32,6 @@
 		<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">	
 		
 	
-
-
 	<!-- Add Bank Account Model Start-->
 	<div class="modal fade" id="bankModal" tabindex="-1" aria-labelledby="bankModalLabel" aria-hidden="false">
 		<div class="modal-dialog">

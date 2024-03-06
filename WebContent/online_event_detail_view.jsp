@@ -221,9 +221,7 @@
 		</div>
 		<div class="event-dt-block p-80">
 		<form action="checkout.jsp" method="post">
-		
-				
-			<div class="container">
+		<div class="container">
 				<div class="row">
 					<div class="col-xl-12 col-lg-12 col-md-12">
 						<div class="event-top-dts">
@@ -244,7 +242,7 @@
 					<div class="col-xl-8 col-lg-7 col-md-12">
 						<div class="main-event-dt">
 							<div class="event-img">
-										<img src="Online_Event_Image/<%= event.getEvent_image() %>" alt="">	
+								<img src="Online_Event_Image/<%= event.getEvent_image() %>" alt="">	
 							</div>
 							<div class="share-save-btns dropdown">
 								<button class="sv-btn me-2"><i class="fa-regular fa-bookmark me-2"></i>Save</button>
@@ -320,59 +318,45 @@
 								</div>
 							</div>
 							
-							
-							
-							
-							
-							
-							
-							
-							
-								
-							
-						<!-- Add a form around your content -->
-    <div class="select-tickets-block">
-        <h6>Select Tickets</h6>
-        <div class="select-ticket-action">
-            <div class="ticket-price">Rs.<%=event.getEvent_price() %></div>
-            <div class="quantity">
-                <div class="counter">
-                    <span class="down" onclick="decreaseCount(event, this)">-</span>
-                    <!-- Add a hidden input field to store the quantity -->
-                    <input type="hidden" name="quantity" id="quantity" value="0">
-                    <input type="text" value="0" oninput="updateQuantity(this.value)">
-                    <span class="up" onclick="increaseCount(event, this)">+</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add a submit button to submit the form -->
-<div class="booking-btn">
-	<button type="submit" class="main-btn btn-hover w-100">Book Now</a>
-</div>
-
-<!-- JavaScript to update the hidden input field -->
-<script>
-    function updateQuantity(value) {
-        // Update the hidden input field with the current quantity
-        document.getElementById("quantity").value = value;
-    }
-
-    function decreaseCount(event, element) {
-        // Implement your decrease logic
-        // ...
-        // After updating the quantity, call updateQuantity function
-        updateQuantity(updatedQuantity);
-    }
-
-    function increaseCount(event, element) {
-        // Implement your increase logic
-        // ...
-        // After updating the quantity, call updateQuantity function
-        updateQuantity(updatedQuantity);
-    }
-</script>
+							<!-- Add a form around your content -->
+						    <div class="select-tickets-block">
+						        <h6>Select Tickets</h6>
+						        <div class="select-ticket-action">
+						            <div class="ticket-price">Rs.<%=event.getEvent_price() %></div>
+						            <div class="quantity">
+						                <div class="counter">
+						                    <span class="down" onclick="decreaseCount(event, this)">-</span>
+						                    <!-- Add a hidden input field to store the quantity -->
+						                    <input type="hidden" name="quantity" id="quantity" value="0">
+						                    <input type="text" value="0" oninput="updateQuantity(this.value)">
+						                    <span class="up" onclick="increaseCount(event, this)">+</span>
+						                </div>
+						            </div>
+						        </div>
+						    </div>
+						
+						    <!-- Add a submit button to submit the form -->
+						<div class="booking-btn">
+							<button type="submit" class="main-btn btn-hover w-100">Book Now</a>
+						</div>
+						
+						<!-- JavaScript to update the hidden input field -->
+						<script>
+						    function updateQuantity(value) {
+						        // Update the hidden input field with the current quantity
+						        document.getElementById("quantity").value = value;
+						    }
+						
+						    function decreaseCount(event, element) {
+						        
+						        updateQuantity(updatedQuantity);
+						    }
+						
+						    function increaseCount(event, element) {
+						       
+						        updateQuantity(updatedQuantity);
+						    }
+						</script>
 
 						</div>
 					</div>
@@ -383,14 +367,11 @@
 								<a href="explore_events.jsp" class="view-all-link">Browse All<i class="fa-solid fa-right-long ms-2"></i></a>
 							</div>
 							<div class="owl-carousel moreEvents-slider owl-theme">
-								
-								
-								
-								<%
-									    List<OnlineEvent> todayEvents = new Online_Event_Dao().getAllEventData();
-									    int count = 0;
-										System.out.print(email);
-									for (OnlineEvent event1 : todayEvents) { %>
+							<%
+							List<OnlineEvent> todayEvents = new Online_Event_Dao().getAllEventData();
+							int count = 0;
+							System.out.print(email);
+							for (OnlineEvent event1 : todayEvents) { %>
 									
 								<div class="item">
 									<div class="main-card mt-4">
@@ -400,16 +381,15 @@
 											</a>
 										</div>
 										
-										
 										<div class="event-content">
 												<a href="online_event_detail_view.jsp?id=<%=event1.getId() %>" class="event-title"><%= event1.getEvent_name() %></a>
 												<div class="duration-price-remaining">
 													<span class="duration-price">Rs. <%= event1.getEvent_price() %></span>
 													<span class="remaining"></span>
 												</div>
-											</div>
+										</div>
 
-									<div class="event-footer">
+											<div class="event-footer">
 												<div class="event-timing">
 													<div class="publish-date">
 														<span><i class="fa-solid fa-calendar-day me-2"></i><%= event1.getEvent_date() %></span>

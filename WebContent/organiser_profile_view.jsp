@@ -50,8 +50,6 @@
 		<meta name="author" content="Gambolthemes">		
 		<title>Rishabh - Simple Online Event Ticketing System</title>
 		
-		
-
 		<!-- Stylesheets -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -160,8 +158,6 @@
 											<div class="account-holder-avatar">
 												<img src="images/profile-imgs/img-13.jpg" alt="">
 											</div>
-											<h5></h5>
-											<p></p>
 										</div>
 									</li>
 									<li class="profile-link">
@@ -224,7 +220,7 @@
 							
 							            for (RegisterUser user : registerUsers) {
 							              
-							                %>
+							    %>
 							<div class="main-card user-left-dt">
 								<div class="user-avatar-img">
 									<img src="images/profile-imgs/img-13.jpg" alt="">
@@ -395,11 +391,6 @@
 											}
 											%>
 										</div>
-										
-										
-										
-										
-										
 										
 										<div class="tab-pane fade" id="venue" role="tabpanel" aria-labelledby="venue-tab">
 											<%

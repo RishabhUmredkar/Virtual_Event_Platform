@@ -22,7 +22,6 @@ public class SavePDFServlet extends HttpServlet {
             Path pdfPath = Files.createTempFile("generated_pdf_" + uniqueId, ".pdf");
             Files.copy(pdfData, pdfPath, StandardCopyOption.REPLACE_EXISTING);
 
-            // Optionally, send a response to the client
             response.getWriter().write(pdfPath.toString());
         }
     }

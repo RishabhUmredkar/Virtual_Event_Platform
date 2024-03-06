@@ -1,7 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="javax.servlet.http.Cookie" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <%@page import="Model.RegisterUser"%>
+<%@page import="Model.RegisterUser"%>
 <%@page import="Model.VenueEvent"%>
 <%@page import="Model.VenueOrderDetails"%>
 <%@page import="Dao.Venue_Event_Ticket_Dao"%>
@@ -238,9 +238,7 @@
 							<h3><i class="fa-solid fa-calendar-days me-3"></i>Events</h3>
 						</div>
 					</div>
-					
-					
-					
+				
 					<div class="col-md-12">
 						<div class="main-card mt-5">
 							<div class="dashboard-wrap-content p-4">
@@ -259,9 +257,6 @@
 										</div>
 									</div>
 									
-									
-									
-									
 									<div class="rs ms-auto mt_r4">
 										<div class="nav custom2-tabs btn-group" role="tablist">
 											<button class="tab-link active" data-bs-toggle="tab" data-bs-target="#all-tab" type="button" role="tab" aria-controls="all-tab" aria-selected="true">All Event (<span class="total_event_counter">1</span>)</button>
@@ -273,42 +268,31 @@
 							</div>
 						</div>
 						
-						
-						
 						<div class="event-list">
 							<div class="tab-content">
 							<% 
-														 String searchEvent = request.getParameter("event");
-													    List<VenueEvent> le = null;
-
-													    if (searchEvent != null && !searchEvent.isEmpty()) {
-													        // If email is provided, get data for that email
-													        le = new Venue_Event_Dao().searchEventByName(searchEvent);
-													    } else {
-													        // If no email is provided, get all user data
-													        le = new Venue_Event_Dao().getAllEventData();
-													    }
+							String searchEvent = request.getParameter("event");
+							List<VenueEvent> le = null;
+						    if (searchEvent != null && !searchEvent.isEmpty()) {
+							// If email is provided, get data for that email
+							le = new Venue_Event_Dao().searchEventByName(searchEvent);
+							} else {
+							// If no email is provided, get all user data
+							le = new Venue_Event_Dao().getAllEventData();
+							}
 						
-						   
-							
-							
-							
-							
-							
-							
-							
-							     int currentPage = 1;
-													      int recordsPerPage = 10;
-													      if (request.getParameter("page") != null) {
-													        currentPage = Integer.parseInt(request.getParameter("page"));
-													      }
-													      int totalRecords = le.size();
-													      int totalPages = (int) Math.ceil((double) totalRecords / recordsPerPage);
-													      int start = (currentPage - 1) * recordsPerPage;
-													      int end = Math.min(start + recordsPerPage, totalRecords);
-													      List<VenueEvent> currentPageData = le.subList(start, end);
+							    int currentPage = 1;
+								int recordsPerPage = 10;
+								if (request.getParameter("page") != null) {
+								currentPage = Integer.parseInt(request.getParameter("page"));
+								}
+								int totalRecords = le.size();
+								int totalPages = (int) Math.ceil((double) totalRecords / recordsPerPage);
+								int start = (currentPage - 1) * recordsPerPage;
+							    int end = Math.min(start + recordsPerPage, totalRecords);
+								List<VenueEvent> currentPageData = le.subList(start, end);
 
-														 %>
+							 %>
 								<div class="tab-pane fade show active" id="all-tab" role="tabpanel">
 								
 								 <% for (VenueEvent e : currentPageData) { %>	
@@ -367,116 +351,104 @@
 									</div>
 									<%} %>
 																	
-<!-- Pagination -->
-<div class="pagination">
-    <ul class="pagination justify-content-center">
-        <% if (currentPage > 1) { %>
-            <li class="page-item">
-                <a class="page-link" href="?page=<%= currentPage - 1 %>" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-        <% } %>
-
-        <% for (int i = 1; i <= totalPages; i++) { %>
-            <li class="page-item <%= (i == currentPage) ? "active" : "" %>">
-                <a class="page-link" href="?page=<%= i %>"><%= i %></a>
-            </li>
-        <% } %>
-
-        <% if (currentPage < totalPages) { %>
-            <li class="page-item">
-                <a class="page-link" href="?page=<%= currentPage + 1 %>" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        <% } %>
-    </ul>
-</div>
-</div>
-<!-- End Pagination -->		
+								<!-- Pagination -->
+								<div class="pagination">
+								    <ul class="pagination justify-content-center">
+								        <% if (currentPage > 1) { %>
+								            <li class="page-item">
+								                <a class="page-link" href="?page=<%= currentPage - 1 %>" aria-label="Previous">
+								                    <span aria-hidden="true">&laquo;</span>
+								                </a>
+								            </li>
+								        <% } %>
+								
+								        <% for (int i = 1; i <= totalPages; i++) { %>
+								            <li class="page-item <%= (i == currentPage) ? "active" : "" %>">
+								                <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+								            </li>
+								        <% } %>
+								
+								        <% if (currentPage < totalPages) { %>
+								            <li class="page-item">
+								                <a class="page-link" href="?page=<%= currentPage + 1 %>" aria-label="Next">
+								                    <span aria-hidden="true">&raquo;</span>
+								                </a>
+								            </li>
+								        <% } %>
+								    </ul>
+								</div>
+								</div>
+								<!-- End Pagination -->		
 					
 								<div class="tab-pane fade" id="online-tab" role="tabpanel">
 									 <% List<OnlineOrderDetails> le1 = new Online_Event_Ticket_Dao().getAllData(); %>
-    <% for (OnlineOrderDetails e : le1) { %>
-        <div class="main-card mt-4">
-            <div class="contact-list">
-                <div class="card-top event-top p-4 align-items-center top d-md-flex flex-wrap justify-content-between">
-                    <div class="d-md-flex align-items-center event-top-info">
-                        <div class="card-event-img">
-                            <img src="Online_Event_Image/<%= e.getEventImage() %>" alt="fdgdf">
-                        </div>
-                        <div class="card-event-dt">
-                            <h5><%= e.getEventName() %> || <%= e.getEventCategory() %></h5>
-                            <p><%= e.getEventDescription() %> || <%= e.getEventHost() %> </p>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="option-btn" type="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a href="#" class="dropdown-item delete-event"><i class="fa-solid fa-trash-can me-3"></i>Delete</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom d-flex flex-wrap justify-content-between align-items-center p-4">
-                    <div class="icon-box ">
-                        <span class="icon">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </span>
-                        <p>Ticket Holder</p>
-                       			<h6 class="coupon-status"><%=e.getFirstName()%>   <%=e.getLastName() %> </h6>
-                    </div>
-                    <div class="icon-box">
-                        <span class="icon">
-                            <i class="fa-solid fa-calendar-days"></i>
-                        </span>
-                        <p>Starts on</p>
-                        <h6 class="coupon-status"><%= e.getEventDate() %> <%= e.getEventTime() %></h6>
-                    </div>
-                    <div class="icon-box">
-                        <span class="icon">
-                            <i class="fa-solid fa-ticket"></i>
-                        </span>
-                        <p>Total Ticket Price</p>
-                        <h6 class="coupon-status"><%= e.getTotal() %></h6>
-                    </div>
-                    <div class="icon-box">
-                        <span class="icon">
-                            <i class="fa-solid fa-ticket"></i>
-                        </span>
-                        <p>Unit Price</p>
-                        <h6 class="coupon-status"><%= e.getPrice() %></h6>
-                    </div>
-                    <div class="icon-box">
-                        <span class="icon">
-                            <i class="fa-solid fa-tag"></i>
-                        </span>
-                        <p>Total Tickets </p>
-                        <h6 class="coupon-status"><%= e.getQuantity() %></h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <% } %>
+								    <% for (OnlineOrderDetails e : le1) { %>
+								        <div class="main-card mt-4">
+								            <div class="contact-list">
+								                <div class="card-top event-top p-4 align-items-center top d-md-flex flex-wrap justify-content-between">
+								                    <div class="d-md-flex align-items-center event-top-info">
+								                        <div class="card-event-img">
+								                            <img src="Online_Event_Image/<%= e.getEventImage() %>" alt="fdgdf">
+								                        </div>
+								                        <div class="card-event-dt">
+								                            <h5><%= e.getEventName() %> || <%= e.getEventCategory() %></h5>
+								                            <p><%= e.getEventDescription() %> || <%= e.getEventHost() %> </p>
+								                        </div>
+								                    </div>
+								                    <div class="dropdown">
+								                        <button class="option-btn" type="button" data-bs-toggle="dropdown" aria-haspopup="true"
+								                            aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+								                        <div class="dropdown-menu dropdown-menu-right">
+								                            <a href="#" class="dropdown-item delete-event"><i class="fa-solid fa-trash-can me-3"></i>Delete</a>
+								                        </div>
+								                    </div>
+								                </div>
+								                <div class="bottom d-flex flex-wrap justify-content-between align-items-center p-4">
+								                    <div class="icon-box ">
+								                        <span class="icon">
+								                            <i class="fa-solid fa-location-dot"></i>
+								                        </span>
+								                        <p>Ticket Holder</p>
+								                       			<h6 class="coupon-status"><%=e.getFirstName()%>   <%=e.getLastName() %> </h6>
+								                    </div>
+								                    <div class="icon-box">
+								                        <span class="icon">
+								                            <i class="fa-solid fa-calendar-days"></i>
+								                        </span>
+								                        <p>Starts on</p>
+								                        <h6 class="coupon-status"><%= e.getEventDate() %> <%= e.getEventTime() %></h6>
+								                    </div>
+								                    <div class="icon-box">
+								                        <span class="icon">
+								                            <i class="fa-solid fa-ticket"></i>
+								                        </span>
+								                        <p>Total Ticket Price</p>
+								                        <h6 class="coupon-status"><%= e.getTotal() %></h6>
+								                    </div>
+								                    <div class="icon-box">
+								                        <span class="icon">
+								                            <i class="fa-solid fa-ticket"></i>
+								                        </span>
+								                        <p>Unit Price</p>
+								                        <h6 class="coupon-status"><%= e.getPrice() %></h6>
+								                    </div>
+								                    <div class="icon-box">
+								                        <span class="icon">
+								                            <i class="fa-solid fa-tag"></i>
+								                        </span>
+								                        <p>Total Tickets </p>
+								                        <h6 class="coupon-status"><%= e.getQuantity() %></h6>
+								                    </div>
+								                </div>
+								            </div>
+								        </div>
+								    <% } %>
 								</div>
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
 						
 								<div class="tab-pane fade" id="venue-tab" role="tabpanel">
 									<%List<VenueOrderDetails> le2=null;
 									le2=new Venue_Event_Ticket_Dao().getAllData();%>
-									 <% for(VenueOrderDetails e:le2){%>
-			
+									 <% for(VenueOrderDetails e:le2){%>			
 									<div class="main-card mt-4">
 										<div class="contact-list">
 											<div class="card-top event-top p-4 align-items-center top d-md-flex flex-wrap justify-content-between">

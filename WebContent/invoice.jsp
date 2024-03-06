@@ -21,6 +21,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Rishabh - Simple Online Event Ticketing System</title>
+    
     <!-- Stylesheets -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -29,6 +30,7 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
     <link href="css/night-mode.css" rel="stylesheet">
+    
     <!-- Vendor Stylesheets -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
@@ -36,10 +38,10 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qr.js"></script>
+
 </head>
 <body class="d-flex flex-column h-100">
 
-	
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, shrink-to-fit=9">
@@ -239,12 +241,7 @@
                 height: 100
             });
         }
-
-
-
-
-
-        function downloadPDF() {
+     function downloadPDF() {
             // Generate QR code first
             generateQRCode();
 

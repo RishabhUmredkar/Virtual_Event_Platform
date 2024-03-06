@@ -2,11 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
 <%@ page errorPage="Error.jsp" %>
-
-
-<html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">
-
-	
+<html lang="en" class="h-100">
+<head></head>
+<body class="d-flex flex-column h-100">
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, shrink-to-fit=9">
@@ -15,7 +13,6 @@
 		<title>Rishabh - Simple Online Event Ticketing System</title>
 		
 		
-
 		<!-- Stylesheets -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -292,4 +289,5 @@
     <c:redirect url="sign_up.jsp" />
 </c:if>
 
-</body></html>
+</body>
+</html>

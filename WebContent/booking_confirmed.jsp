@@ -61,13 +61,12 @@
                 System.out.println("Pin Code: " + ticket.getPinCode());
                 System.out.println("Card Number: " + ticket.getEventCardNumber());
 
-                // Format Expiry Date using SimpleDateFormat
+
                 SimpleDateFormat dateFormat = new SimpleDateFormat("MM/yy");
                 String formattedExpiryDate = dateFormat.format(ticket.getEventExpiryDate());
                 System.out.println("Expiry Date: " + formattedExpiryDate);
 
                 System.out.println("CVV: " + ticket.getCvv());
-                // Print other properties as needed
           
     %>
 
@@ -230,8 +229,7 @@
 												<img src="Online_Event_Image/<%= ticket.getEventImage() %>" alt="">
 											</div>
 											<div class="event-order-dt-content">
-												<h5><%=ticket.getEventHost() %> || <%=ticket.getEventCategory() %></h5>
-												
+												<h5><%=ticket.getEventHost() %> || <%=ticket.getEventCategory() %></h5>												
 												<span><%=ticket.getEventDate() %> || <%=ticket.getEventTime() %></span>
 												<div class="buyer-name"><%=ticket.getEventName() %></div>
 												<div class="booking-total-tickets">

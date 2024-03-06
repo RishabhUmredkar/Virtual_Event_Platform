@@ -5,9 +5,9 @@
 <%@page import="Dao.UserDao"%>
 <%@page import="Model.RegisterUser"%>
 <%@ page errorPage="Error.jsp" %>
-<html lang="en" class="h-100"><head>
- <style type="text/css">
-     /* Add or update these styles in your CSS file or inline styles */
+<html lang="en" class="h-100">
+<head>
+<style type="text/css">
 .pagination {
     margin-top: 20px;
     display: flex;
@@ -34,7 +34,7 @@
     border: 1px solid #333; /* Active page border color */
 }
 
-    </style>
+</style>
     <script>
     function searchByEmail() {
         var searchEmail = document.getElementById("searchEmail").value;
@@ -86,9 +86,7 @@
 		<link href="vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
 		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">	
-		
 	
-
 	<!-- Add Bank Account Model Start-->
 	<div class="modal fade" id="bankModal" tabindex="-1" aria-labelledby="bankModalLabel" aria-hidden="false">
 		<div class="modal-dialog">
@@ -313,8 +311,7 @@
 
 						</div>
 
-						<div class="conversion-setup">
-							
+						<div class="conversion-setup">							
 							<div class="tab-content">
 								<div class="tab-pane fade active show" id="overview-tab" role="tabpanel">
 									<div class="table-card mt-4">
@@ -371,65 +368,58 @@
 										                  <td class="custom-td"><%= e.getEmail() %></td>
 										                  <td class="custom-td"><%= e.getPassword() %></td>
 										                 <td>
-						    <a href="deleteUser.jsp?id=<%= e.getId() %>" class="btn btn-sm btn-danger">
-						        <i class="fa-solid fa-trash-can fa-1x"></i>
-						    </a>
-						    <span> &nbsp; &nbsp;&nbsp; &nbsp;</span>
-						    <a href="editmedicineserv?id=<%= e.getId() %>" class="btn btn-sm btn-warning"  data-bs-toggle="modal" data-bs-target="#bankModal">
-						        <i class="fa-solid fa-pen fa-1x"></i>
-						    </a>
-						  
-						</td>
+														    <a href="deleteUser.jsp?id=<%= e.getId() %>" class="btn btn-sm btn-danger">
+														        <i class="fa-solid fa-trash-can fa-1x"></i>
+														    </a>
+														    <span> &nbsp; &nbsp;&nbsp; &nbsp;</span>
+														    <a href="editmedicineserv?id=<%= e.getId() %>" class="btn btn-sm btn-warning"  data-bs-toggle="modal" data-bs-target="#bankModal">
+														        <i class="fa-solid fa-pen fa-1x"></i>
+														    </a>
+														  
+														</td>
 							
 										                </tr>
 										              <% } %>
 													</tbody>									
 												</table>
 											</div>
-											
-													
 										</div>
 										
 									</div>
 									<!-- Pagination -->
-<div class="pagination">
-    <ul class="pagination justify-content-center">
-        <% if (currentPage > 1) { %>
-            <li class="page-item">
-                <a class="page-link" href="?page=<%= currentPage - 1 %>" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-        <% } %>
-
-        <% for (int i = 1; i <= totalPages; i++) { %>
-            <li class="page-item <%= (i == currentPage) ? "active" : "" %>">
-                <a class="page-link" href="?page=<%= i %>"><%= i %></a>
-            </li>
-        <% } %>
-
-        <% if (currentPage < totalPages) { %>
-            <li class="page-item">
-                <a class="page-link" href="?page=<%= currentPage + 1 %>" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        <% } %>
-    </ul>
-</div>
-<!-- End Pagination -->
-
-								</div>
-								
+									<div class="pagination">
+									    <ul class="pagination justify-content-center">
+									        <% if (currentPage > 1) { %>
+									            <li class="page-item">
+									                <a class="page-link" href="?page=<%= currentPage - 1 %>" aria-label="Previous">
+									                    <span aria-hidden="true">&laquo;</span>
+									                </a>
+									            </li>
+									        <% } %>
+									
+									        <% for (int i = 1; i <= totalPages; i++) { %>
+									            <li class="page-item <%= (i == currentPage) ? "active" : "" %>">
+									                <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+									            </li>
+									        <% } %>
+									
+									        <% if (currentPage < totalPages) { %>
+									            <li class="page-item">
+									                <a class="page-link" href="?page=<%= currentPage + 1 %>" aria-label="Next">
+									                    <span aria-hidden="true">&raquo;</span>
+									                </a>
+									            </li>
+									        <% } %>
+									    </ul>
+									</div>
+									<!-- End Pagination -->
+								</div>								
 							</div>
-						</div>
-						
+						</div>						
 					</div>
 				</div>
-			</div>
-			
-		</div>
-		
+			</div>			
+		</div>		
 	</div> 
 	
 	<!-- Body End -->	

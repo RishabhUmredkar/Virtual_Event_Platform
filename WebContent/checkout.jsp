@@ -55,41 +55,39 @@
 	
 	
 	  <%
-                                    HttpSession session1 = request.getSession();
-                                    int quantity = Integer.parseInt(request.getParameter("quantity"));
-                                    Integer id = (Integer) session1.getAttribute("id");
-                                    String email = (String) session.getAttribute("email");
-                                    RegisterUser user = new UserDao().getOneUserByEmail(email);
-                                    OnlineEvent event = new Online_Event_Dao().getOneEvent(id);
-                                    int total = quantity * event.getEvent_price();
-                                    System.out.println("ye hai id"+id);
-                                    System.out.println("ye hai mail id"+email);
-                                    Online_Event_Ticket_Dao ud = new Online_Event_Ticket_Dao();
-                                    System.out.println("ye hai id.............."+id);
+      HttpSession session1 = request.getSession();
+      int quantity = Integer.parseInt(request.getParameter("quantity"));
+      Integer id = (Integer) session1.getAttribute("id");
+      String email = (String) session.getAttribute("email");
+      RegisterUser user = new UserDao().getOneUserByEmail(email);
+      OnlineEvent event = new Online_Event_Dao().getOneEvent(id);
+      int total = quantity * event.getEvent_price();
+      System.out.println("ye hai id"+id);
+      System.out.println("ye hai mail id"+email);
+      Online_Event_Ticket_Dao ud = new Online_Event_Ticket_Dao();
+      System.out.println("ye hai id.............."+id);
+                                   
+      // Get a database connection
+      String url = "jdbc:mysql://localhost:3306/Virtual_Event_platform";
+      String uname = "root";
+      String upass = "abc123";
+      String driver = "com.mysql.cj.jdbc.Driver";
+      Class.forName(driver);
+      Connection con = DriverManager.getConnection(url, uname, upass);
 
-                                    
-                                    // Get a database connection
-                                    String url = "jdbc:mysql://localhost:3306/Virtual_Event_platform";
-                                    String uname = "root";
-                                    String upass = "abc123";
-                                    String driver = "com.mysql.cj.jdbc.Driver";
-                                    Class.forName(driver);
-                                    Connection con = DriverManager.getConnection(url, uname, upass);
+      Online_Event_Dao od = new Online_Event_Dao();
 
-                                    Online_Event_Dao od = new Online_Event_Dao();
+      // Get current quantity from the database based on event ID
+      int currentQuantity = od.getCurrentQuantityByEventId(con, id);
+      System.out.print(currentQuantity);
+      System.out.println("ye hai id.............." + id);
+      // Update quantity in the database based on event ID
+      int updatedQuantity = currentQuantity - quantity;
+      od.updateQuantityByEventId(con, id, updatedQuantity);
 
-                                    // Get current quantity from the database based on event ID
-                                    int currentQuantity = od.getCurrentQuantityByEventId(con, id);
-                                    System.out.print(currentQuantity);
-                                    System.out.println("ye hai id.............." + id);
-
-                                    // Update quantity in the database based on event ID
-                                    int updatedQuantity = currentQuantity - quantity;
-                                    od.updateQuantityByEventId(con, id, updatedQuantity);
-
-                                    // Close the database connection
-                                    con.close();
-                                %>
+      // Close the database connection
+      con.close();
+      %>
 	<header class="header">
 		<div class="header-inner">
 			<nav class="navbar navbar-expand-lg bg-barren barren-head navbar fixed-top justify-content-sm-start pt-0 pb-0">
@@ -267,11 +265,7 @@
 							<h3>Order Confirmation</h3>
 						</div>
 					</div>
-					
-					
-					
-					
-					
+						
 					<div class="col-xl-8 col-lg-12 col-md-12">
 						<div class="checkout-block">
 							<div class="main-card">
@@ -279,8 +273,7 @@
 									<h4>Billing information</h4>
 								</div>
 									
-					<%-- Java code to retrieve user and event details --%>
-                              
+					          
 								<div class="bp-content bp-form">
 									<div class="row">
 										<div class="col-lg-6 col-md-12">
@@ -427,17 +420,10 @@
 					</div>
 					
 					
-					
-					
-					
-					
-					
-					
-					
-					<div class="col-xl-4 col-lg-12 col-md-12">
-						<div class="main-card order-summary">
-  					<div class="bp-title">
-								<h4>Billing information</h4>
+							<div class="col-xl-4 col-lg-12 col-md-12">
+								<div class="main-card order-summary">
+		  					<div class="bp-title">
+										<h4>Billing information</h4>
 							</div>
 							<div class="order-summary-content p_30">
 								<div class="event-order-dt">
@@ -607,7 +593,7 @@ session.setAttribute("orderId", orderDetails.getId());
 				<div class="row">
 					<div class="col-12">
 						<div class="footer-copyright-text">
-							<p class="mb-0">© 2022, <strong>Rishabh</strong>. All rights reserved. Powered by Gambolthemes</p>
+							<p class="mb-0">© 2024, <strong>Rishabh</strong>. All rights reserved. Powered by Gambolthemes</p>
 						</div>
 					</div>
 				</div>

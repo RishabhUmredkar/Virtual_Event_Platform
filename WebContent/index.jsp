@@ -9,7 +9,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <body>
-<html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">
+<html lang="en" class="h-100">
+<head></head>
+<body class="d-flex flex-column h-100">
 
 	
 		<meta charset="utf-8">
@@ -18,8 +20,7 @@
 		<meta name="description" content="Gambolthemes">
 		<meta name="author" content="Gambolthemes">		
 		<title>Rishabh - Simple Online Event Ticketing System</title>
-		
-		
+				
 		<!-- Stylesheets -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -35,9 +36,6 @@
 		<link href="vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
 		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">		
-		
-	
-
 
 	<!-- Header Start-->
 	<header class="header">
@@ -544,166 +542,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- <div class="host-step-block p-80">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-10">
-						<div class="main-title">
-							<h3>Be a Star Event Host in 4 Easy Steps</h3>
-							<p>Use early-bird discounts, coupons and group ticketing to double your ticket sale. Get paid quickly and securely.</p>
-						</div>
-					</div>
-					<div class="col-lg-12">
-						<div class="easy-steps-tab">
-							<div class="nav step-tabs" role="tablist">
-								<button class="step-link active" data-bs-toggle="tab" data-bs-target="#step-01" type="button" role="tab" aria-controls="step-01" aria-selected="true">Step 01<span>Create Your Event</span></button>
-								<button class="step-link" data-bs-toggle="tab" data-bs-target="#step-02" type="button" role="tab" aria-controls="step-02" aria-selected="false">Step 02<span>Sell Tickets and  Get Paid</span></button>
-								<button class="step-link" data-bs-toggle="tab" data-bs-target="#step-03" type="button" role="tab" aria-controls="step-03" aria-selected="false">Step 03<span>Finally, Host Your  Event</span></button>
-								<button class="step-link" data-bs-toggle="tab" data-bs-target="#step-04" type="button" role="tab" aria-controls="step-04" aria-selected="false">Step 04<span>Repeat and Grow</span></button>
-							</div>
-							<div class="tab-content">
-								<div class="tab-pane fade show active" id="step-01" role="tabpanel">
-									<div class="row">
-										<div class="col-lg-12 col-md-12">
-											<div class="step-text">Sign up for free and create your event easily in minutes.</div>
-										</div>
-										<div class="col-lg-4 col-md-6">
-											<div class="step-item">
-												<div class="step-icon">
-													<img src="images/icons/step-icon-1.png" alt="">
-												</div>
-												<h4>Sign up for free</h4>
-												<p>Sign up easily using your Google or Facebook account or email and create your events in minutes.</p>
-											</div>
-										</div>
-										<div class="col-lg-4 col-md-6">
-											<div class="step-item">
-												<div class="step-icon">
-													<img src="images/icons/step-icon-2.png" alt="">
-												</div>
-												<h4>Use built-in event page template</h4>
-												<p>Choose from our customised page templates specially designed to attract attendees.</p>
-											</div>
-										</div>
-										<div class="col-lg-4 col-md-6">
-											<div class="step-item">
-												<div class="step-icon">
-													<img src="images/icons/step-icon-3.png" alt="">
-												</div>
-												<h4>Customise your event page as you like</h4>
-												<p>Add logo, collage hero images, and add details to create an outstanding event page.</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="tab-pane fade" id="step-02" role="tabpanel">
-									<div class="row">
-										<div class="col-lg-12 col-md-12">
-											<div class="step-text">Use our multiple ticketing features &amp; marketing automation tools to boost ticket sales.</div>
-										</div>
-										<div class="col-lg-4 col-md-6">
-											<div class="step-item">
-												<div class="step-icon">
-													<img src="images/icons/step-icon-4.png" alt="">
-												</div>
-												<h4>Promote your events on social media &amp; email</h4>
-												<p>Use our intuitive event promotion tools to reach your target audience and sell tickets.</p>
-											</div>
-										</div>
-										<div class="col-lg-4 col-md-6">
-											<div class="step-item">
-												<div class="step-icon">
-													<img src="images/icons/step-icon-5.png" alt="">
-												</div>
-												<h4>Use early-bird discounts, coupons &amp; group ticketing</h4>
-												<p>Double your ticket sales using our built-in discounts, coupons and group ticketing features.</p>
-											</div>
-										</div>
-										<div class="col-lg-4 col-md-6">
-											<div class="step-item">
-												<div class="step-icon">
-													<img src="images/icons/step-icon-6.png" alt="">
-												</div>
-												<h4>Get paid quickly &amp; securely</h4>
-												<p>Use our PCI compliant payment gateways to collect your payment securely.</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="tab-pane fade" id="step-03" role="tabpanel">
-									<div class="row">
-										<div class="col-lg-12 col-md-12">
-											<div class="step-text">Use Barren to host any types of online events for free.</div>
-										</div>
-										<div class="col-lg-4 col-md-6">
-											<div class="step-item">
-												<div class="step-icon">
-													<img src="images/icons/step-icon-7.png" alt="">
-												</div>
-												<h4>Free event hosting</h4>
-												<p>Use Eventbookings to host any types of online events for free.</p>
-											</div>
-										</div>
-										<div class="col-lg-4 col-md-6">
-											<div class="step-item">
-												<div class="step-icon">
-													<img src="images/icons/step-icon-8.png" alt="">
-												</div>
-												<h4>Built-in video conferencing platform</h4>
-												<p>No need to integrate with ZOOM or other 3rd party apps, use our built-in video conferencing platform for your events.</p>
-											</div>
-										</div>
-										<div class="col-lg-4 col-md-6">
-											<div class="step-item">
-												<div class="step-icon">
-													<img src="images/icons/step-icon-9.png" alt="">
-												</div>
-												<h4>Connect your attendees with your event</h4>
-												<p>Use our live engagement tools to connect with attendees during the event.</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="tab-pane fade" id="step-04" role="tabpanel">
-									<div class="row">
-										<div class="col-lg-12 col-md-12">
-											<div class="step-text">Create more events and earn more money.</div>
-										</div>
-										<div class="col-lg-4 col-md-6">
-											<div class="step-item">
-												<div class="step-icon">
-													<img src="images/icons/step-icon-10.png" alt="">
-												</div>
-												<h4>Create multiple sessions &amp; earn more</h4>
-												<p>Use our event scheduling features to create multiple sessions for your events &amp; earn more money.</p>
-											</div>
-										</div>
-										<div class="col-lg-4 col-md-6">
-											<div class="step-item">
-												<div class="step-icon">
-													<img src="images/icons/step-icon-11.png" alt="">
-												</div>
-												<h4>Clone past event to create similar events</h4>
-												<p>Use our event cloning feature to clone past event and create a new one easily within a few clicks.</p>
-											</div>
-										</div>
-										<div class="col-lg-4 col-md-6">
-											<div class="step-item">
-												<div class="step-icon">
-													<img src="images/icons/step-icon-12.png" alt="">
-												</div>
-												<h4>Get support like nowhere else</h4>
-												<p>Our dedicated on-boarding coach will assist you in becoming an expert in no time.</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
+		
 		 <div class="host-step-block p-80">
 			<div class="container">
 				<div class="row">
@@ -966,7 +805,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="footer-copyright-text">
-							<p class="mb-0">© 2022, <strong>Rishabh</strong>. All rights reserved. Powered by Gambolthemes</p>
+							<p class="mb-0">© 2024, <strong>Rishabh</strong>. All rights reserved. Powered by Gambolthemes</p>
 						</div>
 					</div>
 				</div>
