@@ -4,11 +4,9 @@
 <%@page import="Model.VenueEvent"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
 <%@ page import="java.util.List" %>
 <%@ page import="Model.OnlineEvent" %>
 <%@ page import="Model.Online_Event_Ticket" %>
-
 <%@ page import="Dao.Online_Event_Dao" %>
 <%@ page import="java.sql.Date" %>
 <%@ page import="java.sql.Time" %>
@@ -111,7 +109,7 @@
 						</div>
 						<div class="offcanvas-footer">
 							<div class="offcanvas-social">
-								<h5>Followfgfd Us</h5>
+								<h5>Follow Us</h5>
 								<ul class="social-links">
 									<li><a href="#" class="social-link"><i class="fab fa-facebook-square"></i></a>
 									</li><li><a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
@@ -351,8 +349,8 @@
 
     <!-- Add a submit button to submit the form -->
 <div class="booking-btn">
-								<button type="submit" class="main-btn btn-hover w-100">Book Now</a>
-							</div>
+	<button type="submit" class="main-btn btn-hover w-100">Book Now</a>
+</div>
 
 <!-- JavaScript to update the hidden input field -->
 <script>

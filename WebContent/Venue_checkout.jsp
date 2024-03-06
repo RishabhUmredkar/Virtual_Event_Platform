@@ -13,7 +13,14 @@
 <%@ page import="java.sql.Date" %>
 <%@ page import="java.sql.Time" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.PreparedStatement" %>
 <%@ page errorPage="Error.jsp" %>
+
 <html lang="en" class="h-100"><head></head><body class="d-flex flex-column h-100">
 
 	
@@ -58,6 +65,30 @@
           int total = quantity * event.getEvent_price();
           System.out.println("ye hai id"+id);
           System.out.println("ye hai mail id"+email);
+          
+          
+          
+          // Get a database connection
+          String url = "jdbc:mysql://localhost:3306/Virtual_Event_platform";
+          String uname = "root";
+          String upass = "abc123";
+          String driver = "com.mysql.cj.jdbc.Driver";
+          Class.forName(driver);
+          Connection con = DriverManager.getConnection(url, uname, upass);
+
+          Venue_Event_Dao od = new Venue_Event_Dao();
+
+          // Get current quantity from the database based on event ID
+          int currentQuantity = od.getCurrentQuantityByEventId(con, id);
+          System.out.print(currentQuantity);
+          System.out.println("ye hai id.............." + id);
+
+          // Update quantity in the database based on event ID
+          int updatedQuantity = currentQuantity - quantity;
+          od.updateQuantityByEventId(con, id, updatedQuantity);
+
+          // Close the database connection
+          con.close();
       %>
 	<header class="header">
 		<div class="header-inner">

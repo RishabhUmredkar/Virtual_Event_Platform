@@ -495,7 +495,7 @@
 	request.setAttribute("total", total);
 	session.setAttribute("eventId", event.getId());
 
-%>
+%><%-- 
 	
 	 <h3>User Details:</h3>
     <p>First Name: <%= request.getAttribute("firstName") %></p>
@@ -522,7 +522,7 @@
     <p>Total: Rs.<%= request.getAttribute("total") %></p>
 <!-- 		user(First Name,Last Name,Email,Address,Country,State,City,pin code,image,event name,event price, date, time,duration description, event hosting , price, total ticket)
  -->	
- 
+  --%>
 <%
 OnlineOrderDetails orderDetails = new OnlineOrderDetails(user.getFirst_name(), user.getLast_name(), user.getEmail(),
         event.getEvent_image(), event.getEvent_name(),
@@ -532,17 +532,17 @@ System.out.print(orderDetails);
 request.setAttribute("orderDetails", orderDetails);
 //Insert order details into the database
 int orderId = ud.insert(orderDetails);
-out.println("Order ID: " + orderDetails.getId());
-
+/* out.println("Order ID: " + orderDetails.getId());
+ */
 //Print Order ID
-out.println("Order ID: " + orderDetails.getId());
-
+/* out.println("Order ID: " + orderDetails.getId());
+ */
 //Store Order ID in Session
 session.setAttribute("orderId", orderDetails.getId());
 %>
 </form>
-	user(First Name,Last Name,Email,Address,Country,State,City,pin code,image,event name,event price, date, time,duration description, event hosting , price, total ticket)
-	<!-- Body End-->
+<!-- 	user(First Name,Last Name,Email,Address,Country,State,City,pin code,image,event name,event price, date, time,duration description, event hosting , price, total ticket)
+ -->	<!-- Body End-->
 	<!-- Footer Start-->
 	<footer class="footer mt-auto">
 		<div class="footer-top">

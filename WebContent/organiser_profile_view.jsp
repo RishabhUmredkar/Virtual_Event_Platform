@@ -307,7 +307,8 @@
 										     <div class="main-card mt-4">
 												<div class="card-top p-4">
 													<div class="card-event-img">
-														<img src="images/event-imgs/img-7.jpg" alt="">
+												 <img src="Online_Event_Image/<%= orderDetails.getEventImage() %>" alt="">
+														
 													</div>
 													<div class="card-event-dt">
 														<h5><%=orderDetails.getEventName() %> || <%=orderDetails.getEventCategory() %></h5>
@@ -420,7 +421,7 @@
 										     <div class="main-card mt-4">
 												<div class="card-top p-4">
 													<div class="card-event-img">
-														<img src="images/event-imgs/img-7.jpg" alt="">
+												 <img src="Venue_Event_Image/<%= venueDetails.getEventImage() %>" alt="">
 													</div>
 													<div class="card-event-dt">
 														<h5><%=venueDetails.getEventName() %> || <%=venueDetails.getEventCategory() %></h5>
