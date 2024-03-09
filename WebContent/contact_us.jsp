@@ -43,12 +43,12 @@
 					</button>
 					<a class="navbar-brand order-1 order-lg-0 ml-lg-0 ml-2 me-auto" href="index.jsp">
 						<div class="res-main-logo">
-							<img src="images/RishabhLight Final.png"  alt="">
-							<img class="logo-inverse" src="images/RishabhDark Final.png" alt="">
+							<img src="images/Evento.png"  alt="">
+							<img class="logo-inverse" src="images/EventoDark.png" alt="">
 						</div>
 						<div class="main-logo" id="logo">
-							<img src="images/RishabhLight Final.png" alt="">
-							<img class="logo-inverse" src="images/RishabhDark Final.png" alt="">
+							<img src="images/Evento.png"  alt="">
+							<img class="logo-inverse" src="images/EventoDark.png" alt="">
 						</div>
 					</a>
 					<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">

@@ -80,8 +80,8 @@
 				<div class="col-lg-8 col-md-10">
 					<div class="invoice-header justify-content-between">
 						<div class="invoice-header-logo">
-							<img src="images/RishabhDark Final.png" alt="">
-						</div>
+							<img src="images/Evento.png"  alt="">
+							<img class="logo-inverse" src="images/EventoDark.png" alt="">						</div>
 						<div class="invoice-header-text">
         					<a  class="download-link" onclick="downloadPDF()">Download PDF</a>
 						</div>
