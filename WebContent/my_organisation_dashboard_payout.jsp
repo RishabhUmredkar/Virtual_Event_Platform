@@ -11,7 +11,7 @@
 		<meta name="viewport" content="width=device-width, shrink-to-fit=9">
 		<meta name="description" content="Gambolthemes">
 		<meta name="author" content="Gambolthemes">		
-		<title>Barren - Simple Online Event Ticketing System</title>
+		<title>Evento - Simple Online Event Ticketing System</title>
 	
 		<!-- Stylesheets -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">

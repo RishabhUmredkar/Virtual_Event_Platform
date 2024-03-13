@@ -19,7 +19,7 @@
 		<meta name="viewport" content="width=device-width, shrink-to-fit=9">
 		<meta name="description" content="Gambolthemes">
 		<meta name="author" content="Gambolthemes">		
-		<title>Rishabh - Simple Online Event Ticketing System</title>
+		<title>Evento - Simple Online Event Ticketing System</title>
 				
 		<!-- Stylesheets -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -306,7 +306,7 @@
 											</div>
 											
 											<div class="event-content">
-												<a href="venue_event_detail_view.jsp?id=<%=event.getId() %>" class="event-title"><%= event.getEvent_name() %></a>online<Br>
+												<a href="venue_event_detail_view.jsp?id=<%=event.getId() %>" class="event-title"><%= event.getEvent_name() %></a><Br>
 												<div class="duration-price-remaining">
 													<span class="duration-price">Rs. <%= event.getEvent_price() %></span>
 													<span class="remaining"><i class="fa-solid fa-ticket fa-rotate-90"></i><%=event.getEvent_total_tickets() %> Remaining</span>
